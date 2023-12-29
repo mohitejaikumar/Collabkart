@@ -1,0 +1,27 @@
+
+export const contentType = [
+    "Beauty and Cosmetics",
+    "Fashion",
+    "Technology",
+    "Fitness and Wellness",
+    "Travel",
+    "Food and Cooking",
+    "Parenting",
+    "Gaming",
+    "Home Decor and DIY",
+    "Photography",
+    "Business and Finance",
+    "Music",
+    "Book and Literature",
+    "Pets",
+    "Environmental and Sustainability",
+    "Agriculture",
+    "Motivational",
+    "Anime and Manga",
+    "Streamer",
+    "Content Review",
+    "Media Content Creator (Vlog, reels) ",
+    "Tech Product Review",
+    "Tech Building",
+    "General"
+]

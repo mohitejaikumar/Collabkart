@@ -1,0 +1,215 @@
+body {
+  font-family: roboto;
+  height: 100%;
+  background-color: black;
+  color: red;
+}
+.nav-bar {
+  padding: 1vw;
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+}
+.home-button {
+  font-size: 4vw;
+  font-weight: bolder;
+  color: red;
+}
+.home-button:hover {
+  cursor: pointer;
+}
+.nav-bar-button {
+  display: flex;
+  justify-content: space-between;
+  gap: 1vw;
+}
+.landing-page {
+  height: calc(100% - 100px);
+}
+.landing-page .main-content {
+  color: white;
+  font-size: 3vw;
+  word-spacing: 10px;
+  padding: 2vw 1vw 1.5vw 1.5vw;
+}
+.tabs {
+  width: 30%;
+  height: 4vw;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  z-index: 1;
+}
+.tab {
+  font-size: 2.5vw;
+  border: 1vw white;
+  color: white;
+  box-shadow: 0px 8px 15px rgba(96, 84, 84, 0.762);
+  padding: 1vw;
+  border-radius: 3vw;
+}
+#signin-page {
+  height: calc(100% - 100px);
+  display: flex;
+  justify-content: center;
+  padding-top: 10vw;
+}
+#signin-card {
+  width: 30%;
+  height: 27vw;
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 20px;
+  border: 2px solid red;
+}
+.logo-image {
+  width: 50%;
+  height: 50%;
+  border-radius: 50%;
+}
+#all-providers {
+  padding-top: 50px;
+}
+
+.provider-name {
+  color: white;
+  font-size: 1.5vw;
+}
+.provider-icon {
+  width: 50px;
+  height: 50px;
+}
+
+.registration-form {
+  height:100%;
+  padding-top: 2vw;
+  display: flex;
+  justify-content: center;
+  flex-wrap:wrap;
+}
+.registration-card {
+  width: 60%;
+  height: 100%;
+  padding: 2vw;
+  border: 2px solid red;
+}
+.registration-user {
+  display: flex;
+  justify-content: center;
+  padding-top: 1vw;
+  font-size: 4vw;
+}
+.form-button {
+  padding: 1vw;
+  margin-top: 2vw;
+  height: 4.5vw;
+  font-size: 2.5vw;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: white;
+  background-color: red;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+}
+.form-button:hover {
+  box-shadow: 0px 15px 20px rgba(144, 8, 8, 0.4);
+  color: #fff;
+  transform: translateY(-1vw);
+}
+.button {
+  padding: 0.5vw;
+  height: 4vw;
+  font-family: roboto;
+  font-size: 2vw;
+  font-weight: 500;
+  color: white;
+  background-color: red;
+  border: none;
+  border-radius: 2px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+}
+
+.button:hover {
+  box-shadow: 0px 15px 20px rgba(144, 8, 8, 0.4);
+  color: #fff;
+  transform: translateY(-1vw);
+}
+.loader{
+  padding-top: 20vw;
+}
+@media (max-width: 600px) {
+  .home-button {
+    font-size: 6vw;
+  }
+  .tabs {
+    width: 40%;
+    height: 4vw;
+  }
+  .tab {
+    font-size: 3.5vw;
+  }
+  .button {
+    padding-bottom: 1vw;
+    height: 4vw;
+  }
+  .form-button {
+    padding: 1.5vw;
+    margin-top:5vw;
+    height: 7vw;
+    font-size: 4vw;
+  }
+  .registration-form {
+    padding-top: 2vw;
+    display: flex;
+    justify-content: center;
+  }
+  .registration-card {
+    width: 90%;
+    padding: 2vw;
+    border: 2px solid red;
+  }
+  .registration-user {
+    font-size: 5vw;
+  }
+  .landing-page .main-content {
+
+    font-size: 4.5vw;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    word-spacing: 10px;
+    line-height: normal;
+  
+  }
+  #signin-card {
+    width: 60%;
+    height: 50%;
+    padding: 4vw;
+    
+  }
+  .logo-image {
+    width: 50%;
+    height: 50%;
+    border-radius: 50%;
+  }
+  #all-providers {
+    padding-top: 5vw;
+  }
+  
+  .provider-name {
+
+    font-size: 2.5vw;
+  }
+  .provider-icon {
+    width: 20px;
+    height: 20px;
+  }
+  .loader{
+    padding-top: 50vw;
+  }
+  
+}
