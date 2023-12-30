@@ -1,15 +1,28 @@
+'use-client'
+
 import { TextField } from "@mui/material";
 import { Controller } from "react-hook-form";
 
+enum formInputType {
+    string,
+    number,
+}
 
-
-export function FormInputText({
+export default function FormInputText({
     name,
     control,
     label,
+    inputType
+}) {
 
-}){
-
+    function typeTransform(value:string, typ:formInputType) {
+        if (typ === formInputType.string) {
+            return String(value);
+        }
+        if (typ === formInputType.number) {
+            return Number(value);
+        }
+    }
     return (
         <Controller
             name={name}
@@ -25,7 +38,9 @@ export function FormInputText({
                     helperText={error ? error.message : null}
                     size={"medium"}
                     error={!!error}
-                    onChange={onChange}
+                    onChange={(e) => {
+                        onChange(typeTransform(e.target.value, inputType));
+                    }}
                     value={value}
                     fullWidth={true}
                     label={label}

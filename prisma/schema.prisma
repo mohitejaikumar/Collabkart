@@ -20,13 +20,13 @@ model User{
 
 model UserDetail{
 
-  id            Int       @id @default(autoincrement())
-  contentType   String?
-  audienceType  String?
-  audienceAge   Int?
-  posts         Int?
-  platformLink  String[]
+  id             Int       @id @default(autoincrement())
+  contentType    String[]
+  influencerType String[]
+  audienceAge    Int
+  posts          String
+  platformLink   String[]
   author         User      @relation(fields: [authorId], references: [id])
-  authorId        Int
+  authorId       Int
   
 }

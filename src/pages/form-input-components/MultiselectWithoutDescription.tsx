@@ -1,8 +1,9 @@
-import { Checkbox, FormControl, InputLabel, ListItemText, MenuItem, OutlinedInput, Select } from "@mui/material";
+'use-client'
+import { Checkbox, FormControl, FormHelperText, InputLabel, ListItemText, MenuItem, OutlinedInput, Select } from "@mui/material";
 import { validateHeaderValue } from "http";
 import { useState } from "react";
 import { Controller } from "react-hook-form";
-
+import React from "react"
 
 const ITEM_HEIGHT = 50;
 const ITEM_PADDING_TOP = 4;
@@ -16,14 +17,14 @@ const MenuProps = {
     },
 };
 
-export function FormInputDropdownWithoutDescription({
+export default function FormInputDropdownWithoutDescription({
     name,
     control,
     label,
     options
 }) {
        
-    console.log("hi from without description")
+   
     const [inputValue, setInputValue] = useState<string[]>([]);
     function generateSingleOptions() {
         return (
@@ -39,7 +40,7 @@ export function FormInputDropdownWithoutDescription({
     }
     return (
         <FormControl fullWidth margin={"normal"}>
-            <InputLabel id="demo-multiple-name-label">{label}</InputLabel>
+            <InputLabel id="demo-multiple-name-error-label">{label}</InputLabel>
             <Controller
                 name={name}
                 control={control}
@@ -47,11 +48,14 @@ export function FormInputDropdownWithoutDescription({
                     field: { onChange, value },
                     fieldState: { error }
                 }) => (
+                    <React.Fragment>
                     <Select
-                        labelId="demo-multiple-name-label"
-                        id="demo-multiple-name"
+                        labelId="demo-multiple-name-error-label"
+                        id="demo-multiple-name-error"
+                        required
                         fullWidth={true}
                         multiple
+                        error={!!error}
                         value={inputValue}
                         onChange={event => {
                             const { target: { value } } = event;
@@ -60,7 +64,7 @@ export function FormInputDropdownWithoutDescription({
                             );
                             onChange(event);
                         }}
-                        input={<OutlinedInput label={label} />}
+                        input={<OutlinedInput label={label} error/>}
                         renderValue={(selected) => selected.join(', ')}
                         MenuProps={MenuProps}
                       
@@ -68,6 +72,10 @@ export function FormInputDropdownWithoutDescription({
                     >
                         {generateSingleOptions()}
                     </Select>
+                    {error ? (
+                        <FormHelperText error>{error.message}</FormHelperText>
+                    ) : null}
+                    </React.Fragment>
                 )}
             />
         </FormControl>

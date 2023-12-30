@@ -1,10 +1,11 @@
+'use-client'
 import { TextField } from "@mui/material";
 import { useState } from "react";
 import { Controller } from "react-hook-form";
 
 
 
-export function FormInputTextArray({
+export default function FormInputTextArray({
     name,
     control,
     label,
@@ -21,7 +22,7 @@ export function FormInputTextArray({
                 formState,
             }) => (
                 <TextField
-                    required
+                    
                     id={"outlined-required"}
                     helperText={error ? error.message : null}
                     size={"medium"}
