@@ -37,7 +37,7 @@ export default function SignIn({
                 <img
                   src={`/${provider.name}_icon.png`}
                   className="provider-icon"
-                  alt="face_book_logo"
+                  alt={`${provider.name}_icon`}
                 />
 
                 <text className="provider-name">Continue with {provider.name}</text>

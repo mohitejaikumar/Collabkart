@@ -3,7 +3,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { getServerSession } from 'next-auth'
 import { authOptions } from './auth/[...nextauth]'
 import { FormSchema } from '../../../zod/form'
-import { PrismaClient } from '@prisma/client'
+import { PrismaClient } from './../../../prisma/generated/client'
 
 const prisma = new PrismaClient();
 
@@ -26,7 +26,9 @@ export default async function handler(
   if (!session) {
     res.status(401).json({ message: "unauthorised User" });
   }
-
+  console.log(process.env.DATABASE_URL);
+  console.log("from docker");
+  console.log(req.method)
 
   switch (req.method) {
     case 'POST':

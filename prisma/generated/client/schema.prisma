@@ -1,0 +1,33 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User{
+  id              Int      @id @default(autoincrement())
+  email           String   @unique
+  insta_username  String   @unique
+  name            String?   
+  Details         UserDetail[]
+}
+
+model UserDetail{
+
+  id             Int       @id @default(autoincrement())
+  contentType    String[]
+  influencerType String[]
+  audienceAge    Int
+  posts          String
+  platformLink   String[]
+  author         User      @relation(fields: [authorId], references: [id])
+  authorId       Int
+  
+}

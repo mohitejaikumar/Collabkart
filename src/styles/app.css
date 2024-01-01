@@ -2,6 +2,7 @@ body {
   font-family: roboto;
   height: 100%;
   background-color: black;
+  position:relative;
   color: red;
 }
 .nav-bar {
