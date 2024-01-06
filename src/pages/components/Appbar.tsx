@@ -28,25 +28,30 @@ export default function Appbar() {
     }
 
     return (
-
         <div className="nav-bar">
-            <div className="home-button" onClick={() => { router.push('/') }}>LevelUp</div>
-            <div className="tabs">
-                <div className="tab">For Brands</div>
-                <div className="tab">For Creators</div>
-            </div>
-            {!session && <button className="button" onClick={() => signIn()}>SignIn</button>}
-            {session &&
-                <div className="nav-bar-button">
-                    <button className="button" onClick={() => { router.push('/registration') }}>
-                        Registration
-                    </button>
-                    <button className="button" onClick={() => {SignOut()}}>
-                        SignOut
-                    </button>
-                </div>
-            }
+          <div className="home-button" onClick={() => { router.push('/') }}>CollabKart</div>
+          <div className="tabs">
+            <div className="brand-tab" onClick={() => { /* Handle click action */ }}>For Brands</div>
+            <div className="influencer-tab" onClick={() => { /* Handle click action */ }}>For Creators</div>
+          </div>
+          <div className="nav-bar-button">
+            {!session && (
+              <>
+                <button className="button" onClick={() => signIn()}>Sign In</button>
+              </>
+            )}
+            {session && (
+              <div className="nav-bar-button">
+                <button className="button" onClick={() => { router.push('/registration') }}>
+                  Registration
+                </button>
+                <button className="button" onClick={() => { SignOut() }}>
+                  Sign Out
+                </button>
+              </div>
+            )}
+          </div>
         </div>
-    )
+      );
 }
 

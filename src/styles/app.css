@@ -1,70 +1,25 @@
 body {
   font-family: roboto;
   height: 100%;
-  background-color: black;
-  position:relative;
-  color: red;
-}
-.nav-bar {
-  padding: 1vw;
-  height: 100px;
-  display: flex;
-  justify-content: space-between;
-}
-.home-button {
-  font-size: 4vw;
-  font-weight: bolder;
-  color: red;
-}
-.home-button:hover {
-  cursor: pointer;
-}
-.nav-bar-button {
-  display: flex;
-  justify-content: space-between;
-  gap: 1vw;
-}
-.landing-page {
-  height: calc(100% - 100px);
-}
-.landing-page .main-content {
-  color: white;
-  font-size: 3vw;
-  word-spacing: 10px;
-  padding: 2vw 1vw 1.5vw 1.5vw;
-}
-.tabs {
-  width: 30%;
-  height: 4vw;
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  z-index: 1;
-}
-.tab {
-  font-size: 2.5vw;
-  border: 1vw white;
-  color: white;
-  box-shadow: 0px 8px 15px rgba(96, 84, 84, 0.762);
-  padding: 1vw;
-  border-radius: 3vw;
+  background-color: #f8f8f8;
+  
 }
 #signin-page {
-  height: calc(100% - 100px);
+  height: calc(100% - 70px);
   display: flex;
   justify-content: center;
-  padding-top: 10vw;
+  padding-top: 50px;
 }
 #signin-card {
   width: 30%;
   height: 27vw;
   background-color: rgba(255, 255, 255, 0.2);
   padding: 20px;
-  border: 2px solid red;
+  border: 2px solid #0056b3;
 }
 .logo-image {
   width: 50%;
-  height: 50%;
+  height: auto;
   border-radius: 50%;
 }
 #all-providers {
@@ -72,7 +27,7 @@ body {
 }
 
 .provider-name {
-  color: white;
+  color: black;
   font-size: 1.5vw;
 }
 .provider-icon {
@@ -91,12 +46,12 @@ body {
   width: 60%;
   height: 100%;
   padding: 2vw;
-  border: 2px solid red;
+  border: 2px solid #0056b3;
 }
 .registration-user {
   display: flex;
   justify-content: center;
-  padding-top: 1vw;
+  padding-top: 20px;
   font-size: 4vw;
 }
 .form-button {
@@ -107,7 +62,7 @@ body {
   letter-spacing: 2.5px;
   font-weight: 500;
   color: white;
-  background-color: red;
+  background-color: #007bff;
   border: none;
   border-radius: 5px;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
@@ -116,49 +71,17 @@ body {
   outline: none;
 }
 .form-button:hover {
-  box-shadow: 0px 15px 20px rgba(144, 8, 8, 0.4);
+  box-shadow: 0px 15px 20px #0056b3;
   color: #fff;
   transform: translateY(-1vw);
-}
-.button {
-  padding: 0.5vw;
-  height: 4vw;
-  font-family: roboto;
-  font-size: 2vw;
-  font-weight: 500;
-  color: white;
-  background-color: red;
-  border: none;
-  border-radius: 2px;
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease 0s;
-  cursor: pointer;
-  outline: none;
 }
 
-.button:hover {
-  box-shadow: 0px 15px 20px rgba(144, 8, 8, 0.4);
-  color: #fff;
-  transform: translateY(-1vw);
-}
 .loader{
   padding-top: 20vw;
 }
 @media (max-width: 600px) {
-  .home-button {
-    font-size: 6vw;
-  }
-  .tabs {
-    width: 40%;
-    height: 4vw;
-  }
-  .tab {
-    font-size: 3.5vw;
-  }
-  .button {
-    padding-bottom: 1vw;
-    height: 4vw;
-  }
+  
+ 
   .form-button {
     padding: 1.5vw;
     margin-top:5vw;
@@ -173,19 +96,12 @@ body {
   .registration-card {
     width: 90%;
     padding: 2vw;
-    border: 2px solid red;
+    border: 2px solid #0056b3;
   }
   .registration-user {
     font-size: 5vw;
   }
-  .landing-page .main-content {
-
-    font-size: 4.5vw;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    word-spacing: 10px;
-    line-height: normal;
   
-  }
   #signin-card {
     width: 60%;
     height: 50%;

@@ -1,0 +1,83 @@
+/* Appbar.css */
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  padding: 1vw 1vw;
+  height: 80px;
+  color: black;
+}
+
+.home-button {
+  font-size: 4vw;
+  cursor: pointer;
+  color: #000;
+}
+
+.tabs {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  color: #000;
+  background-color: rgb(255, 255, 255);
+  border: white;
+  gap: 3vw; /* Adjust the gap between tabs */
+  font-size: 2vw;
+}
+
+.brand-tab {
+  display: flex;
+
+  cursor: pointer;
+  color: #000;
+}
+.influencer-tab {
+  display: flex;
+
+  cursor: pointer;
+  color: #000;
+}
+.nav-bar-button {
+  display: flex;
+  gap: 1vw; /* Adjust the gap between Login and Sign In buttons */
+}
+
+.button {
+  padding: 1vw 1.5vw;
+  font-family: roboto;
+  font-size: 2vw;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+}
+
+.button:hover {
+  background-color: #0056b3;
+  box-shadow: 0px 15px 20px #0056b3;
+  color: #fff;
+  transform: translateY(-1vw);
+}
+
+/* Media query for smaller screens */
+@media (max-width: 660px) {
+  .nav-bar {
+    height: 60px;
+  }
+  .tabs{
+    font-size:4vw;
+  
+  }
+  .home-button{
+    font-size:5vw;
+  }
+  .button{
+    font-size:2vw;
+    height:7vw;
+  }
+}

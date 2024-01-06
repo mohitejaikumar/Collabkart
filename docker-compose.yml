@@ -5,31 +5,40 @@ services:
      
      influencer:
       depends_on:
-       - postgresdb
+        postgresdb:
+          condition: service_healthy
+          restart: true
           
       build:
         context: ./
         dockerfile: Dockerfile
-      restart: always
+      restart: unless-stopped
       
       environment:
-           DATABASE_URL: postgresql://postgres:jk2003@postgresdb:5432/level_up_db?schema=public&connect_timeout=30&pool_timeout=30&socket_timeout=30
-           INSTAGRAM_CLIENT_ID: your_client_id
-           INSTAGRAM_CLIENT_SECRET: your_client_secret
-           NEXT_AUTH_SECRET: your_next_auth_secret
+           DATABASE_URL: postgresql://postgres:jk2003@postgresdb:5432/level_up_db?schema=public
+           INSTAGRAM_CLIENT_ID: 902780958221471
+           INSTAGRAM_CLIENT_SECRET: 1cd38dda1047f2e1c91e1525ae719b02
+           NEXT_AUTH_SECRET: JAI12062003MOHITE
            NEXTAUTH_URL: https://localhost:3000
       ports:
         - 3000:3000
         - 5555:5555
+      command: ["/bin/sh", "-c", "npm run dev && npx prisma migrate dev --name init"]
       
      postgresdb:
       image: postgres:latest
-      restart: always
+      restart: unless-stopped
       environment:
+        POSTGRES_USER: postgres
         POSTGRES_PASSWORD: 'jk2003'
         POSTGRES_DB: level_up_db
+      healthcheck:
+        test: ["CMD-SHELL", "pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}"]
+        interval: 10s
+        timeout: 5s
+        retries: 5
       volumes: 
-        - mydb:/level_up_db
+        - mydb:/var/lib/postgresql/data
       ports:
         - 5432:5432
   

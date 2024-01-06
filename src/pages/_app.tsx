@@ -3,6 +3,8 @@ import { SessionProvider, useSession } from 'next-auth/react'
 import type { AppProps } from 'next/app'
 import Appbar from './components/Appbar'
 import '../styles/app.css'
+import '../styles/MainPage.css'
+import '../styles/Appbar.css'
 import type { NextComponentType } from 'next' //Import Component type
 import { ReactNode, useEffect, useState } from 'react'
 import { RecoilRoot, useRecoilValue } from 'recoil'

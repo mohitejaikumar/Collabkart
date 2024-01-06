@@ -1,0 +1,213 @@
+/* MainPage.css */
+.landing-page {
+  background-color: #f8f8f8;
+  padding: 2vw 2vw;
+  text-align: center;
+}
+
+.main-content {
+  max-width: 60%;
+  margin: 0 auto;
+}
+
+.headline {
+  color: #333;
+  font-size: 3.5vw;
+  margin-bottom: 2vw;
+}
+
+.description {
+  color: #666;
+  font-size: 2.5vw;
+  margin-bottom: 2.5vw;
+}
+
+.cta-container {
+  display: flex;
+  justify-content: center;
+}
+
+.cta-button {
+  padding: 1vw 1.5vw;
+  font-family: roboto;
+  font-size: 2vw;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+}
+
+.cta-button:hover {
+  background-color: #0056b3;
+  box-shadow: 0px 15px 20px #0056b3;
+  color: #fff;
+  transform: translateY(-1vw);
+}
+
+/* Add these styles to your CSS file */
+
+/* MainPage.css */
+.phones-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 1vw 3vw; /* Adjust the margin as needed */
+}
+
+.phone-image {
+  
+  width: 25%; /* Adjust the width of each phone image */
+  height: auto; /* Maintain aspect ratio */
+  margin-right: 2vw;
+  margin-left: 2vw; /* Adjust the spacing between phone images */
+}
+
+
+.campaign-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center; /* Center-align the content */
+  margin-top: 1.5vw; /* Adjust margin as needed */
+}
+
+.campaign-text {
+  font-size: 3vw; /* Adjust font size as needed */
+  margin-right: 10px; /* Add margin between text and button */
+  color: #000000;
+}
+
+.what-text {
+  text-align: center;
+  font-size: 4vw; /* Adjust font size as needed */
+  margin-top: 40px; /* Add margin between text and button */
+  color: #000000;
+}
+
+.info-section {
+  display: flex;
+  background-color: #ffffff; /* Grey background color */
+  padding: 1vw;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  color: black;
+}
+
+.right {
+  padding: 1vw;
+  margin-left: auto;
+  font-size: 3vw;
+  text-align: center;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.right img {
+  margin-left:1vw;
+  width: 40%; /* Adjust the width of the image as needed */
+  height: auto; /* Adjust the height of the image as needed */
+  object-fit: cover; /* Maintain aspect ratio and cover the container */
+  border-radius: 10px; /* Optional: Add border-radius for a rounded appearance */
+}
+.left img {
+  margin-right:1vw;
+  width: 40%; /* Adjust the width of the image as needed */
+  height: auto; /* Adjust the height of the image as needed */
+  object-fit: cover; /* Maintain aspect ratio and cover the container */
+  border-radius: 10px; /* Optional: Add border-radius for a rounded appearance */
+}
+.left {
+  margin-right: auto;
+  padding: 1vw;
+  font-size: 3vw;
+  text-align: center;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+.about-us-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+ 
+}
+
+.about-us-box {
+  background-color: #000000; /* Grey background color */
+  padding: 1vw;
+  border-radius: 10px;
+  margin-top: 5vw;
+  
+}
+
+.about-us-heading {
+  font-size: 4vw; /* Adjust font size as needed */
+  color: #ffffff;
+}
+
+.about-us-content {
+  font-size: 3vw; /* Adjust font size as needed */
+  color: #bbbbbb;
+}
+
+@media (max-width:660px) {
+  .main-content {
+    max-width: 70%;
+  }
+  .headline {
+    font-size: 4vw;
+  }
+  .description {
+    font-size: 3vw;
+    margin-bottom: 20px;
+  }
+  .cta-button {
+    padding: 1.5vw 2vw;
+    font-size: 4vw;
+    border-radius: 10px;
+    margin-bottom:10px;
+  }
+  .campaign-container {
+    margin-top: 20px; /* Adjust margin as needed */
+  }
+  .campaign-text {
+    font-size: 4vw; /* Adjust font size as needed */
+    color: #000000;
+  }
+  .what-text {
+    font-size: 5vw; /* Adjust font size as needed */
+  }
+  .right {
+    padding:1vw;
+    font-size: 4vw;
+  }
+  .right img {
+    margin-left:1.5vw;
+    width: 50%; /* Adjust the width of the image as needed */
+  }
+  .left img {
+    margin-right:1.5vw;
+    width: 50%; /* Adjust the width of the image as needed */
+  }
+  .left {
+    padding: 1vw;
+    font-size: 4vw;
+  }
+  
+  .about-us-heading {
+    font-size: 4vw; /* Adjust font size as needed */
+  }
+  
+  .about-us-content {
+    font-size: 4vw; /* Adjust font size as needed */
+    padding:1vw;
+  }
+}
