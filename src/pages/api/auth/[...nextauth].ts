@@ -19,6 +19,11 @@ export const authOptions = {
     secret: process.env.NEXT_AUTH_SECRET,
     strategy: "jwt",
     callbacks: {
+        redirect: async (url, baseUrl) => {
+        return url.startsWith(baseUrl)
+            ? Promise.resolve(url)
+            : Promise.resolve(baseUrl)
+        }
         async session({ session, token, user }) {
             const sanitizedToken = Object.keys(token).reduce((p, c) => {
                 if (c != "email" &&
