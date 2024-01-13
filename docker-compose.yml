@@ -23,7 +23,7 @@ services:
       ports:
         - 3000:3000
         - 5555:5555
-      command: ["/bin/sh", "-c", "npm run dev && npx prisma migrate dev --name init"]
+      command: ["/bin/sh", "-c", "npx prisma migrate dev --name init && npx prisma generate && npm run dev"]
       
      postgresdb:
       image: postgres:latest
