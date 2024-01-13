@@ -27,7 +27,7 @@ export default function MainPage() {
           Unleash the Power of Collaboration – Simply Share the Link of Your Ideal Influencer, and Let Us Transform Your Campaign Dreams into Reality!
         </p>
         <div className="cta-container">
-          <button className="cta-button">Get Started</button>
+          <button className="cta-button-early">Early Signup for Influencer</button>
         </div>
       </div>
       <div className="phones-container">
