@@ -31,13 +31,13 @@ export default function Appbar() {
         <div className="nav-bar">
           <div className="home-button" onClick={() => { router.push('/') }}>CollabKart</div>
           <div className="tabs">
-            <div className="brand-tab" onClick={() => { /* Handle click action */ }}>For Brands</div>
-            <div className="influencer-tab" onClick={() => { /* Handle click action */ }}>For Creators</div>
+            <div className="brand-tab" onClick={() => { }}>For Brands</div>
+            <div className="influencer-tab" onClick={() => {  }}>For Creators</div>
           </div>
           <div className="nav-bar-button">
             {!session && (
               <>
-                <button className="button" onClick={() => signIn()}>Sign In</button>
+                <button className="button" onClick={() => signIn()}>Subscribe</button>
               </>
             )}
             {session && (

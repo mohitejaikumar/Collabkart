@@ -1,6 +1,6 @@
 FROM node:latest 
 WORKDIR /user/src/app
-COPY ["package.json","package-lock.json","next-env.d.ts","tsconfig.json","./"]
+COPY ["package.json","package-lock.json","next.config.js","tsconfig.json","./"]
 
 COPY prisma ./prisma/
 COPY . .

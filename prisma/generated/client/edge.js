@@ -135,7 +135,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "G:\\Web_dev_stuff\\level-up\\prisma\\generated\\client",
+      "value": "F:\\levelup\\website\\LevelUp\\prisma\\generated\\client",
       "fromEnvVar": null
     },
     "config": {
@@ -162,6 +162,7 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
+  "postinstall": true,
   "inlineDatasources": {
     "db": {
       "url": {
@@ -170,8 +171,9 @@ const config = {
       }
     }
   },
-  "inlineSchema": "Ly8gVGhpcyBpcyB5b3VyIFByaXNtYSBzY2hlbWEgZmlsZSwKLy8gbGVhcm4gbW9yZSBhYm91dCBpdCBpbiB0aGUgZG9jczogaHR0cHM6Ly9wcmlzLmx5L2QvcHJpc21hLXNjaGVtYQoKZ2VuZXJhdG9yIGNsaWVudCB7CiAgcHJvdmlkZXIgPSAicHJpc21hLWNsaWVudC1qcyIKICBvdXRwdXQgICA9ICIuL2dlbmVyYXRlZC9jbGllbnQiCn0KCmRhdGFzb3VyY2UgZGIgewogIHByb3ZpZGVyID0gInBvc3RncmVzcWwiCiAgdXJsICAgICAgPSBlbnYoIkRBVEFCQVNFX1VSTCIpCn0KCm1vZGVsIFVzZXJ7CiAgaWQgICAgICAgICAgICAgIEludCAgICAgIEBpZCBAZGVmYXVsdChhdXRvaW5jcmVtZW50KCkpCiAgZW1haWwgICAgICAgICAgIFN0cmluZyAgIEB1bmlxdWUKICBpbnN0YV91c2VybmFtZSAgU3RyaW5nICAgQHVuaXF1ZQogIG5hbWUgICAgICAgICAgICBTdHJpbmc/ICAgCiAgRGV0YWlscyAgICAgICAgIFVzZXJEZXRhaWxbXQp9Cgptb2RlbCBVc2VyRGV0YWlsewoKICBpZCAgICAgICAgICAgICBJbnQgICAgICAgQGlkIEBkZWZhdWx0KGF1dG9pbmNyZW1lbnQoKSkKICBjb250ZW50VHlwZSAgICBTdHJpbmdbXQogIGluZmx1ZW5jZXJUeXBlIFN0cmluZ1tdCiAgYXVkaWVuY2VBZ2UgICAgSW50CiAgcG9zdHMgICAgICAgICAgU3RyaW5nCiAgcGxhdGZvcm1MaW5rICAgU3RyaW5nW10KICBhdXRob3IgICAgICAgICBVc2VyICAgICAgQHJlbGF0aW9uKGZpZWxkczogW2F1dGhvcklkXSwgcmVmZXJlbmNlczogW2lkXSkKICBhdXRob3JJZCAgICAgICBJbnQKICAKfQo=",
-  "inlineSchemaHash": "31c45e6a48194d63304f0878df1d75f812436e33ede93e7cdaa2c24405d14825"
+  "inlineSchema": "Ly8gVGhpcyBpcyB5b3VyIFByaXNtYSBzY2hlbWEgZmlsZSwNCi8vIGxlYXJuIG1vcmUgYWJvdXQgaXQgaW4gdGhlIGRvY3M6IGh0dHBzOi8vcHJpcy5seS9kL3ByaXNtYS1zY2hlbWENCg0KZ2VuZXJhdG9yIGNsaWVudCB7DQogIHByb3ZpZGVyID0gInByaXNtYS1jbGllbnQtanMiDQogIG91dHB1dCAgID0gIi4vZ2VuZXJhdGVkL2NsaWVudCINCn0NCg0KZGF0YXNvdXJjZSBkYiB7DQogIHByb3ZpZGVyID0gInBvc3RncmVzcWwiDQogIHVybCAgICAgID0gZW52KCJEQVRBQkFTRV9VUkwiKQ0KfQ0KDQptb2RlbCBVc2Vyew0KICBpZCAgICAgICAgICAgICAgSW50ICAgICAgQGlkIEBkZWZhdWx0KGF1dG9pbmNyZW1lbnQoKSkNCiAgZW1haWwgICAgICAgICAgIFN0cmluZyAgIEB1bmlxdWUNCiAgaW5zdGFfdXNlcm5hbWUgIFN0cmluZyAgIEB1bmlxdWUNCiAgbmFtZSAgICAgICAgICAgIFN0cmluZz8gICANCiAgRGV0YWlscyAgICAgICAgIFVzZXJEZXRhaWxbXQ0KfQ0KDQptb2RlbCBVc2VyRGV0YWlsew0KDQogIGlkICAgICAgICAgICAgIEludCAgICAgICBAaWQgQGRlZmF1bHQoYXV0b2luY3JlbWVudCgpKQ0KICBjb250ZW50VHlwZSAgICBTdHJpbmdbXQ0KICBpbmZsdWVuY2VyVHlwZSBTdHJpbmdbXQ0KICBhdWRpZW5jZUFnZSAgICBJbnQNCiAgcG9zdHMgICAgICAgICAgU3RyaW5nDQogIHBsYXRmb3JtTGluayAgIFN0cmluZ1tdDQogIGF1dGhvciAgICAgICAgIFVzZXIgICAgICBAcmVsYXRpb24oZmllbGRzOiBbYXV0aG9ySWRdLCByZWZlcmVuY2VzOiBbaWRdKQ0KICBhdXRob3JJZCAgICAgICBJbnQNCiAgDQp9DQo=",
+  "inlineSchemaHash": "a0a5d5c043dd38a26b5f02f2b57f32ed896581c1f13b029e250c25819dc5cad2",
+  "noEngine": false
 }
 config.dirname = '/'
 

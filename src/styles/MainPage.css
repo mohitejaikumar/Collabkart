@@ -1,7 +1,7 @@
 /* MainPage.css */
 .landing-page {
   background-color: #f8f8f8;
-  padding: 2vw 2vw;
+  padding: 0vw 2vw;
   text-align: center;
 }
 
@@ -11,14 +11,16 @@
 }
 
 .headline {
+  margin-top: 5vw;
   color: #333;
-  font-size: 3.5vw;
+  font-size: 2.5vw;
   margin-bottom: 2vw;
 }
 
 .description {
+  margin-top: 2vw;
   color: #666;
-  font-size: 2.5vw;
+  font-size: 1.5vw;
   margin-bottom: 2.5vw;
 }
 
@@ -28,42 +30,58 @@
 }
 
 .cta-button {
-  padding: 1vw 1.5vw;
+  padding: 0.5vw 1.3vw;
   font-family: roboto;
-  font-size: 2vw;
+  font-size: 1.5vw;
   color: white;
-  background-color: #007bff;
+  background-color: #535353;
   border: none;
-  border-radius: 15px;
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
   transition: all 0.3s ease 0s;
   cursor: pointer;
   outline: none;
 }
-
 .cta-button:hover {
-  background-color: #0056b3;
-  box-shadow: 0px 15px 20px #0056b3;
+  background-color: #e4e4e4;
+  color: #000000;
+}
+.cta-button-early {
+  padding: 0.5vw 1.3vw;
+  font-family: roboto;
+  font-style: italic;
+  font-size: 1.5vw;
+  color: rgb(0, 0, 0);
+  background-color: #535353;
+  border:2px solid black ;
+  border-radius: 0px;
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  margin-bottom: 1vw;
+  outline: none;
   color: #fff;
-  transform: translateY(-1vw);
+}
+.cta-button-early:hover {
+  background-color: #e4e4e4;
+  color: #000000;
 }
 
 /* Add these styles to your CSS file */
 
 /* MainPage.css */
 .phones-container {
+  
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   margin: 1vw 3vw; /* Adjust the margin as needed */
 }
 
 .phone-image {
   
-  width: 25%; /* Adjust the width of each phone image */
+  width: 15%; /* Adjust the width of each phone image */
   height: auto; /* Maintain aspect ratio */
-  margin-right: 2vw;
-  margin-left: 2vw; /* Adjust the spacing between phone images */
+  margin-right: 0vw;
+  margin-left: 0vw; /* Adjust the spacing between phone images */
 }
 
 
@@ -76,9 +94,12 @@
 }
 
 .campaign-text {
-  font-size: 3vw; /* Adjust font size as needed */
+  font-size: 2vw; /* Adjust font size as needed */
   margin-right: 10px; /* Add margin between text and button */
   color: #000000;
+}
+.cta-button{
+  padding: 0.5vw 1vw;
 }
 
 .what-text {
