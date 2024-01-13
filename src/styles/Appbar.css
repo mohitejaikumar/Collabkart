@@ -10,8 +10,9 @@
 }
 
 .home-button {
-  font-family: 'Libre Franklin', sans-serif;
+  font-family: 'Libre Franklin';
   font-size: 3vw;
+  font-weight: 550;
   cursor: pointer;
   color: #000;
 }
