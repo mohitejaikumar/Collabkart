@@ -31,8 +31,8 @@ services:
       restart: unless-stopped
       environment:
         POSTGRES_USER: postgres
-        POSTGRES_PASSWORD: 'jk2003'
-        POSTGRES_DB: level_up_db
+        POSTGRES_PASSWORD: 'collabkart'
+        POSTGRES_DB: collabkart_db
       healthcheck:
         test: ["CMD-SHELL", "pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}"]
         interval: 10s
