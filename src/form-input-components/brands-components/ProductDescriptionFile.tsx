@@ -11,7 +11,8 @@ function getbase64(file){
            const reader = new FileReader();
            reader.readAsDataURL(file);
            reader.onloadend = () => {
-              resolve(reader.result?.split(",")[1]); // Extract base64 data
+              
+              resolve(reader.result); // Extract base64 data
            };
            reader.onerror = (error) => {
             reject(error);
