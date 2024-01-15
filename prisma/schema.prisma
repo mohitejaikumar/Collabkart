@@ -11,15 +11,16 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User{
+model Influencers{
   id              Int      @id @default(autoincrement())
   email           String   @unique
   insta_username  String   @unique
   name            String?   
-  Details         UserDetail[]
+  Details         InfluencerDetail?
+
 }
 
-model UserDetail{
+model InfluencerDetail{
 
   id             Int       @id @default(autoincrement())
   contentType    String[]
@@ -27,7 +28,29 @@ model UserDetail{
   audienceAge    Int
   posts          String
   platformLink   String[]
-  author         User      @relation(fields: [authorId], references: [id])
-  authorId       Int
+  author         Influencers      @relation(fields: [authorId], references: [id])
+  authorId       Int       @unique
   
+}
+
+model Brands{
+  id             Int        @id @default(autoincrement())
+  email          String     @unique
+  insta_username String     @unique
+  companyName    String     
+  Details        BrandsDetails?
+
+}
+
+model BrandsDetails{
+  id                             Int        @id @default(autoincrement())
+  productDescription             String
+  productDescriptionFile         String
+  targetAudienceDescription      String?
+  influencerType                 String[]
+  no_Of_Posts_or_PromotionVideos Int
+  campaignGoal                   String
+  campaignBudget                 Int
+  author                         Brands      @relation(fields: [authorId], references: [id])
+  authorId                       Int         @unique
 }

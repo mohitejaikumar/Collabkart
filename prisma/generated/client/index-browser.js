@@ -16,12 +16,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 5.7.1
- * Query Engine version: 0ca5ccbcfa6bdc81c003cf549abe4269f59c41e5
+ * Prisma Client JS version: 5.8.0
+ * Query Engine version: 0a83d8541752d7582de2ebc1ece46519ce72a848
  */
 Prisma.prismaVersion = {
-  client: "5.7.1",
-  engine: "0ca5ccbcfa6bdc81c003cf549abe4269f59c41e5"
+  client: "5.8.0",
+  engine: "0a83d8541752d7582de2ebc1ece46519ce72a848"
 }
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -107,20 +107,39 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
-exports.Prisma.UserScalarFieldEnum = {
+exports.Prisma.InfluencersScalarFieldEnum = {
   id: 'id',
   email: 'email',
   insta_username: 'insta_username',
   name: 'name'
 };
 
-exports.Prisma.UserDetailScalarFieldEnum = {
+exports.Prisma.InfluencerDetailScalarFieldEnum = {
   id: 'id',
   contentType: 'contentType',
   influencerType: 'influencerType',
   audienceAge: 'audienceAge',
   posts: 'posts',
   platformLink: 'platformLink',
+  authorId: 'authorId'
+};
+
+exports.Prisma.BrandsScalarFieldEnum = {
+  id: 'id',
+  email: 'email',
+  insta_username: 'insta_username',
+  companyName: 'companyName'
+};
+
+exports.Prisma.BrandsDetailsScalarFieldEnum = {
+  id: 'id',
+  productDescription: 'productDescription',
+  productDescriptionFile: 'productDescriptionFile',
+  targetAudienceDescription: 'targetAudienceDescription',
+  influencerType: 'influencerType',
+  no_Of_Posts_or_PromotionVideos: 'no_Of_Posts_or_PromotionVideos',
+  campaignGoal: 'campaignGoal',
+  campaignBudget: 'campaignBudget',
   authorId: 'authorId'
 };
 
@@ -141,8 +160,10 @@ exports.Prisma.NullsOrder = {
 
 
 exports.Prisma.ModelName = {
-  User: 'User',
-  UserDetail: 'UserDetail'
+  Influencers: 'Influencers',
+  InfluencerDetail: 'InfluencerDetail',
+  Brands: 'Brands',
+  BrandsDetails: 'BrandsDetails'
 };
 
 /**

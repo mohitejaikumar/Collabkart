@@ -31,8 +31,8 @@ export default function Appbar() {
         <div className="nav-bar">
           <div className="home-button" onClick={() => { router.push('/') }}>CollabKart</div>
           <div className="tabs">
-            <div className="brand-tab" onClick={() => { }}>For Brands</div>
-            <div className="influencer-tab" onClick={() => {  }}>For Creators</div>
+            <div className="brand-tab" onClick={() => { router.push('/brandRegistration')}}>For Brands</div>
+            <div className="influencer-tab" onClick={() => { router.push('/InfluencerRegistration') }}>For Creators</div>
           </div>
           <div className="nav-bar-button">
             {!session && (
@@ -42,9 +42,9 @@ export default function Appbar() {
             )}
             {session && (
               <div className="nav-bar-button">
-                <button className="button" onClick={() => { router.push('/registration') }}>
+                {/* <button className="button" onClick={() => { router.push('/brandRegistration') }}>
                   Registration
-                </button>
+                </button> */}
                 <button className="button" onClick={() => { SignOut() }}>
                   Sign Out
                 </button>

@@ -36,20 +36,20 @@ body {
   height: 50px;
 }
 
-.registration-form {
+.influencer-registration-form {
   height:100%;
   padding-top: 2vw;
   display: flex;
   justify-content: center;
   flex-wrap:wrap;
 }
-.registration-card {
+.influencer-registration-card {
   width: 60%;
   height: 100%;
   padding: 2vw;
   border: 2px solid #0056b3;
 }
-.registration-user {
+.influencer-registration-user {
   display: flex;
   justify-content: center;
   padding-top: 20px;
@@ -72,13 +72,22 @@ body {
   outline: none;
 }
 .form-button:hover {
-  box-shadow: 0px 15px 20px #0056b3;
-  color: #fff;
-  transform: translateY(-1vw);
+ 
+  color: #ffffff;
+ 
 }
 
 .loader{
   padding-top: 20vw;
+}
+
+.success-container{
+  display:flex;
+  justify-content:center;
+  margin-top:200px;
+}
+.success-content{
+  padding:50px;
 }
 @media (max-width: 600px) {
   
@@ -89,17 +98,17 @@ body {
     height: 7vw;
     font-size: 4vw;
   }
-  .registration-form {
+  .influencer-registration-form {
     padding-top: 2vw;
     display: flex;
     justify-content: center;
   }
-  .registration-card {
+  .influencer-registration-card {
     width: 90%;
     padding: 2vw;
     border: 2px solid #0056b3;
   }
-  .registration-user {
+  .influencer-registration-user {
     font-size: 5vw;
   }
   
@@ -129,5 +138,10 @@ body {
   .loader{
     padding-top: 50vw;
   }
+  .success-container{
+    margin-left:5vw;
+    margin-right:5vw
+  }
+  
   
 }

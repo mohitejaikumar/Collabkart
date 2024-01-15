@@ -14,15 +14,25 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
 
 
 /**
- * Model User
+ * Model Influencers
  * 
  */
-export type User = $Result.DefaultSelection<Prisma.$UserPayload>
+export type Influencers = $Result.DefaultSelection<Prisma.$InfluencersPayload>
 /**
- * Model UserDetail
+ * Model InfluencerDetail
  * 
  */
-export type UserDetail = $Result.DefaultSelection<Prisma.$UserDetailPayload>
+export type InfluencerDetail = $Result.DefaultSelection<Prisma.$InfluencerDetailPayload>
+/**
+ * Model Brands
+ * 
+ */
+export type Brands = $Result.DefaultSelection<Prisma.$BrandsPayload>
+/**
+ * Model BrandsDetails
+ * 
+ */
+export type BrandsDetails = $Result.DefaultSelection<Prisma.$BrandsDetailsPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -31,8 +41,8 @@ export type UserDetail = $Result.DefaultSelection<Prisma.$UserDetailPayload>
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more Users
- * const users = await prisma.user.findMany()
+ * // Fetch zero or more Influencers
+ * const influencers = await prisma.influencers.findMany()
  * ```
  *
  * 
@@ -52,8 +62,8 @@ export class PrismaClient<
    * @example
    * ```
    * const prisma = new PrismaClient()
-   * // Fetch zero or more Users
-   * const users = await prisma.user.findMany()
+   * // Fetch zero or more Influencers
+   * const influencers = await prisma.influencers.findMany()
    * ```
    *
    * 
@@ -147,24 +157,44 @@ export class PrismaClient<
   $extends: $Extensions.ExtendsHook<'extends', Prisma.TypeMapCb, ExtArgs>
 
       /**
-   * `prisma.user`: Exposes CRUD operations for the **User** model.
+   * `prisma.influencers`: Exposes CRUD operations for the **Influencers** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Users
-    * const users = await prisma.user.findMany()
+    * // Fetch zero or more Influencers
+    * const influencers = await prisma.influencers.findMany()
     * ```
     */
-  get user(): Prisma.UserDelegate<ExtArgs>;
+  get influencers(): Prisma.InfluencersDelegate<ExtArgs>;
 
   /**
-   * `prisma.userDetail`: Exposes CRUD operations for the **UserDetail** model.
+   * `prisma.influencerDetail`: Exposes CRUD operations for the **InfluencerDetail** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more UserDetails
-    * const userDetails = await prisma.userDetail.findMany()
+    * // Fetch zero or more InfluencerDetails
+    * const influencerDetails = await prisma.influencerDetail.findMany()
     * ```
     */
-  get userDetail(): Prisma.UserDetailDelegate<ExtArgs>;
+  get influencerDetail(): Prisma.InfluencerDetailDelegate<ExtArgs>;
+
+  /**
+   * `prisma.brands`: Exposes CRUD operations for the **Brands** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Brands
+    * const brands = await prisma.brands.findMany()
+    * ```
+    */
+  get brands(): Prisma.BrandsDelegate<ExtArgs>;
+
+  /**
+   * `prisma.brandsDetails`: Exposes CRUD operations for the **BrandsDetails** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more BrandsDetails
+    * const brandsDetails = await prisma.brandsDetails.findMany()
+    * ```
+    */
+  get brandsDetails(): Prisma.BrandsDetailsDelegate<ExtArgs>;
 }
 
 export namespace Prisma {
@@ -222,8 +252,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 5.7.1
-   * Query Engine version: 0ca5ccbcfa6bdc81c003cf549abe4269f59c41e5
+   * Prisma Client JS version: 5.8.0
+   * Query Engine version: 0a83d8541752d7582de2ebc1ece46519ce72a848
    */
   export type PrismaVersion = {
     client: string
@@ -635,8 +665,10 @@ export namespace Prisma {
 
 
   export const ModelName: {
-    User: 'User',
-    UserDetail: 'UserDetail'
+    Influencers: 'Influencers',
+    InfluencerDetail: 'InfluencerDetail',
+    Brands: 'Brands',
+    BrandsDetails: 'BrandsDetails'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -653,139 +685,271 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'user' | 'userDetail'
+      modelProps: 'influencers' | 'influencerDetail' | 'brands' | 'brandsDetails'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
-      User: {
-        payload: Prisma.$UserPayload<ExtArgs>
-        fields: Prisma.UserFieldRefs
+      Influencers: {
+        payload: Prisma.$InfluencersPayload<ExtArgs>
+        fields: Prisma.InfluencersFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.UserFindUniqueArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$UserPayload> | null
+            args: Prisma.InfluencersFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$InfluencersPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.UserFindUniqueOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$UserPayload>
+            args: Prisma.InfluencersFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$InfluencersPayload>
           }
           findFirst: {
-            args: Prisma.UserFindFirstArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$UserPayload> | null
+            args: Prisma.InfluencersFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$InfluencersPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.UserFindFirstOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$UserPayload>
+            args: Prisma.InfluencersFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$InfluencersPayload>
           }
           findMany: {
-            args: Prisma.UserFindManyArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$UserPayload>[]
+            args: Prisma.InfluencersFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$InfluencersPayload>[]
           }
           create: {
-            args: Prisma.UserCreateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$UserPayload>
+            args: Prisma.InfluencersCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$InfluencersPayload>
           }
           createMany: {
-            args: Prisma.UserCreateManyArgs<ExtArgs>,
+            args: Prisma.InfluencersCreateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           delete: {
-            args: Prisma.UserDeleteArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$UserPayload>
+            args: Prisma.InfluencersDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$InfluencersPayload>
           }
           update: {
-            args: Prisma.UserUpdateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$UserPayload>
+            args: Prisma.InfluencersUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$InfluencersPayload>
           }
           deleteMany: {
-            args: Prisma.UserDeleteManyArgs<ExtArgs>,
+            args: Prisma.InfluencersDeleteManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           updateMany: {
-            args: Prisma.UserUpdateManyArgs<ExtArgs>,
+            args: Prisma.InfluencersUpdateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           upsert: {
-            args: Prisma.UserUpsertArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$UserPayload>
+            args: Prisma.InfluencersUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$InfluencersPayload>
           }
           aggregate: {
-            args: Prisma.UserAggregateArgs<ExtArgs>,
-            result: $Utils.Optional<AggregateUser>
+            args: Prisma.InfluencersAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateInfluencers>
           }
           groupBy: {
-            args: Prisma.UserGroupByArgs<ExtArgs>,
-            result: $Utils.Optional<UserGroupByOutputType>[]
+            args: Prisma.InfluencersGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<InfluencersGroupByOutputType>[]
           }
           count: {
-            args: Prisma.UserCountArgs<ExtArgs>,
-            result: $Utils.Optional<UserCountAggregateOutputType> | number
+            args: Prisma.InfluencersCountArgs<ExtArgs>,
+            result: $Utils.Optional<InfluencersCountAggregateOutputType> | number
           }
         }
       }
-      UserDetail: {
-        payload: Prisma.$UserDetailPayload<ExtArgs>
-        fields: Prisma.UserDetailFieldRefs
+      InfluencerDetail: {
+        payload: Prisma.$InfluencerDetailPayload<ExtArgs>
+        fields: Prisma.InfluencerDetailFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.UserDetailFindUniqueArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$UserDetailPayload> | null
+            args: Prisma.InfluencerDetailFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$InfluencerDetailPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.UserDetailFindUniqueOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$UserDetailPayload>
+            args: Prisma.InfluencerDetailFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$InfluencerDetailPayload>
           }
           findFirst: {
-            args: Prisma.UserDetailFindFirstArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$UserDetailPayload> | null
+            args: Prisma.InfluencerDetailFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$InfluencerDetailPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.UserDetailFindFirstOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$UserDetailPayload>
+            args: Prisma.InfluencerDetailFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$InfluencerDetailPayload>
           }
           findMany: {
-            args: Prisma.UserDetailFindManyArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$UserDetailPayload>[]
+            args: Prisma.InfluencerDetailFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$InfluencerDetailPayload>[]
           }
           create: {
-            args: Prisma.UserDetailCreateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$UserDetailPayload>
+            args: Prisma.InfluencerDetailCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$InfluencerDetailPayload>
           }
           createMany: {
-            args: Prisma.UserDetailCreateManyArgs<ExtArgs>,
+            args: Prisma.InfluencerDetailCreateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           delete: {
-            args: Prisma.UserDetailDeleteArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$UserDetailPayload>
+            args: Prisma.InfluencerDetailDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$InfluencerDetailPayload>
           }
           update: {
-            args: Prisma.UserDetailUpdateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$UserDetailPayload>
+            args: Prisma.InfluencerDetailUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$InfluencerDetailPayload>
           }
           deleteMany: {
-            args: Prisma.UserDetailDeleteManyArgs<ExtArgs>,
+            args: Prisma.InfluencerDetailDeleteManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           updateMany: {
-            args: Prisma.UserDetailUpdateManyArgs<ExtArgs>,
+            args: Prisma.InfluencerDetailUpdateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           upsert: {
-            args: Prisma.UserDetailUpsertArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$UserDetailPayload>
+            args: Prisma.InfluencerDetailUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$InfluencerDetailPayload>
           }
           aggregate: {
-            args: Prisma.UserDetailAggregateArgs<ExtArgs>,
-            result: $Utils.Optional<AggregateUserDetail>
+            args: Prisma.InfluencerDetailAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateInfluencerDetail>
           }
           groupBy: {
-            args: Prisma.UserDetailGroupByArgs<ExtArgs>,
-            result: $Utils.Optional<UserDetailGroupByOutputType>[]
+            args: Prisma.InfluencerDetailGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<InfluencerDetailGroupByOutputType>[]
           }
           count: {
-            args: Prisma.UserDetailCountArgs<ExtArgs>,
-            result: $Utils.Optional<UserDetailCountAggregateOutputType> | number
+            args: Prisma.InfluencerDetailCountArgs<ExtArgs>,
+            result: $Utils.Optional<InfluencerDetailCountAggregateOutputType> | number
+          }
+        }
+      }
+      Brands: {
+        payload: Prisma.$BrandsPayload<ExtArgs>
+        fields: Prisma.BrandsFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.BrandsFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$BrandsPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.BrandsFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$BrandsPayload>
+          }
+          findFirst: {
+            args: Prisma.BrandsFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$BrandsPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.BrandsFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$BrandsPayload>
+          }
+          findMany: {
+            args: Prisma.BrandsFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$BrandsPayload>[]
+          }
+          create: {
+            args: Prisma.BrandsCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$BrandsPayload>
+          }
+          createMany: {
+            args: Prisma.BrandsCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          delete: {
+            args: Prisma.BrandsDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$BrandsPayload>
+          }
+          update: {
+            args: Prisma.BrandsUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$BrandsPayload>
+          }
+          deleteMany: {
+            args: Prisma.BrandsDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.BrandsUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.BrandsUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$BrandsPayload>
+          }
+          aggregate: {
+            args: Prisma.BrandsAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateBrands>
+          }
+          groupBy: {
+            args: Prisma.BrandsGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<BrandsGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.BrandsCountArgs<ExtArgs>,
+            result: $Utils.Optional<BrandsCountAggregateOutputType> | number
+          }
+        }
+      }
+      BrandsDetails: {
+        payload: Prisma.$BrandsDetailsPayload<ExtArgs>
+        fields: Prisma.BrandsDetailsFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.BrandsDetailsFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$BrandsDetailsPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.BrandsDetailsFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$BrandsDetailsPayload>
+          }
+          findFirst: {
+            args: Prisma.BrandsDetailsFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$BrandsDetailsPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.BrandsDetailsFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$BrandsDetailsPayload>
+          }
+          findMany: {
+            args: Prisma.BrandsDetailsFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$BrandsDetailsPayload>[]
+          }
+          create: {
+            args: Prisma.BrandsDetailsCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$BrandsDetailsPayload>
+          }
+          createMany: {
+            args: Prisma.BrandsDetailsCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          delete: {
+            args: Prisma.BrandsDetailsDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$BrandsDetailsPayload>
+          }
+          update: {
+            args: Prisma.BrandsDetailsUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$BrandsDetailsPayload>
+          }
+          deleteMany: {
+            args: Prisma.BrandsDetailsDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.BrandsDetailsUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.BrandsDetailsUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$BrandsDetailsPayload>
+          }
+          aggregate: {
+            args: Prisma.BrandsDetailsAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateBrandsDetails>
+          }
+          groupBy: {
+            args: Prisma.BrandsDetailsGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<BrandsDetailsGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.BrandsDetailsCountArgs<ExtArgs>,
+            result: $Utils.Optional<BrandsDetailsCountAggregateOutputType> | number
           }
         }
       }
@@ -933,79 +1097,46 @@ export namespace Prisma {
    */
 
 
-  /**
-   * Count Type UserCountOutputType
-   */
-
-  export type UserCountOutputType = {
-    Details: number
-  }
-
-  export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Details?: boolean | UserCountOutputTypeCountDetailsArgs
-  }
-
-  // Custom InputTypes
-
-  /**
-   * UserCountOutputType without action
-   */
-  export type UserCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the UserCountOutputType
-     */
-    select?: UserCountOutputTypeSelect<ExtArgs> | null
-  }
-
-
-  /**
-   * UserCountOutputType without action
-   */
-  export type UserCountOutputTypeCountDetailsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: UserDetailWhereInput
-  }
-
-
 
   /**
    * Models
    */
 
   /**
-   * Model User
+   * Model Influencers
    */
 
-  export type AggregateUser = {
-    _count: UserCountAggregateOutputType | null
-    _avg: UserAvgAggregateOutputType | null
-    _sum: UserSumAggregateOutputType | null
-    _min: UserMinAggregateOutputType | null
-    _max: UserMaxAggregateOutputType | null
+  export type AggregateInfluencers = {
+    _count: InfluencersCountAggregateOutputType | null
+    _avg: InfluencersAvgAggregateOutputType | null
+    _sum: InfluencersSumAggregateOutputType | null
+    _min: InfluencersMinAggregateOutputType | null
+    _max: InfluencersMaxAggregateOutputType | null
   }
 
-  export type UserAvgAggregateOutputType = {
+  export type InfluencersAvgAggregateOutputType = {
     id: number | null
   }
 
-  export type UserSumAggregateOutputType = {
+  export type InfluencersSumAggregateOutputType = {
     id: number | null
   }
 
-  export type UserMinAggregateOutputType = {
-    id: number | null
-    email: string | null
-    insta_username: string | null
-    name: string | null
-  }
-
-  export type UserMaxAggregateOutputType = {
+  export type InfluencersMinAggregateOutputType = {
     id: number | null
     email: string | null
     insta_username: string | null
     name: string | null
   }
 
-  export type UserCountAggregateOutputType = {
+  export type InfluencersMaxAggregateOutputType = {
+    id: number | null
+    email: string | null
+    insta_username: string | null
+    name: string | null
+  }
+
+  export type InfluencersCountAggregateOutputType = {
     id: number
     email: number
     insta_username: number
@@ -1014,29 +1145,29 @@ export namespace Prisma {
   }
 
 
-  export type UserAvgAggregateInputType = {
+  export type InfluencersAvgAggregateInputType = {
     id?: true
   }
 
-  export type UserSumAggregateInputType = {
+  export type InfluencersSumAggregateInputType = {
     id?: true
   }
 
-  export type UserMinAggregateInputType = {
-    id?: true
-    email?: true
-    insta_username?: true
-    name?: true
-  }
-
-  export type UserMaxAggregateInputType = {
+  export type InfluencersMinAggregateInputType = {
     id?: true
     email?: true
     insta_username?: true
     name?: true
   }
 
-  export type UserCountAggregateInputType = {
+  export type InfluencersMaxAggregateInputType = {
+    id?: true
+    email?: true
+    insta_username?: true
+    name?: true
+  }
+
+  export type InfluencersCountAggregateInputType = {
     id?: true
     email?: true
     insta_username?: true
@@ -1044,304 +1175,302 @@ export namespace Prisma {
     _all?: true
   }
 
-  export type UserAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type InfluencersAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which User to aggregate.
+     * Filter which Influencers to aggregate.
      */
-    where?: UserWhereInput
+    where?: InfluencersWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Users to fetch.
+     * Determine the order of Influencers to fetch.
      */
-    orderBy?: UserOrderByWithRelationInput | UserOrderByWithRelationInput[]
+    orderBy?: InfluencersOrderByWithRelationInput | InfluencersOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: UserWhereUniqueInput
+    cursor?: InfluencersWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Users from the position of the cursor.
+     * Take `±n` Influencers from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Users.
+     * Skip the first `n` Influencers.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned Users
+     * Count returned Influencers
     **/
-    _count?: true | UserCountAggregateInputType
+    _count?: true | InfluencersCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: UserAvgAggregateInputType
+    _avg?: InfluencersAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: UserSumAggregateInputType
+    _sum?: InfluencersSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: UserMinAggregateInputType
+    _min?: InfluencersMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: UserMaxAggregateInputType
+    _max?: InfluencersMaxAggregateInputType
   }
 
-  export type GetUserAggregateType<T extends UserAggregateArgs> = {
-        [P in keyof T & keyof AggregateUser]: P extends '_count' | 'count'
+  export type GetInfluencersAggregateType<T extends InfluencersAggregateArgs> = {
+        [P in keyof T & keyof AggregateInfluencers]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateUser[P]>
-      : GetScalarType<T[P], AggregateUser[P]>
+        : GetScalarType<T[P], AggregateInfluencers[P]>
+      : GetScalarType<T[P], AggregateInfluencers[P]>
   }
 
 
 
 
-  export type UserGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: UserWhereInput
-    orderBy?: UserOrderByWithAggregationInput | UserOrderByWithAggregationInput[]
-    by: UserScalarFieldEnum[] | UserScalarFieldEnum
-    having?: UserScalarWhereWithAggregatesInput
+  export type InfluencersGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: InfluencersWhereInput
+    orderBy?: InfluencersOrderByWithAggregationInput | InfluencersOrderByWithAggregationInput[]
+    by: InfluencersScalarFieldEnum[] | InfluencersScalarFieldEnum
+    having?: InfluencersScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: UserCountAggregateInputType | true
-    _avg?: UserAvgAggregateInputType
-    _sum?: UserSumAggregateInputType
-    _min?: UserMinAggregateInputType
-    _max?: UserMaxAggregateInputType
+    _count?: InfluencersCountAggregateInputType | true
+    _avg?: InfluencersAvgAggregateInputType
+    _sum?: InfluencersSumAggregateInputType
+    _min?: InfluencersMinAggregateInputType
+    _max?: InfluencersMaxAggregateInputType
   }
 
-  export type UserGroupByOutputType = {
+  export type InfluencersGroupByOutputType = {
     id: number
     email: string
     insta_username: string
     name: string | null
-    _count: UserCountAggregateOutputType | null
-    _avg: UserAvgAggregateOutputType | null
-    _sum: UserSumAggregateOutputType | null
-    _min: UserMinAggregateOutputType | null
-    _max: UserMaxAggregateOutputType | null
+    _count: InfluencersCountAggregateOutputType | null
+    _avg: InfluencersAvgAggregateOutputType | null
+    _sum: InfluencersSumAggregateOutputType | null
+    _min: InfluencersMinAggregateOutputType | null
+    _max: InfluencersMaxAggregateOutputType | null
   }
 
-  type GetUserGroupByPayload<T extends UserGroupByArgs> = Prisma.PrismaPromise<
+  type GetInfluencersGroupByPayload<T extends InfluencersGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<UserGroupByOutputType, T['by']> &
+      PickEnumerable<InfluencersGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof UserGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof InfluencersGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], UserGroupByOutputType[P]>
-            : GetScalarType<T[P], UserGroupByOutputType[P]>
+              : GetScalarType<T[P], InfluencersGroupByOutputType[P]>
+            : GetScalarType<T[P], InfluencersGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type UserSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type InfluencersSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     email?: boolean
     insta_username?: boolean
     name?: boolean
-    Details?: boolean | User$DetailsArgs<ExtArgs>
-    _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["user"]>
+    Details?: boolean | Influencers$DetailsArgs<ExtArgs>
+  }, ExtArgs["result"]["influencers"]>
 
-  export type UserSelectScalar = {
+  export type InfluencersSelectScalar = {
     id?: boolean
     email?: boolean
     insta_username?: boolean
     name?: boolean
   }
 
-  export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Details?: boolean | User$DetailsArgs<ExtArgs>
-    _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
+  export type InfluencersInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Details?: boolean | Influencers$DetailsArgs<ExtArgs>
   }
 
 
-  export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "User"
+  export type $InfluencersPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Influencers"
     objects: {
-      Details: Prisma.$UserDetailPayload<ExtArgs>[]
+      Details: Prisma.$InfluencerDetailPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       email: string
       insta_username: string
       name: string | null
-    }, ExtArgs["result"]["user"]>
+    }, ExtArgs["result"]["influencers"]>
     composites: {}
   }
 
 
-  type UserGetPayload<S extends boolean | null | undefined | UserDefaultArgs> = $Result.GetResult<Prisma.$UserPayload, S>
+  type InfluencersGetPayload<S extends boolean | null | undefined | InfluencersDefaultArgs> = $Result.GetResult<Prisma.$InfluencersPayload, S>
 
-  type UserCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
-    Omit<UserFindManyArgs, 'select' | 'include' | 'distinct' > & {
-      select?: UserCountAggregateInputType | true
+  type InfluencersCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<InfluencersFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: InfluencersCountAggregateInputType | true
     }
 
-  export interface UserDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['User'], meta: { name: 'User' } }
+  export interface InfluencersDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Influencers'], meta: { name: 'Influencers' } }
     /**
-     * Find zero or one User that matches the filter.
-     * @param {UserFindUniqueArgs} args - Arguments to find a User
+     * Find zero or one Influencers that matches the filter.
+     * @param {InfluencersFindUniqueArgs} args - Arguments to find a Influencers
      * @example
-     * // Get one User
-     * const user = await prisma.user.findUnique({
+     * // Get one Influencers
+     * const influencers = await prisma.influencers.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findUnique<T extends UserFindUniqueArgs<ExtArgs>>(
-      args: SelectSubset<T, UserFindUniqueArgs<ExtArgs>>
-    ): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+    findUnique<T extends InfluencersFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, InfluencersFindUniqueArgs<ExtArgs>>
+    ): Prisma__InfluencersClient<$Result.GetResult<Prisma.$InfluencersPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
 
     /**
-     * Find one User that matches the filter or throw an error  with `error.code='P2025'` 
+     * Find one Influencers that matches the filter or throw an error  with `error.code='P2025'` 
      *     if no matches were found.
-     * @param {UserFindUniqueOrThrowArgs} args - Arguments to find a User
+     * @param {InfluencersFindUniqueOrThrowArgs} args - Arguments to find a Influencers
      * @example
-     * // Get one User
-     * const user = await prisma.user.findUniqueOrThrow({
+     * // Get one Influencers
+     * const influencers = await prisma.influencers.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findUniqueOrThrow<T extends UserFindUniqueOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, UserFindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+    findUniqueOrThrow<T extends InfluencersFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, InfluencersFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__InfluencersClient<$Result.GetResult<Prisma.$InfluencersPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
 
     /**
-     * Find the first User that matches the filter.
+     * Find the first Influencers that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserFindFirstArgs} args - Arguments to find a User
+     * @param {InfluencersFindFirstArgs} args - Arguments to find a Influencers
      * @example
-     * // Get one User
-     * const user = await prisma.user.findFirst({
+     * // Get one Influencers
+     * const influencers = await prisma.influencers.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findFirst<T extends UserFindFirstArgs<ExtArgs>>(
-      args?: SelectSubset<T, UserFindFirstArgs<ExtArgs>>
-    ): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+    findFirst<T extends InfluencersFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, InfluencersFindFirstArgs<ExtArgs>>
+    ): Prisma__InfluencersClient<$Result.GetResult<Prisma.$InfluencersPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
 
     /**
-     * Find the first User that matches the filter or
+     * Find the first Influencers that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserFindFirstOrThrowArgs} args - Arguments to find a User
+     * @param {InfluencersFindFirstOrThrowArgs} args - Arguments to find a Influencers
      * @example
-     * // Get one User
-     * const user = await prisma.user.findFirstOrThrow({
+     * // Get one Influencers
+     * const influencers = await prisma.influencers.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findFirstOrThrow<T extends UserFindFirstOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, UserFindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+    findFirstOrThrow<T extends InfluencersFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, InfluencersFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__InfluencersClient<$Result.GetResult<Prisma.$InfluencersPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
 
     /**
-     * Find zero or more Users that matches the filter.
+     * Find zero or more Influencers that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @param {InfluencersFindManyArgs=} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all Users
-     * const users = await prisma.user.findMany()
+     * // Get all Influencers
+     * const influencers = await prisma.influencers.findMany()
      * 
-     * // Get first 10 Users
-     * const users = await prisma.user.findMany({ take: 10 })
+     * // Get first 10 Influencers
+     * const influencers = await prisma.influencers.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const userWithIdOnly = await prisma.user.findMany({ select: { id: true } })
+     * const influencersWithIdOnly = await prisma.influencers.findMany({ select: { id: true } })
      * 
     **/
-    findMany<T extends UserFindManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, UserFindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findMany'>>
+    findMany<T extends InfluencersFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, InfluencersFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InfluencersPayload<ExtArgs>, T, 'findMany'>>
 
     /**
-     * Create a User.
-     * @param {UserCreateArgs} args - Arguments to create a User.
+     * Create a Influencers.
+     * @param {InfluencersCreateArgs} args - Arguments to create a Influencers.
      * @example
-     * // Create one User
-     * const User = await prisma.user.create({
+     * // Create one Influencers
+     * const Influencers = await prisma.influencers.create({
      *   data: {
-     *     // ... data to create a User
+     *     // ... data to create a Influencers
      *   }
      * })
      * 
     **/
-    create<T extends UserCreateArgs<ExtArgs>>(
-      args: SelectSubset<T, UserCreateArgs<ExtArgs>>
-    ): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+    create<T extends InfluencersCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, InfluencersCreateArgs<ExtArgs>>
+    ): Prisma__InfluencersClient<$Result.GetResult<Prisma.$InfluencersPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
 
     /**
-     * Create many Users.
-     *     @param {UserCreateManyArgs} args - Arguments to create many Users.
+     * Create many Influencers.
+     *     @param {InfluencersCreateManyArgs} args - Arguments to create many Influencers.
      *     @example
-     *     // Create many Users
-     *     const user = await prisma.user.createMany({
+     *     // Create many Influencers
+     *     const influencers = await prisma.influencers.createMany({
      *       data: {
      *         // ... provide data here
      *       }
      *     })
      *     
     **/
-    createMany<T extends UserCreateManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, UserCreateManyArgs<ExtArgs>>
+    createMany<T extends InfluencersCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, InfluencersCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Delete a User.
-     * @param {UserDeleteArgs} args - Arguments to delete one User.
+     * Delete a Influencers.
+     * @param {InfluencersDeleteArgs} args - Arguments to delete one Influencers.
      * @example
-     * // Delete one User
-     * const User = await prisma.user.delete({
+     * // Delete one Influencers
+     * const Influencers = await prisma.influencers.delete({
      *   where: {
-     *     // ... filter to delete one User
+     *     // ... filter to delete one Influencers
      *   }
      * })
      * 
     **/
-    delete<T extends UserDeleteArgs<ExtArgs>>(
-      args: SelectSubset<T, UserDeleteArgs<ExtArgs>>
-    ): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+    delete<T extends InfluencersDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, InfluencersDeleteArgs<ExtArgs>>
+    ): Prisma__InfluencersClient<$Result.GetResult<Prisma.$InfluencersPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
 
     /**
-     * Update one User.
-     * @param {UserUpdateArgs} args - Arguments to update one User.
+     * Update one Influencers.
+     * @param {InfluencersUpdateArgs} args - Arguments to update one Influencers.
      * @example
-     * // Update one User
-     * const user = await prisma.user.update({
+     * // Update one Influencers
+     * const influencers = await prisma.influencers.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -1351,34 +1480,34 @@ export namespace Prisma {
      * })
      * 
     **/
-    update<T extends UserUpdateArgs<ExtArgs>>(
-      args: SelectSubset<T, UserUpdateArgs<ExtArgs>>
-    ): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+    update<T extends InfluencersUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, InfluencersUpdateArgs<ExtArgs>>
+    ): Prisma__InfluencersClient<$Result.GetResult<Prisma.$InfluencersPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
 
     /**
-     * Delete zero or more Users.
-     * @param {UserDeleteManyArgs} args - Arguments to filter Users to delete.
+     * Delete zero or more Influencers.
+     * @param {InfluencersDeleteManyArgs} args - Arguments to filter Influencers to delete.
      * @example
-     * // Delete a few Users
-     * const { count } = await prisma.user.deleteMany({
+     * // Delete a few Influencers
+     * const { count } = await prisma.influencers.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
     **/
-    deleteMany<T extends UserDeleteManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, UserDeleteManyArgs<ExtArgs>>
+    deleteMany<T extends InfluencersDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, InfluencersDeleteManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Users.
+     * Update zero or more Influencers.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {InfluencersUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many Users
-     * const user = await prisma.user.updateMany({
+     * // Update many Influencers
+     * const influencers = await prisma.influencers.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -1388,59 +1517,59 @@ export namespace Prisma {
      * })
      * 
     **/
-    updateMany<T extends UserUpdateManyArgs<ExtArgs>>(
-      args: SelectSubset<T, UserUpdateManyArgs<ExtArgs>>
+    updateMany<T extends InfluencersUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, InfluencersUpdateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create or update one User.
-     * @param {UserUpsertArgs} args - Arguments to update or create a User.
+     * Create or update one Influencers.
+     * @param {InfluencersUpsertArgs} args - Arguments to update or create a Influencers.
      * @example
-     * // Update or create a User
-     * const user = await prisma.user.upsert({
+     * // Update or create a Influencers
+     * const influencers = await prisma.influencers.upsert({
      *   create: {
-     *     // ... data to create a User
+     *     // ... data to create a Influencers
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the User we want to update
+     *     // ... the filter for the Influencers we want to update
      *   }
      * })
     **/
-    upsert<T extends UserUpsertArgs<ExtArgs>>(
-      args: SelectSubset<T, UserUpsertArgs<ExtArgs>>
-    ): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+    upsert<T extends InfluencersUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, InfluencersUpsertArgs<ExtArgs>>
+    ): Prisma__InfluencersClient<$Result.GetResult<Prisma.$InfluencersPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
 
     /**
-     * Count the number of Users.
+     * Count the number of Influencers.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserCountArgs} args - Arguments to filter Users to count.
+     * @param {InfluencersCountArgs} args - Arguments to filter Influencers to count.
      * @example
-     * // Count the number of Users
-     * const count = await prisma.user.count({
+     * // Count the number of Influencers
+     * const count = await prisma.influencers.count({
      *   where: {
-     *     // ... the filter for the Users we want to count
+     *     // ... the filter for the Influencers we want to count
      *   }
      * })
     **/
-    count<T extends UserCountArgs>(
-      args?: Subset<T, UserCountArgs>,
+    count<T extends InfluencersCountArgs>(
+      args?: Subset<T, InfluencersCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], UserCountAggregateOutputType>
+          : GetScalarType<T['select'], InfluencersCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a User.
+     * Allows you to perform aggregations operations on a Influencers.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {InfluencersAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -1460,13 +1589,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends UserAggregateArgs>(args: Subset<T, UserAggregateArgs>): Prisma.PrismaPromise<GetUserAggregateType<T>>
+    aggregate<T extends InfluencersAggregateArgs>(args: Subset<T, InfluencersAggregateArgs>): Prisma.PrismaPromise<GetInfluencersAggregateType<T>>
 
     /**
-     * Group by User.
+     * Group by Influencers.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserGroupByArgs} args - Group by arguments.
+     * @param {InfluencersGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -1481,14 +1610,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends UserGroupByArgs,
+      T extends InfluencersGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: UserGroupByArgs['orderBy'] }
-        : { orderBy?: UserGroupByArgs['orderBy'] },
+        ? { orderBy: InfluencersGroupByArgs['orderBy'] }
+        : { orderBy?: InfluencersGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -1537,23 +1666,23 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, UserGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUserGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, InfluencersGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetInfluencersGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the User model
+   * Fields of the Influencers model
    */
-  readonly fields: UserFieldRefs;
+  readonly fields: InfluencersFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for User.
+   * The delegate class that acts as a "Promise-like" for Influencers.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__InfluencersClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
-    Details<T extends User$DetailsArgs<ExtArgs> = {}>(args?: Subset<T, User$DetailsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserDetailPayload<ExtArgs>, T, 'findMany'> | Null>;
+    Details<T extends Influencers$DetailsArgs<ExtArgs> = {}>(args?: Subset<T, Influencers$DetailsArgs<ExtArgs>>): Prisma__InfluencerDetailClient<$Result.GetResult<Prisma.$InfluencerDetailPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -1580,400 +1709,395 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the User model
+   * Fields of the Influencers model
    */ 
-  interface UserFieldRefs {
-    readonly id: FieldRef<"User", 'Int'>
-    readonly email: FieldRef<"User", 'String'>
-    readonly insta_username: FieldRef<"User", 'String'>
-    readonly name: FieldRef<"User", 'String'>
+  interface InfluencersFieldRefs {
+    readonly id: FieldRef<"Influencers", 'Int'>
+    readonly email: FieldRef<"Influencers", 'String'>
+    readonly insta_username: FieldRef<"Influencers", 'String'>
+    readonly name: FieldRef<"Influencers", 'String'>
   }
     
 
   // Custom InputTypes
 
   /**
-   * User findUnique
+   * Influencers findUnique
    */
-  export type UserFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type InfluencersFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the User
+     * Select specific fields to fetch from the Influencers
      */
-    select?: UserSelect<ExtArgs> | null
+    select?: InfluencersSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: UserInclude<ExtArgs> | null
+    include?: InfluencersInclude<ExtArgs> | null
     /**
-     * Filter, which User to fetch.
+     * Filter, which Influencers to fetch.
      */
-    where: UserWhereUniqueInput
+    where: InfluencersWhereUniqueInput
   }
 
 
   /**
-   * User findUniqueOrThrow
+   * Influencers findUniqueOrThrow
    */
-  export type UserFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type InfluencersFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the User
+     * Select specific fields to fetch from the Influencers
      */
-    select?: UserSelect<ExtArgs> | null
+    select?: InfluencersSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: UserInclude<ExtArgs> | null
+    include?: InfluencersInclude<ExtArgs> | null
     /**
-     * Filter, which User to fetch.
+     * Filter, which Influencers to fetch.
      */
-    where: UserWhereUniqueInput
+    where: InfluencersWhereUniqueInput
   }
 
 
   /**
-   * User findFirst
+   * Influencers findFirst
    */
-  export type UserFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type InfluencersFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the User
+     * Select specific fields to fetch from the Influencers
      */
-    select?: UserSelect<ExtArgs> | null
+    select?: InfluencersSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: UserInclude<ExtArgs> | null
+    include?: InfluencersInclude<ExtArgs> | null
     /**
-     * Filter, which User to fetch.
+     * Filter, which Influencers to fetch.
      */
-    where?: UserWhereInput
+    where?: InfluencersWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Users to fetch.
+     * Determine the order of Influencers to fetch.
      */
-    orderBy?: UserOrderByWithRelationInput | UserOrderByWithRelationInput[]
+    orderBy?: InfluencersOrderByWithRelationInput | InfluencersOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Users.
+     * Sets the position for searching for Influencers.
      */
-    cursor?: UserWhereUniqueInput
+    cursor?: InfluencersWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Users from the position of the cursor.
+     * Take `±n` Influencers from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Users.
+     * Skip the first `n` Influencers.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Users.
+     * Filter by unique combinations of Influencers.
      */
-    distinct?: UserScalarFieldEnum | UserScalarFieldEnum[]
+    distinct?: InfluencersScalarFieldEnum | InfluencersScalarFieldEnum[]
   }
 
 
   /**
-   * User findFirstOrThrow
+   * Influencers findFirstOrThrow
    */
-  export type UserFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type InfluencersFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the User
+     * Select specific fields to fetch from the Influencers
      */
-    select?: UserSelect<ExtArgs> | null
+    select?: InfluencersSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: UserInclude<ExtArgs> | null
+    include?: InfluencersInclude<ExtArgs> | null
     /**
-     * Filter, which User to fetch.
+     * Filter, which Influencers to fetch.
      */
-    where?: UserWhereInput
+    where?: InfluencersWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Users to fetch.
+     * Determine the order of Influencers to fetch.
      */
-    orderBy?: UserOrderByWithRelationInput | UserOrderByWithRelationInput[]
+    orderBy?: InfluencersOrderByWithRelationInput | InfluencersOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Users.
+     * Sets the position for searching for Influencers.
      */
-    cursor?: UserWhereUniqueInput
+    cursor?: InfluencersWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Users from the position of the cursor.
+     * Take `±n` Influencers from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Users.
+     * Skip the first `n` Influencers.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Users.
+     * Filter by unique combinations of Influencers.
      */
-    distinct?: UserScalarFieldEnum | UserScalarFieldEnum[]
+    distinct?: InfluencersScalarFieldEnum | InfluencersScalarFieldEnum[]
   }
 
 
   /**
-   * User findMany
+   * Influencers findMany
    */
-  export type UserFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type InfluencersFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the User
+     * Select specific fields to fetch from the Influencers
      */
-    select?: UserSelect<ExtArgs> | null
+    select?: InfluencersSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: UserInclude<ExtArgs> | null
+    include?: InfluencersInclude<ExtArgs> | null
     /**
-     * Filter, which Users to fetch.
+     * Filter, which Influencers to fetch.
      */
-    where?: UserWhereInput
+    where?: InfluencersWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Users to fetch.
+     * Determine the order of Influencers to fetch.
      */
-    orderBy?: UserOrderByWithRelationInput | UserOrderByWithRelationInput[]
+    orderBy?: InfluencersOrderByWithRelationInput | InfluencersOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing Users.
+     * Sets the position for listing Influencers.
      */
-    cursor?: UserWhereUniqueInput
+    cursor?: InfluencersWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Users from the position of the cursor.
+     * Take `±n` Influencers from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Users.
+     * Skip the first `n` Influencers.
      */
     skip?: number
-    distinct?: UserScalarFieldEnum | UserScalarFieldEnum[]
+    distinct?: InfluencersScalarFieldEnum | InfluencersScalarFieldEnum[]
   }
 
 
   /**
-   * User create
+   * Influencers create
    */
-  export type UserCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type InfluencersCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the User
+     * Select specific fields to fetch from the Influencers
      */
-    select?: UserSelect<ExtArgs> | null
+    select?: InfluencersSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: UserInclude<ExtArgs> | null
+    include?: InfluencersInclude<ExtArgs> | null
     /**
-     * The data needed to create a User.
+     * The data needed to create a Influencers.
      */
-    data: XOR<UserCreateInput, UserUncheckedCreateInput>
+    data: XOR<InfluencersCreateInput, InfluencersUncheckedCreateInput>
   }
 
 
   /**
-   * User createMany
+   * Influencers createMany
    */
-  export type UserCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type InfluencersCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many Users.
+     * The data used to create many Influencers.
      */
-    data: UserCreateManyInput | UserCreateManyInput[]
+    data: InfluencersCreateManyInput | InfluencersCreateManyInput[]
     skipDuplicates?: boolean
   }
 
 
   /**
-   * User update
+   * Influencers update
    */
-  export type UserUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type InfluencersUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the User
+     * Select specific fields to fetch from the Influencers
      */
-    select?: UserSelect<ExtArgs> | null
+    select?: InfluencersSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: UserInclude<ExtArgs> | null
+    include?: InfluencersInclude<ExtArgs> | null
     /**
-     * The data needed to update a User.
+     * The data needed to update a Influencers.
      */
-    data: XOR<UserUpdateInput, UserUncheckedUpdateInput>
+    data: XOR<InfluencersUpdateInput, InfluencersUncheckedUpdateInput>
     /**
-     * Choose, which User to update.
+     * Choose, which Influencers to update.
      */
-    where: UserWhereUniqueInput
+    where: InfluencersWhereUniqueInput
   }
 
 
   /**
-   * User updateMany
+   * Influencers updateMany
    */
-  export type UserUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type InfluencersUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update Users.
+     * The data used to update Influencers.
      */
-    data: XOR<UserUpdateManyMutationInput, UserUncheckedUpdateManyInput>
+    data: XOR<InfluencersUpdateManyMutationInput, InfluencersUncheckedUpdateManyInput>
     /**
-     * Filter which Users to update
+     * Filter which Influencers to update
      */
-    where?: UserWhereInput
+    where?: InfluencersWhereInput
   }
 
 
   /**
-   * User upsert
+   * Influencers upsert
    */
-  export type UserUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type InfluencersUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the User
+     * Select specific fields to fetch from the Influencers
      */
-    select?: UserSelect<ExtArgs> | null
+    select?: InfluencersSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: UserInclude<ExtArgs> | null
+    include?: InfluencersInclude<ExtArgs> | null
     /**
-     * The filter to search for the User to update in case it exists.
+     * The filter to search for the Influencers to update in case it exists.
      */
-    where: UserWhereUniqueInput
+    where: InfluencersWhereUniqueInput
     /**
-     * In case the User found by the `where` argument doesn't exist, create a new User with this data.
+     * In case the Influencers found by the `where` argument doesn't exist, create a new Influencers with this data.
      */
-    create: XOR<UserCreateInput, UserUncheckedCreateInput>
+    create: XOR<InfluencersCreateInput, InfluencersUncheckedCreateInput>
     /**
-     * In case the User was found with the provided `where` argument, update it with this data.
+     * In case the Influencers was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<UserUpdateInput, UserUncheckedUpdateInput>
+    update: XOR<InfluencersUpdateInput, InfluencersUncheckedUpdateInput>
   }
 
 
   /**
-   * User delete
+   * Influencers delete
    */
-  export type UserDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type InfluencersDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the User
+     * Select specific fields to fetch from the Influencers
      */
-    select?: UserSelect<ExtArgs> | null
+    select?: InfluencersSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: UserInclude<ExtArgs> | null
+    include?: InfluencersInclude<ExtArgs> | null
     /**
-     * Filter which User to delete.
+     * Filter which Influencers to delete.
      */
-    where: UserWhereUniqueInput
+    where: InfluencersWhereUniqueInput
   }
 
 
   /**
-   * User deleteMany
+   * Influencers deleteMany
    */
-  export type UserDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type InfluencersDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Users to delete
+     * Filter which Influencers to delete
      */
-    where?: UserWhereInput
+    where?: InfluencersWhereInput
   }
 
 
   /**
-   * User.Details
+   * Influencers.Details
    */
-  export type User$DetailsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Influencers$DetailsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserDetail
+     * Select specific fields to fetch from the InfluencerDetail
      */
-    select?: UserDetailSelect<ExtArgs> | null
+    select?: InfluencerDetailSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: UserDetailInclude<ExtArgs> | null
-    where?: UserDetailWhereInput
-    orderBy?: UserDetailOrderByWithRelationInput | UserDetailOrderByWithRelationInput[]
-    cursor?: UserDetailWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: UserDetailScalarFieldEnum | UserDetailScalarFieldEnum[]
+    include?: InfluencerDetailInclude<ExtArgs> | null
+    where?: InfluencerDetailWhereInput
   }
 
 
   /**
-   * User without action
+   * Influencers without action
    */
-  export type UserDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type InfluencersDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the User
+     * Select specific fields to fetch from the Influencers
      */
-    select?: UserSelect<ExtArgs> | null
+    select?: InfluencersSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: UserInclude<ExtArgs> | null
+    include?: InfluencersInclude<ExtArgs> | null
   }
 
 
 
   /**
-   * Model UserDetail
+   * Model InfluencerDetail
    */
 
-  export type AggregateUserDetail = {
-    _count: UserDetailCountAggregateOutputType | null
-    _avg: UserDetailAvgAggregateOutputType | null
-    _sum: UserDetailSumAggregateOutputType | null
-    _min: UserDetailMinAggregateOutputType | null
-    _max: UserDetailMaxAggregateOutputType | null
+  export type AggregateInfluencerDetail = {
+    _count: InfluencerDetailCountAggregateOutputType | null
+    _avg: InfluencerDetailAvgAggregateOutputType | null
+    _sum: InfluencerDetailSumAggregateOutputType | null
+    _min: InfluencerDetailMinAggregateOutputType | null
+    _max: InfluencerDetailMaxAggregateOutputType | null
   }
 
-  export type UserDetailAvgAggregateOutputType = {
+  export type InfluencerDetailAvgAggregateOutputType = {
     id: number | null
     audienceAge: number | null
     authorId: number | null
   }
 
-  export type UserDetailSumAggregateOutputType = {
+  export type InfluencerDetailSumAggregateOutputType = {
     id: number | null
     audienceAge: number | null
     authorId: number | null
   }
 
-  export type UserDetailMinAggregateOutputType = {
+  export type InfluencerDetailMinAggregateOutputType = {
     id: number | null
     audienceAge: number | null
     posts: string | null
     authorId: number | null
   }
 
-  export type UserDetailMaxAggregateOutputType = {
+  export type InfluencerDetailMaxAggregateOutputType = {
     id: number | null
     audienceAge: number | null
     posts: string | null
     authorId: number | null
   }
 
-  export type UserDetailCountAggregateOutputType = {
+  export type InfluencerDetailCountAggregateOutputType = {
     id: number
     contentType: number
     influencerType: number
@@ -1985,33 +2109,33 @@ export namespace Prisma {
   }
 
 
-  export type UserDetailAvgAggregateInputType = {
+  export type InfluencerDetailAvgAggregateInputType = {
     id?: true
     audienceAge?: true
     authorId?: true
   }
 
-  export type UserDetailSumAggregateInputType = {
+  export type InfluencerDetailSumAggregateInputType = {
     id?: true
     audienceAge?: true
     authorId?: true
   }
 
-  export type UserDetailMinAggregateInputType = {
-    id?: true
-    audienceAge?: true
-    posts?: true
-    authorId?: true
-  }
-
-  export type UserDetailMaxAggregateInputType = {
+  export type InfluencerDetailMinAggregateInputType = {
     id?: true
     audienceAge?: true
     posts?: true
     authorId?: true
   }
 
-  export type UserDetailCountAggregateInputType = {
+  export type InfluencerDetailMaxAggregateInputType = {
+    id?: true
+    audienceAge?: true
+    posts?: true
+    authorId?: true
+  }
+
+  export type InfluencerDetailCountAggregateInputType = {
     id?: true
     contentType?: true
     influencerType?: true
@@ -2022,93 +2146,93 @@ export namespace Prisma {
     _all?: true
   }
 
-  export type UserDetailAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type InfluencerDetailAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which UserDetail to aggregate.
+     * Filter which InfluencerDetail to aggregate.
      */
-    where?: UserDetailWhereInput
+    where?: InfluencerDetailWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of UserDetails to fetch.
+     * Determine the order of InfluencerDetails to fetch.
      */
-    orderBy?: UserDetailOrderByWithRelationInput | UserDetailOrderByWithRelationInput[]
+    orderBy?: InfluencerDetailOrderByWithRelationInput | InfluencerDetailOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: UserDetailWhereUniqueInput
+    cursor?: InfluencerDetailWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` UserDetails from the position of the cursor.
+     * Take `±n` InfluencerDetails from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` UserDetails.
+     * Skip the first `n` InfluencerDetails.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned UserDetails
+     * Count returned InfluencerDetails
     **/
-    _count?: true | UserDetailCountAggregateInputType
+    _count?: true | InfluencerDetailCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: UserDetailAvgAggregateInputType
+    _avg?: InfluencerDetailAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: UserDetailSumAggregateInputType
+    _sum?: InfluencerDetailSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: UserDetailMinAggregateInputType
+    _min?: InfluencerDetailMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: UserDetailMaxAggregateInputType
+    _max?: InfluencerDetailMaxAggregateInputType
   }
 
-  export type GetUserDetailAggregateType<T extends UserDetailAggregateArgs> = {
-        [P in keyof T & keyof AggregateUserDetail]: P extends '_count' | 'count'
+  export type GetInfluencerDetailAggregateType<T extends InfluencerDetailAggregateArgs> = {
+        [P in keyof T & keyof AggregateInfluencerDetail]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateUserDetail[P]>
-      : GetScalarType<T[P], AggregateUserDetail[P]>
+        : GetScalarType<T[P], AggregateInfluencerDetail[P]>
+      : GetScalarType<T[P], AggregateInfluencerDetail[P]>
   }
 
 
 
 
-  export type UserDetailGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: UserDetailWhereInput
-    orderBy?: UserDetailOrderByWithAggregationInput | UserDetailOrderByWithAggregationInput[]
-    by: UserDetailScalarFieldEnum[] | UserDetailScalarFieldEnum
-    having?: UserDetailScalarWhereWithAggregatesInput
+  export type InfluencerDetailGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: InfluencerDetailWhereInput
+    orderBy?: InfluencerDetailOrderByWithAggregationInput | InfluencerDetailOrderByWithAggregationInput[]
+    by: InfluencerDetailScalarFieldEnum[] | InfluencerDetailScalarFieldEnum
+    having?: InfluencerDetailScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: UserDetailCountAggregateInputType | true
-    _avg?: UserDetailAvgAggregateInputType
-    _sum?: UserDetailSumAggregateInputType
-    _min?: UserDetailMinAggregateInputType
-    _max?: UserDetailMaxAggregateInputType
+    _count?: InfluencerDetailCountAggregateInputType | true
+    _avg?: InfluencerDetailAvgAggregateInputType
+    _sum?: InfluencerDetailSumAggregateInputType
+    _min?: InfluencerDetailMinAggregateInputType
+    _max?: InfluencerDetailMaxAggregateInputType
   }
 
-  export type UserDetailGroupByOutputType = {
+  export type InfluencerDetailGroupByOutputType = {
     id: number
     contentType: string[]
     influencerType: string[]
@@ -2116,28 +2240,28 @@ export namespace Prisma {
     posts: string
     platformLink: string[]
     authorId: number
-    _count: UserDetailCountAggregateOutputType | null
-    _avg: UserDetailAvgAggregateOutputType | null
-    _sum: UserDetailSumAggregateOutputType | null
-    _min: UserDetailMinAggregateOutputType | null
-    _max: UserDetailMaxAggregateOutputType | null
+    _count: InfluencerDetailCountAggregateOutputType | null
+    _avg: InfluencerDetailAvgAggregateOutputType | null
+    _sum: InfluencerDetailSumAggregateOutputType | null
+    _min: InfluencerDetailMinAggregateOutputType | null
+    _max: InfluencerDetailMaxAggregateOutputType | null
   }
 
-  type GetUserDetailGroupByPayload<T extends UserDetailGroupByArgs> = Prisma.PrismaPromise<
+  type GetInfluencerDetailGroupByPayload<T extends InfluencerDetailGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<UserDetailGroupByOutputType, T['by']> &
+      PickEnumerable<InfluencerDetailGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof UserDetailGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof InfluencerDetailGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], UserDetailGroupByOutputType[P]>
-            : GetScalarType<T[P], UserDetailGroupByOutputType[P]>
+              : GetScalarType<T[P], InfluencerDetailGroupByOutputType[P]>
+            : GetScalarType<T[P], InfluencerDetailGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type UserDetailSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type InfluencerDetailSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     contentType?: boolean
     influencerType?: boolean
@@ -2145,10 +2269,10 @@ export namespace Prisma {
     posts?: boolean
     platformLink?: boolean
     authorId?: boolean
-    author?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["userDetail"]>
+    author?: boolean | InfluencersDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["influencerDetail"]>
 
-  export type UserDetailSelectScalar = {
+  export type InfluencerDetailSelectScalar = {
     id?: boolean
     contentType?: boolean
     influencerType?: boolean
@@ -2158,15 +2282,15 @@ export namespace Prisma {
     authorId?: boolean
   }
 
-  export type UserDetailInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    author?: boolean | UserDefaultArgs<ExtArgs>
+  export type InfluencerDetailInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    author?: boolean | InfluencersDefaultArgs<ExtArgs>
   }
 
 
-  export type $UserDetailPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "UserDetail"
+  export type $InfluencerDetailPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "InfluencerDetail"
     objects: {
-      author: Prisma.$UserPayload<ExtArgs>
+      author: Prisma.$InfluencersPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -2176,160 +2300,160 @@ export namespace Prisma {
       posts: string
       platformLink: string[]
       authorId: number
-    }, ExtArgs["result"]["userDetail"]>
+    }, ExtArgs["result"]["influencerDetail"]>
     composites: {}
   }
 
 
-  type UserDetailGetPayload<S extends boolean | null | undefined | UserDetailDefaultArgs> = $Result.GetResult<Prisma.$UserDetailPayload, S>
+  type InfluencerDetailGetPayload<S extends boolean | null | undefined | InfluencerDetailDefaultArgs> = $Result.GetResult<Prisma.$InfluencerDetailPayload, S>
 
-  type UserDetailCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
-    Omit<UserDetailFindManyArgs, 'select' | 'include' | 'distinct' > & {
-      select?: UserDetailCountAggregateInputType | true
+  type InfluencerDetailCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<InfluencerDetailFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: InfluencerDetailCountAggregateInputType | true
     }
 
-  export interface UserDetailDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['UserDetail'], meta: { name: 'UserDetail' } }
+  export interface InfluencerDetailDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['InfluencerDetail'], meta: { name: 'InfluencerDetail' } }
     /**
-     * Find zero or one UserDetail that matches the filter.
-     * @param {UserDetailFindUniqueArgs} args - Arguments to find a UserDetail
+     * Find zero or one InfluencerDetail that matches the filter.
+     * @param {InfluencerDetailFindUniqueArgs} args - Arguments to find a InfluencerDetail
      * @example
-     * // Get one UserDetail
-     * const userDetail = await prisma.userDetail.findUnique({
+     * // Get one InfluencerDetail
+     * const influencerDetail = await prisma.influencerDetail.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findUnique<T extends UserDetailFindUniqueArgs<ExtArgs>>(
-      args: SelectSubset<T, UserDetailFindUniqueArgs<ExtArgs>>
-    ): Prisma__UserDetailClient<$Result.GetResult<Prisma.$UserDetailPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+    findUnique<T extends InfluencerDetailFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, InfluencerDetailFindUniqueArgs<ExtArgs>>
+    ): Prisma__InfluencerDetailClient<$Result.GetResult<Prisma.$InfluencerDetailPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
 
     /**
-     * Find one UserDetail that matches the filter or throw an error  with `error.code='P2025'` 
+     * Find one InfluencerDetail that matches the filter or throw an error  with `error.code='P2025'` 
      *     if no matches were found.
-     * @param {UserDetailFindUniqueOrThrowArgs} args - Arguments to find a UserDetail
+     * @param {InfluencerDetailFindUniqueOrThrowArgs} args - Arguments to find a InfluencerDetail
      * @example
-     * // Get one UserDetail
-     * const userDetail = await prisma.userDetail.findUniqueOrThrow({
+     * // Get one InfluencerDetail
+     * const influencerDetail = await prisma.influencerDetail.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findUniqueOrThrow<T extends UserDetailFindUniqueOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, UserDetailFindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__UserDetailClient<$Result.GetResult<Prisma.$UserDetailPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+    findUniqueOrThrow<T extends InfluencerDetailFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, InfluencerDetailFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__InfluencerDetailClient<$Result.GetResult<Prisma.$InfluencerDetailPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
 
     /**
-     * Find the first UserDetail that matches the filter.
+     * Find the first InfluencerDetail that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserDetailFindFirstArgs} args - Arguments to find a UserDetail
+     * @param {InfluencerDetailFindFirstArgs} args - Arguments to find a InfluencerDetail
      * @example
-     * // Get one UserDetail
-     * const userDetail = await prisma.userDetail.findFirst({
+     * // Get one InfluencerDetail
+     * const influencerDetail = await prisma.influencerDetail.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findFirst<T extends UserDetailFindFirstArgs<ExtArgs>>(
-      args?: SelectSubset<T, UserDetailFindFirstArgs<ExtArgs>>
-    ): Prisma__UserDetailClient<$Result.GetResult<Prisma.$UserDetailPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+    findFirst<T extends InfluencerDetailFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, InfluencerDetailFindFirstArgs<ExtArgs>>
+    ): Prisma__InfluencerDetailClient<$Result.GetResult<Prisma.$InfluencerDetailPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
 
     /**
-     * Find the first UserDetail that matches the filter or
+     * Find the first InfluencerDetail that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserDetailFindFirstOrThrowArgs} args - Arguments to find a UserDetail
+     * @param {InfluencerDetailFindFirstOrThrowArgs} args - Arguments to find a InfluencerDetail
      * @example
-     * // Get one UserDetail
-     * const userDetail = await prisma.userDetail.findFirstOrThrow({
+     * // Get one InfluencerDetail
+     * const influencerDetail = await prisma.influencerDetail.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findFirstOrThrow<T extends UserDetailFindFirstOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, UserDetailFindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__UserDetailClient<$Result.GetResult<Prisma.$UserDetailPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+    findFirstOrThrow<T extends InfluencerDetailFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, InfluencerDetailFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__InfluencerDetailClient<$Result.GetResult<Prisma.$InfluencerDetailPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
 
     /**
-     * Find zero or more UserDetails that matches the filter.
+     * Find zero or more InfluencerDetails that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserDetailFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @param {InfluencerDetailFindManyArgs=} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all UserDetails
-     * const userDetails = await prisma.userDetail.findMany()
+     * // Get all InfluencerDetails
+     * const influencerDetails = await prisma.influencerDetail.findMany()
      * 
-     * // Get first 10 UserDetails
-     * const userDetails = await prisma.userDetail.findMany({ take: 10 })
+     * // Get first 10 InfluencerDetails
+     * const influencerDetails = await prisma.influencerDetail.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const userDetailWithIdOnly = await prisma.userDetail.findMany({ select: { id: true } })
+     * const influencerDetailWithIdOnly = await prisma.influencerDetail.findMany({ select: { id: true } })
      * 
     **/
-    findMany<T extends UserDetailFindManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, UserDetailFindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserDetailPayload<ExtArgs>, T, 'findMany'>>
+    findMany<T extends InfluencerDetailFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, InfluencerDetailFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InfluencerDetailPayload<ExtArgs>, T, 'findMany'>>
 
     /**
-     * Create a UserDetail.
-     * @param {UserDetailCreateArgs} args - Arguments to create a UserDetail.
+     * Create a InfluencerDetail.
+     * @param {InfluencerDetailCreateArgs} args - Arguments to create a InfluencerDetail.
      * @example
-     * // Create one UserDetail
-     * const UserDetail = await prisma.userDetail.create({
+     * // Create one InfluencerDetail
+     * const InfluencerDetail = await prisma.influencerDetail.create({
      *   data: {
-     *     // ... data to create a UserDetail
+     *     // ... data to create a InfluencerDetail
      *   }
      * })
      * 
     **/
-    create<T extends UserDetailCreateArgs<ExtArgs>>(
-      args: SelectSubset<T, UserDetailCreateArgs<ExtArgs>>
-    ): Prisma__UserDetailClient<$Result.GetResult<Prisma.$UserDetailPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+    create<T extends InfluencerDetailCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, InfluencerDetailCreateArgs<ExtArgs>>
+    ): Prisma__InfluencerDetailClient<$Result.GetResult<Prisma.$InfluencerDetailPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
 
     /**
-     * Create many UserDetails.
-     *     @param {UserDetailCreateManyArgs} args - Arguments to create many UserDetails.
+     * Create many InfluencerDetails.
+     *     @param {InfluencerDetailCreateManyArgs} args - Arguments to create many InfluencerDetails.
      *     @example
-     *     // Create many UserDetails
-     *     const userDetail = await prisma.userDetail.createMany({
+     *     // Create many InfluencerDetails
+     *     const influencerDetail = await prisma.influencerDetail.createMany({
      *       data: {
      *         // ... provide data here
      *       }
      *     })
      *     
     **/
-    createMany<T extends UserDetailCreateManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, UserDetailCreateManyArgs<ExtArgs>>
+    createMany<T extends InfluencerDetailCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, InfluencerDetailCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Delete a UserDetail.
-     * @param {UserDetailDeleteArgs} args - Arguments to delete one UserDetail.
+     * Delete a InfluencerDetail.
+     * @param {InfluencerDetailDeleteArgs} args - Arguments to delete one InfluencerDetail.
      * @example
-     * // Delete one UserDetail
-     * const UserDetail = await prisma.userDetail.delete({
+     * // Delete one InfluencerDetail
+     * const InfluencerDetail = await prisma.influencerDetail.delete({
      *   where: {
-     *     // ... filter to delete one UserDetail
+     *     // ... filter to delete one InfluencerDetail
      *   }
      * })
      * 
     **/
-    delete<T extends UserDetailDeleteArgs<ExtArgs>>(
-      args: SelectSubset<T, UserDetailDeleteArgs<ExtArgs>>
-    ): Prisma__UserDetailClient<$Result.GetResult<Prisma.$UserDetailPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+    delete<T extends InfluencerDetailDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, InfluencerDetailDeleteArgs<ExtArgs>>
+    ): Prisma__InfluencerDetailClient<$Result.GetResult<Prisma.$InfluencerDetailPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
 
     /**
-     * Update one UserDetail.
-     * @param {UserDetailUpdateArgs} args - Arguments to update one UserDetail.
+     * Update one InfluencerDetail.
+     * @param {InfluencerDetailUpdateArgs} args - Arguments to update one InfluencerDetail.
      * @example
-     * // Update one UserDetail
-     * const userDetail = await prisma.userDetail.update({
+     * // Update one InfluencerDetail
+     * const influencerDetail = await prisma.influencerDetail.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -2339,34 +2463,34 @@ export namespace Prisma {
      * })
      * 
     **/
-    update<T extends UserDetailUpdateArgs<ExtArgs>>(
-      args: SelectSubset<T, UserDetailUpdateArgs<ExtArgs>>
-    ): Prisma__UserDetailClient<$Result.GetResult<Prisma.$UserDetailPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+    update<T extends InfluencerDetailUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, InfluencerDetailUpdateArgs<ExtArgs>>
+    ): Prisma__InfluencerDetailClient<$Result.GetResult<Prisma.$InfluencerDetailPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
 
     /**
-     * Delete zero or more UserDetails.
-     * @param {UserDetailDeleteManyArgs} args - Arguments to filter UserDetails to delete.
+     * Delete zero or more InfluencerDetails.
+     * @param {InfluencerDetailDeleteManyArgs} args - Arguments to filter InfluencerDetails to delete.
      * @example
-     * // Delete a few UserDetails
-     * const { count } = await prisma.userDetail.deleteMany({
+     * // Delete a few InfluencerDetails
+     * const { count } = await prisma.influencerDetail.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
     **/
-    deleteMany<T extends UserDetailDeleteManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, UserDetailDeleteManyArgs<ExtArgs>>
+    deleteMany<T extends InfluencerDetailDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, InfluencerDetailDeleteManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more UserDetails.
+     * Update zero or more InfluencerDetails.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserDetailUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {InfluencerDetailUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many UserDetails
-     * const userDetail = await prisma.userDetail.updateMany({
+     * // Update many InfluencerDetails
+     * const influencerDetail = await prisma.influencerDetail.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -2376,59 +2500,59 @@ export namespace Prisma {
      * })
      * 
     **/
-    updateMany<T extends UserDetailUpdateManyArgs<ExtArgs>>(
-      args: SelectSubset<T, UserDetailUpdateManyArgs<ExtArgs>>
+    updateMany<T extends InfluencerDetailUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, InfluencerDetailUpdateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create or update one UserDetail.
-     * @param {UserDetailUpsertArgs} args - Arguments to update or create a UserDetail.
+     * Create or update one InfluencerDetail.
+     * @param {InfluencerDetailUpsertArgs} args - Arguments to update or create a InfluencerDetail.
      * @example
-     * // Update or create a UserDetail
-     * const userDetail = await prisma.userDetail.upsert({
+     * // Update or create a InfluencerDetail
+     * const influencerDetail = await prisma.influencerDetail.upsert({
      *   create: {
-     *     // ... data to create a UserDetail
+     *     // ... data to create a InfluencerDetail
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the UserDetail we want to update
+     *     // ... the filter for the InfluencerDetail we want to update
      *   }
      * })
     **/
-    upsert<T extends UserDetailUpsertArgs<ExtArgs>>(
-      args: SelectSubset<T, UserDetailUpsertArgs<ExtArgs>>
-    ): Prisma__UserDetailClient<$Result.GetResult<Prisma.$UserDetailPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+    upsert<T extends InfluencerDetailUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, InfluencerDetailUpsertArgs<ExtArgs>>
+    ): Prisma__InfluencerDetailClient<$Result.GetResult<Prisma.$InfluencerDetailPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
 
     /**
-     * Count the number of UserDetails.
+     * Count the number of InfluencerDetails.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserDetailCountArgs} args - Arguments to filter UserDetails to count.
+     * @param {InfluencerDetailCountArgs} args - Arguments to filter InfluencerDetails to count.
      * @example
-     * // Count the number of UserDetails
-     * const count = await prisma.userDetail.count({
+     * // Count the number of InfluencerDetails
+     * const count = await prisma.influencerDetail.count({
      *   where: {
-     *     // ... the filter for the UserDetails we want to count
+     *     // ... the filter for the InfluencerDetails we want to count
      *   }
      * })
     **/
-    count<T extends UserDetailCountArgs>(
-      args?: Subset<T, UserDetailCountArgs>,
+    count<T extends InfluencerDetailCountArgs>(
+      args?: Subset<T, InfluencerDetailCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], UserDetailCountAggregateOutputType>
+          : GetScalarType<T['select'], InfluencerDetailCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a UserDetail.
+     * Allows you to perform aggregations operations on a InfluencerDetail.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserDetailAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {InfluencerDetailAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -2448,13 +2572,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends UserDetailAggregateArgs>(args: Subset<T, UserDetailAggregateArgs>): Prisma.PrismaPromise<GetUserDetailAggregateType<T>>
+    aggregate<T extends InfluencerDetailAggregateArgs>(args: Subset<T, InfluencerDetailAggregateArgs>): Prisma.PrismaPromise<GetInfluencerDetailAggregateType<T>>
 
     /**
-     * Group by UserDetail.
+     * Group by InfluencerDetail.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserDetailGroupByArgs} args - Group by arguments.
+     * @param {InfluencerDetailGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -2469,14 +2593,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends UserDetailGroupByArgs,
+      T extends InfluencerDetailGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: UserDetailGroupByArgs['orderBy'] }
-        : { orderBy?: UserDetailGroupByArgs['orderBy'] },
+        ? { orderBy: InfluencerDetailGroupByArgs['orderBy'] }
+        : { orderBy?: InfluencerDetailGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -2525,23 +2649,23 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, UserDetailGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUserDetailGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, InfluencerDetailGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetInfluencerDetailGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the UserDetail model
+   * Fields of the InfluencerDetail model
    */
-  readonly fields: UserDetailFieldRefs;
+  readonly fields: InfluencerDetailFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for UserDetail.
+   * The delegate class that acts as a "Promise-like" for InfluencerDetail.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__UserDetailClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__InfluencerDetailClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
-    author<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+    author<T extends InfluencersDefaultArgs<ExtArgs> = {}>(args?: Subset<T, InfluencersDefaultArgs<ExtArgs>>): Prisma__InfluencersClient<$Result.GetResult<Prisma.$InfluencersPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -2568,339 +2692,2300 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the UserDetail model
+   * Fields of the InfluencerDetail model
    */ 
-  interface UserDetailFieldRefs {
-    readonly id: FieldRef<"UserDetail", 'Int'>
-    readonly contentType: FieldRef<"UserDetail", 'String[]'>
-    readonly influencerType: FieldRef<"UserDetail", 'String[]'>
-    readonly audienceAge: FieldRef<"UserDetail", 'Int'>
-    readonly posts: FieldRef<"UserDetail", 'String'>
-    readonly platformLink: FieldRef<"UserDetail", 'String[]'>
-    readonly authorId: FieldRef<"UserDetail", 'Int'>
+  interface InfluencerDetailFieldRefs {
+    readonly id: FieldRef<"InfluencerDetail", 'Int'>
+    readonly contentType: FieldRef<"InfluencerDetail", 'String[]'>
+    readonly influencerType: FieldRef<"InfluencerDetail", 'String[]'>
+    readonly audienceAge: FieldRef<"InfluencerDetail", 'Int'>
+    readonly posts: FieldRef<"InfluencerDetail", 'String'>
+    readonly platformLink: FieldRef<"InfluencerDetail", 'String[]'>
+    readonly authorId: FieldRef<"InfluencerDetail", 'Int'>
   }
     
 
   // Custom InputTypes
 
   /**
-   * UserDetail findUnique
+   * InfluencerDetail findUnique
    */
-  export type UserDetailFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type InfluencerDetailFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserDetail
+     * Select specific fields to fetch from the InfluencerDetail
      */
-    select?: UserDetailSelect<ExtArgs> | null
+    select?: InfluencerDetailSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: UserDetailInclude<ExtArgs> | null
+    include?: InfluencerDetailInclude<ExtArgs> | null
     /**
-     * Filter, which UserDetail to fetch.
+     * Filter, which InfluencerDetail to fetch.
      */
-    where: UserDetailWhereUniqueInput
+    where: InfluencerDetailWhereUniqueInput
   }
 
 
   /**
-   * UserDetail findUniqueOrThrow
+   * InfluencerDetail findUniqueOrThrow
    */
-  export type UserDetailFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type InfluencerDetailFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserDetail
+     * Select specific fields to fetch from the InfluencerDetail
      */
-    select?: UserDetailSelect<ExtArgs> | null
+    select?: InfluencerDetailSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: UserDetailInclude<ExtArgs> | null
+    include?: InfluencerDetailInclude<ExtArgs> | null
     /**
-     * Filter, which UserDetail to fetch.
+     * Filter, which InfluencerDetail to fetch.
      */
-    where: UserDetailWhereUniqueInput
+    where: InfluencerDetailWhereUniqueInput
   }
 
 
   /**
-   * UserDetail findFirst
+   * InfluencerDetail findFirst
    */
-  export type UserDetailFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type InfluencerDetailFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserDetail
+     * Select specific fields to fetch from the InfluencerDetail
      */
-    select?: UserDetailSelect<ExtArgs> | null
+    select?: InfluencerDetailSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: UserDetailInclude<ExtArgs> | null
+    include?: InfluencerDetailInclude<ExtArgs> | null
     /**
-     * Filter, which UserDetail to fetch.
+     * Filter, which InfluencerDetail to fetch.
      */
-    where?: UserDetailWhereInput
+    where?: InfluencerDetailWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of UserDetails to fetch.
+     * Determine the order of InfluencerDetails to fetch.
      */
-    orderBy?: UserDetailOrderByWithRelationInput | UserDetailOrderByWithRelationInput[]
+    orderBy?: InfluencerDetailOrderByWithRelationInput | InfluencerDetailOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for UserDetails.
+     * Sets the position for searching for InfluencerDetails.
      */
-    cursor?: UserDetailWhereUniqueInput
+    cursor?: InfluencerDetailWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` UserDetails from the position of the cursor.
+     * Take `±n` InfluencerDetails from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` UserDetails.
+     * Skip the first `n` InfluencerDetails.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of UserDetails.
+     * Filter by unique combinations of InfluencerDetails.
      */
-    distinct?: UserDetailScalarFieldEnum | UserDetailScalarFieldEnum[]
+    distinct?: InfluencerDetailScalarFieldEnum | InfluencerDetailScalarFieldEnum[]
   }
 
 
   /**
-   * UserDetail findFirstOrThrow
+   * InfluencerDetail findFirstOrThrow
    */
-  export type UserDetailFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type InfluencerDetailFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserDetail
+     * Select specific fields to fetch from the InfluencerDetail
      */
-    select?: UserDetailSelect<ExtArgs> | null
+    select?: InfluencerDetailSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: UserDetailInclude<ExtArgs> | null
+    include?: InfluencerDetailInclude<ExtArgs> | null
     /**
-     * Filter, which UserDetail to fetch.
+     * Filter, which InfluencerDetail to fetch.
      */
-    where?: UserDetailWhereInput
+    where?: InfluencerDetailWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of UserDetails to fetch.
+     * Determine the order of InfluencerDetails to fetch.
      */
-    orderBy?: UserDetailOrderByWithRelationInput | UserDetailOrderByWithRelationInput[]
+    orderBy?: InfluencerDetailOrderByWithRelationInput | InfluencerDetailOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for UserDetails.
+     * Sets the position for searching for InfluencerDetails.
      */
-    cursor?: UserDetailWhereUniqueInput
+    cursor?: InfluencerDetailWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` UserDetails from the position of the cursor.
+     * Take `±n` InfluencerDetails from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` UserDetails.
+     * Skip the first `n` InfluencerDetails.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of UserDetails.
+     * Filter by unique combinations of InfluencerDetails.
      */
-    distinct?: UserDetailScalarFieldEnum | UserDetailScalarFieldEnum[]
+    distinct?: InfluencerDetailScalarFieldEnum | InfluencerDetailScalarFieldEnum[]
   }
 
 
   /**
-   * UserDetail findMany
+   * InfluencerDetail findMany
    */
-  export type UserDetailFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type InfluencerDetailFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserDetail
+     * Select specific fields to fetch from the InfluencerDetail
      */
-    select?: UserDetailSelect<ExtArgs> | null
+    select?: InfluencerDetailSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: UserDetailInclude<ExtArgs> | null
+    include?: InfluencerDetailInclude<ExtArgs> | null
     /**
-     * Filter, which UserDetails to fetch.
+     * Filter, which InfluencerDetails to fetch.
      */
-    where?: UserDetailWhereInput
+    where?: InfluencerDetailWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of UserDetails to fetch.
+     * Determine the order of InfluencerDetails to fetch.
      */
-    orderBy?: UserDetailOrderByWithRelationInput | UserDetailOrderByWithRelationInput[]
+    orderBy?: InfluencerDetailOrderByWithRelationInput | InfluencerDetailOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing UserDetails.
+     * Sets the position for listing InfluencerDetails.
      */
-    cursor?: UserDetailWhereUniqueInput
+    cursor?: InfluencerDetailWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` UserDetails from the position of the cursor.
+     * Take `±n` InfluencerDetails from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` UserDetails.
+     * Skip the first `n` InfluencerDetails.
      */
     skip?: number
-    distinct?: UserDetailScalarFieldEnum | UserDetailScalarFieldEnum[]
+    distinct?: InfluencerDetailScalarFieldEnum | InfluencerDetailScalarFieldEnum[]
   }
 
 
   /**
-   * UserDetail create
+   * InfluencerDetail create
    */
-  export type UserDetailCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type InfluencerDetailCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserDetail
+     * Select specific fields to fetch from the InfluencerDetail
      */
-    select?: UserDetailSelect<ExtArgs> | null
+    select?: InfluencerDetailSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: UserDetailInclude<ExtArgs> | null
+    include?: InfluencerDetailInclude<ExtArgs> | null
     /**
-     * The data needed to create a UserDetail.
+     * The data needed to create a InfluencerDetail.
      */
-    data: XOR<UserDetailCreateInput, UserDetailUncheckedCreateInput>
+    data: XOR<InfluencerDetailCreateInput, InfluencerDetailUncheckedCreateInput>
   }
 
 
   /**
-   * UserDetail createMany
+   * InfluencerDetail createMany
    */
-  export type UserDetailCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type InfluencerDetailCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many UserDetails.
+     * The data used to create many InfluencerDetails.
      */
-    data: UserDetailCreateManyInput | UserDetailCreateManyInput[]
+    data: InfluencerDetailCreateManyInput | InfluencerDetailCreateManyInput[]
     skipDuplicates?: boolean
   }
 
 
   /**
-   * UserDetail update
+   * InfluencerDetail update
    */
-  export type UserDetailUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type InfluencerDetailUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserDetail
+     * Select specific fields to fetch from the InfluencerDetail
      */
-    select?: UserDetailSelect<ExtArgs> | null
+    select?: InfluencerDetailSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: UserDetailInclude<ExtArgs> | null
+    include?: InfluencerDetailInclude<ExtArgs> | null
     /**
-     * The data needed to update a UserDetail.
+     * The data needed to update a InfluencerDetail.
      */
-    data: XOR<UserDetailUpdateInput, UserDetailUncheckedUpdateInput>
+    data: XOR<InfluencerDetailUpdateInput, InfluencerDetailUncheckedUpdateInput>
     /**
-     * Choose, which UserDetail to update.
+     * Choose, which InfluencerDetail to update.
      */
-    where: UserDetailWhereUniqueInput
+    where: InfluencerDetailWhereUniqueInput
   }
 
 
   /**
-   * UserDetail updateMany
+   * InfluencerDetail updateMany
    */
-  export type UserDetailUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type InfluencerDetailUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update UserDetails.
+     * The data used to update InfluencerDetails.
      */
-    data: XOR<UserDetailUpdateManyMutationInput, UserDetailUncheckedUpdateManyInput>
+    data: XOR<InfluencerDetailUpdateManyMutationInput, InfluencerDetailUncheckedUpdateManyInput>
     /**
-     * Filter which UserDetails to update
+     * Filter which InfluencerDetails to update
      */
-    where?: UserDetailWhereInput
+    where?: InfluencerDetailWhereInput
   }
 
 
   /**
-   * UserDetail upsert
+   * InfluencerDetail upsert
    */
-  export type UserDetailUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type InfluencerDetailUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserDetail
+     * Select specific fields to fetch from the InfluencerDetail
      */
-    select?: UserDetailSelect<ExtArgs> | null
+    select?: InfluencerDetailSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: UserDetailInclude<ExtArgs> | null
+    include?: InfluencerDetailInclude<ExtArgs> | null
     /**
-     * The filter to search for the UserDetail to update in case it exists.
+     * The filter to search for the InfluencerDetail to update in case it exists.
      */
-    where: UserDetailWhereUniqueInput
+    where: InfluencerDetailWhereUniqueInput
     /**
-     * In case the UserDetail found by the `where` argument doesn't exist, create a new UserDetail with this data.
+     * In case the InfluencerDetail found by the `where` argument doesn't exist, create a new InfluencerDetail with this data.
      */
-    create: XOR<UserDetailCreateInput, UserDetailUncheckedCreateInput>
+    create: XOR<InfluencerDetailCreateInput, InfluencerDetailUncheckedCreateInput>
     /**
-     * In case the UserDetail was found with the provided `where` argument, update it with this data.
+     * In case the InfluencerDetail was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<UserDetailUpdateInput, UserDetailUncheckedUpdateInput>
+    update: XOR<InfluencerDetailUpdateInput, InfluencerDetailUncheckedUpdateInput>
   }
 
 
   /**
-   * UserDetail delete
+   * InfluencerDetail delete
    */
-  export type UserDetailDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type InfluencerDetailDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserDetail
+     * Select specific fields to fetch from the InfluencerDetail
      */
-    select?: UserDetailSelect<ExtArgs> | null
+    select?: InfluencerDetailSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: UserDetailInclude<ExtArgs> | null
+    include?: InfluencerDetailInclude<ExtArgs> | null
     /**
-     * Filter which UserDetail to delete.
+     * Filter which InfluencerDetail to delete.
      */
-    where: UserDetailWhereUniqueInput
+    where: InfluencerDetailWhereUniqueInput
   }
 
 
   /**
-   * UserDetail deleteMany
+   * InfluencerDetail deleteMany
    */
-  export type UserDetailDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type InfluencerDetailDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which UserDetails to delete
+     * Filter which InfluencerDetails to delete
      */
-    where?: UserDetailWhereInput
+    where?: InfluencerDetailWhereInput
   }
 
 
   /**
-   * UserDetail without action
+   * InfluencerDetail without action
    */
-  export type UserDetailDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type InfluencerDetailDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserDetail
+     * Select specific fields to fetch from the InfluencerDetail
      */
-    select?: UserDetailSelect<ExtArgs> | null
+    select?: InfluencerDetailSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: UserDetailInclude<ExtArgs> | null
+    include?: InfluencerDetailInclude<ExtArgs> | null
+  }
+
+
+
+  /**
+   * Model Brands
+   */
+
+  export type AggregateBrands = {
+    _count: BrandsCountAggregateOutputType | null
+    _avg: BrandsAvgAggregateOutputType | null
+    _sum: BrandsSumAggregateOutputType | null
+    _min: BrandsMinAggregateOutputType | null
+    _max: BrandsMaxAggregateOutputType | null
+  }
+
+  export type BrandsAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type BrandsSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type BrandsMinAggregateOutputType = {
+    id: number | null
+    email: string | null
+    insta_username: string | null
+    companyName: string | null
+  }
+
+  export type BrandsMaxAggregateOutputType = {
+    id: number | null
+    email: string | null
+    insta_username: string | null
+    companyName: string | null
+  }
+
+  export type BrandsCountAggregateOutputType = {
+    id: number
+    email: number
+    insta_username: number
+    companyName: number
+    _all: number
+  }
+
+
+  export type BrandsAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type BrandsSumAggregateInputType = {
+    id?: true
+  }
+
+  export type BrandsMinAggregateInputType = {
+    id?: true
+    email?: true
+    insta_username?: true
+    companyName?: true
+  }
+
+  export type BrandsMaxAggregateInputType = {
+    id?: true
+    email?: true
+    insta_username?: true
+    companyName?: true
+  }
+
+  export type BrandsCountAggregateInputType = {
+    id?: true
+    email?: true
+    insta_username?: true
+    companyName?: true
+    _all?: true
+  }
+
+  export type BrandsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Brands to aggregate.
+     */
+    where?: BrandsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Brands to fetch.
+     */
+    orderBy?: BrandsOrderByWithRelationInput | BrandsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: BrandsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Brands from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Brands.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Brands
+    **/
+    _count?: true | BrandsCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: BrandsAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: BrandsSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: BrandsMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: BrandsMaxAggregateInputType
+  }
+
+  export type GetBrandsAggregateType<T extends BrandsAggregateArgs> = {
+        [P in keyof T & keyof AggregateBrands]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateBrands[P]>
+      : GetScalarType<T[P], AggregateBrands[P]>
+  }
+
+
+
+
+  export type BrandsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BrandsWhereInput
+    orderBy?: BrandsOrderByWithAggregationInput | BrandsOrderByWithAggregationInput[]
+    by: BrandsScalarFieldEnum[] | BrandsScalarFieldEnum
+    having?: BrandsScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: BrandsCountAggregateInputType | true
+    _avg?: BrandsAvgAggregateInputType
+    _sum?: BrandsSumAggregateInputType
+    _min?: BrandsMinAggregateInputType
+    _max?: BrandsMaxAggregateInputType
+  }
+
+  export type BrandsGroupByOutputType = {
+    id: number
+    email: string
+    insta_username: string
+    companyName: string
+    _count: BrandsCountAggregateOutputType | null
+    _avg: BrandsAvgAggregateOutputType | null
+    _sum: BrandsSumAggregateOutputType | null
+    _min: BrandsMinAggregateOutputType | null
+    _max: BrandsMaxAggregateOutputType | null
+  }
+
+  type GetBrandsGroupByPayload<T extends BrandsGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<BrandsGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof BrandsGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], BrandsGroupByOutputType[P]>
+            : GetScalarType<T[P], BrandsGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type BrandsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    email?: boolean
+    insta_username?: boolean
+    companyName?: boolean
+    Details?: boolean | Brands$DetailsArgs<ExtArgs>
+  }, ExtArgs["result"]["brands"]>
+
+  export type BrandsSelectScalar = {
+    id?: boolean
+    email?: boolean
+    insta_username?: boolean
+    companyName?: boolean
+  }
+
+  export type BrandsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Details?: boolean | Brands$DetailsArgs<ExtArgs>
+  }
+
+
+  export type $BrandsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Brands"
+    objects: {
+      Details: Prisma.$BrandsDetailsPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      email: string
+      insta_username: string
+      companyName: string
+    }, ExtArgs["result"]["brands"]>
+    composites: {}
+  }
+
+
+  type BrandsGetPayload<S extends boolean | null | undefined | BrandsDefaultArgs> = $Result.GetResult<Prisma.$BrandsPayload, S>
+
+  type BrandsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<BrandsFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: BrandsCountAggregateInputType | true
+    }
+
+  export interface BrandsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Brands'], meta: { name: 'Brands' } }
+    /**
+     * Find zero or one Brands that matches the filter.
+     * @param {BrandsFindUniqueArgs} args - Arguments to find a Brands
+     * @example
+     * // Get one Brands
+     * const brands = await prisma.brands.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends BrandsFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, BrandsFindUniqueArgs<ExtArgs>>
+    ): Prisma__BrandsClient<$Result.GetResult<Prisma.$BrandsPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one Brands that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {BrandsFindUniqueOrThrowArgs} args - Arguments to find a Brands
+     * @example
+     * // Get one Brands
+     * const brands = await prisma.brands.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends BrandsFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, BrandsFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__BrandsClient<$Result.GetResult<Prisma.$BrandsPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first Brands that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BrandsFindFirstArgs} args - Arguments to find a Brands
+     * @example
+     * // Get one Brands
+     * const brands = await prisma.brands.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends BrandsFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, BrandsFindFirstArgs<ExtArgs>>
+    ): Prisma__BrandsClient<$Result.GetResult<Prisma.$BrandsPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first Brands that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BrandsFindFirstOrThrowArgs} args - Arguments to find a Brands
+     * @example
+     * // Get one Brands
+     * const brands = await prisma.brands.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends BrandsFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, BrandsFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__BrandsClient<$Result.GetResult<Prisma.$BrandsPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more Brands that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BrandsFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Brands
+     * const brands = await prisma.brands.findMany()
+     * 
+     * // Get first 10 Brands
+     * const brands = await prisma.brands.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const brandsWithIdOnly = await prisma.brands.findMany({ select: { id: true } })
+     * 
+    **/
+    findMany<T extends BrandsFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, BrandsFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BrandsPayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a Brands.
+     * @param {BrandsCreateArgs} args - Arguments to create a Brands.
+     * @example
+     * // Create one Brands
+     * const Brands = await prisma.brands.create({
+     *   data: {
+     *     // ... data to create a Brands
+     *   }
+     * })
+     * 
+    **/
+    create<T extends BrandsCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, BrandsCreateArgs<ExtArgs>>
+    ): Prisma__BrandsClient<$Result.GetResult<Prisma.$BrandsPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many Brands.
+     *     @param {BrandsCreateManyArgs} args - Arguments to create many Brands.
+     *     @example
+     *     // Create many Brands
+     *     const brands = await prisma.brands.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends BrandsCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, BrandsCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Brands.
+     * @param {BrandsDeleteArgs} args - Arguments to delete one Brands.
+     * @example
+     * // Delete one Brands
+     * const Brands = await prisma.brands.delete({
+     *   where: {
+     *     // ... filter to delete one Brands
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends BrandsDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, BrandsDeleteArgs<ExtArgs>>
+    ): Prisma__BrandsClient<$Result.GetResult<Prisma.$BrandsPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one Brands.
+     * @param {BrandsUpdateArgs} args - Arguments to update one Brands.
+     * @example
+     * // Update one Brands
+     * const brands = await prisma.brands.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends BrandsUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, BrandsUpdateArgs<ExtArgs>>
+    ): Prisma__BrandsClient<$Result.GetResult<Prisma.$BrandsPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Brands.
+     * @param {BrandsDeleteManyArgs} args - Arguments to filter Brands to delete.
+     * @example
+     * // Delete a few Brands
+     * const { count } = await prisma.brands.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends BrandsDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, BrandsDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Brands.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BrandsUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Brands
+     * const brands = await prisma.brands.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends BrandsUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, BrandsUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Brands.
+     * @param {BrandsUpsertArgs} args - Arguments to update or create a Brands.
+     * @example
+     * // Update or create a Brands
+     * const brands = await prisma.brands.upsert({
+     *   create: {
+     *     // ... data to create a Brands
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Brands we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends BrandsUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, BrandsUpsertArgs<ExtArgs>>
+    ): Prisma__BrandsClient<$Result.GetResult<Prisma.$BrandsPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of Brands.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BrandsCountArgs} args - Arguments to filter Brands to count.
+     * @example
+     * // Count the number of Brands
+     * const count = await prisma.brands.count({
+     *   where: {
+     *     // ... the filter for the Brands we want to count
+     *   }
+     * })
+    **/
+    count<T extends BrandsCountArgs>(
+      args?: Subset<T, BrandsCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], BrandsCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Brands.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BrandsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends BrandsAggregateArgs>(args: Subset<T, BrandsAggregateArgs>): Prisma.PrismaPromise<GetBrandsAggregateType<T>>
+
+    /**
+     * Group by Brands.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BrandsGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends BrandsGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: BrandsGroupByArgs['orderBy'] }
+        : { orderBy?: BrandsGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, BrandsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBrandsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Brands model
+   */
+  readonly fields: BrandsFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Brands.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__BrandsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+    Details<T extends Brands$DetailsArgs<ExtArgs> = {}>(args?: Subset<T, Brands$DetailsArgs<ExtArgs>>): Prisma__BrandsDetailsClient<$Result.GetResult<Prisma.$BrandsDetailsPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the Brands model
+   */ 
+  interface BrandsFieldRefs {
+    readonly id: FieldRef<"Brands", 'Int'>
+    readonly email: FieldRef<"Brands", 'String'>
+    readonly insta_username: FieldRef<"Brands", 'String'>
+    readonly companyName: FieldRef<"Brands", 'String'>
+  }
+    
+
+  // Custom InputTypes
+
+  /**
+   * Brands findUnique
+   */
+  export type BrandsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Brands
+     */
+    select?: BrandsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: BrandsInclude<ExtArgs> | null
+    /**
+     * Filter, which Brands to fetch.
+     */
+    where: BrandsWhereUniqueInput
+  }
+
+
+  /**
+   * Brands findUniqueOrThrow
+   */
+  export type BrandsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Brands
+     */
+    select?: BrandsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: BrandsInclude<ExtArgs> | null
+    /**
+     * Filter, which Brands to fetch.
+     */
+    where: BrandsWhereUniqueInput
+  }
+
+
+  /**
+   * Brands findFirst
+   */
+  export type BrandsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Brands
+     */
+    select?: BrandsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: BrandsInclude<ExtArgs> | null
+    /**
+     * Filter, which Brands to fetch.
+     */
+    where?: BrandsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Brands to fetch.
+     */
+    orderBy?: BrandsOrderByWithRelationInput | BrandsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Brands.
+     */
+    cursor?: BrandsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Brands from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Brands.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Brands.
+     */
+    distinct?: BrandsScalarFieldEnum | BrandsScalarFieldEnum[]
+  }
+
+
+  /**
+   * Brands findFirstOrThrow
+   */
+  export type BrandsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Brands
+     */
+    select?: BrandsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: BrandsInclude<ExtArgs> | null
+    /**
+     * Filter, which Brands to fetch.
+     */
+    where?: BrandsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Brands to fetch.
+     */
+    orderBy?: BrandsOrderByWithRelationInput | BrandsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Brands.
+     */
+    cursor?: BrandsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Brands from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Brands.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Brands.
+     */
+    distinct?: BrandsScalarFieldEnum | BrandsScalarFieldEnum[]
+  }
+
+
+  /**
+   * Brands findMany
+   */
+  export type BrandsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Brands
+     */
+    select?: BrandsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: BrandsInclude<ExtArgs> | null
+    /**
+     * Filter, which Brands to fetch.
+     */
+    where?: BrandsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Brands to fetch.
+     */
+    orderBy?: BrandsOrderByWithRelationInput | BrandsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Brands.
+     */
+    cursor?: BrandsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Brands from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Brands.
+     */
+    skip?: number
+    distinct?: BrandsScalarFieldEnum | BrandsScalarFieldEnum[]
+  }
+
+
+  /**
+   * Brands create
+   */
+  export type BrandsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Brands
+     */
+    select?: BrandsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: BrandsInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Brands.
+     */
+    data: XOR<BrandsCreateInput, BrandsUncheckedCreateInput>
+  }
+
+
+  /**
+   * Brands createMany
+   */
+  export type BrandsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Brands.
+     */
+    data: BrandsCreateManyInput | BrandsCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * Brands update
+   */
+  export type BrandsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Brands
+     */
+    select?: BrandsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: BrandsInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Brands.
+     */
+    data: XOR<BrandsUpdateInput, BrandsUncheckedUpdateInput>
+    /**
+     * Choose, which Brands to update.
+     */
+    where: BrandsWhereUniqueInput
+  }
+
+
+  /**
+   * Brands updateMany
+   */
+  export type BrandsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Brands.
+     */
+    data: XOR<BrandsUpdateManyMutationInput, BrandsUncheckedUpdateManyInput>
+    /**
+     * Filter which Brands to update
+     */
+    where?: BrandsWhereInput
+  }
+
+
+  /**
+   * Brands upsert
+   */
+  export type BrandsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Brands
+     */
+    select?: BrandsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: BrandsInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Brands to update in case it exists.
+     */
+    where: BrandsWhereUniqueInput
+    /**
+     * In case the Brands found by the `where` argument doesn't exist, create a new Brands with this data.
+     */
+    create: XOR<BrandsCreateInput, BrandsUncheckedCreateInput>
+    /**
+     * In case the Brands was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<BrandsUpdateInput, BrandsUncheckedUpdateInput>
+  }
+
+
+  /**
+   * Brands delete
+   */
+  export type BrandsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Brands
+     */
+    select?: BrandsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: BrandsInclude<ExtArgs> | null
+    /**
+     * Filter which Brands to delete.
+     */
+    where: BrandsWhereUniqueInput
+  }
+
+
+  /**
+   * Brands deleteMany
+   */
+  export type BrandsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Brands to delete
+     */
+    where?: BrandsWhereInput
+  }
+
+
+  /**
+   * Brands.Details
+   */
+  export type Brands$DetailsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BrandsDetails
+     */
+    select?: BrandsDetailsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: BrandsDetailsInclude<ExtArgs> | null
+    where?: BrandsDetailsWhereInput
+  }
+
+
+  /**
+   * Brands without action
+   */
+  export type BrandsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Brands
+     */
+    select?: BrandsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: BrandsInclude<ExtArgs> | null
+  }
+
+
+
+  /**
+   * Model BrandsDetails
+   */
+
+  export type AggregateBrandsDetails = {
+    _count: BrandsDetailsCountAggregateOutputType | null
+    _avg: BrandsDetailsAvgAggregateOutputType | null
+    _sum: BrandsDetailsSumAggregateOutputType | null
+    _min: BrandsDetailsMinAggregateOutputType | null
+    _max: BrandsDetailsMaxAggregateOutputType | null
+  }
+
+  export type BrandsDetailsAvgAggregateOutputType = {
+    id: number | null
+    no_Of_Posts_or_PromotionVideos: number | null
+    campaignBudget: number | null
+    authorId: number | null
+  }
+
+  export type BrandsDetailsSumAggregateOutputType = {
+    id: number | null
+    no_Of_Posts_or_PromotionVideos: number | null
+    campaignBudget: number | null
+    authorId: number | null
+  }
+
+  export type BrandsDetailsMinAggregateOutputType = {
+    id: number | null
+    productDescription: string | null
+    productDescriptionFile: string | null
+    targetAudienceDescription: string | null
+    no_Of_Posts_or_PromotionVideos: number | null
+    campaignGoal: string | null
+    campaignBudget: number | null
+    authorId: number | null
+  }
+
+  export type BrandsDetailsMaxAggregateOutputType = {
+    id: number | null
+    productDescription: string | null
+    productDescriptionFile: string | null
+    targetAudienceDescription: string | null
+    no_Of_Posts_or_PromotionVideos: number | null
+    campaignGoal: string | null
+    campaignBudget: number | null
+    authorId: number | null
+  }
+
+  export type BrandsDetailsCountAggregateOutputType = {
+    id: number
+    productDescription: number
+    productDescriptionFile: number
+    targetAudienceDescription: number
+    influencerType: number
+    no_Of_Posts_or_PromotionVideos: number
+    campaignGoal: number
+    campaignBudget: number
+    authorId: number
+    _all: number
+  }
+
+
+  export type BrandsDetailsAvgAggregateInputType = {
+    id?: true
+    no_Of_Posts_or_PromotionVideos?: true
+    campaignBudget?: true
+    authorId?: true
+  }
+
+  export type BrandsDetailsSumAggregateInputType = {
+    id?: true
+    no_Of_Posts_or_PromotionVideos?: true
+    campaignBudget?: true
+    authorId?: true
+  }
+
+  export type BrandsDetailsMinAggregateInputType = {
+    id?: true
+    productDescription?: true
+    productDescriptionFile?: true
+    targetAudienceDescription?: true
+    no_Of_Posts_or_PromotionVideos?: true
+    campaignGoal?: true
+    campaignBudget?: true
+    authorId?: true
+  }
+
+  export type BrandsDetailsMaxAggregateInputType = {
+    id?: true
+    productDescription?: true
+    productDescriptionFile?: true
+    targetAudienceDescription?: true
+    no_Of_Posts_or_PromotionVideos?: true
+    campaignGoal?: true
+    campaignBudget?: true
+    authorId?: true
+  }
+
+  export type BrandsDetailsCountAggregateInputType = {
+    id?: true
+    productDescription?: true
+    productDescriptionFile?: true
+    targetAudienceDescription?: true
+    influencerType?: true
+    no_Of_Posts_or_PromotionVideos?: true
+    campaignGoal?: true
+    campaignBudget?: true
+    authorId?: true
+    _all?: true
+  }
+
+  export type BrandsDetailsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which BrandsDetails to aggregate.
+     */
+    where?: BrandsDetailsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BrandsDetails to fetch.
+     */
+    orderBy?: BrandsDetailsOrderByWithRelationInput | BrandsDetailsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: BrandsDetailsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BrandsDetails from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BrandsDetails.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned BrandsDetails
+    **/
+    _count?: true | BrandsDetailsCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: BrandsDetailsAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: BrandsDetailsSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: BrandsDetailsMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: BrandsDetailsMaxAggregateInputType
+  }
+
+  export type GetBrandsDetailsAggregateType<T extends BrandsDetailsAggregateArgs> = {
+        [P in keyof T & keyof AggregateBrandsDetails]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateBrandsDetails[P]>
+      : GetScalarType<T[P], AggregateBrandsDetails[P]>
+  }
+
+
+
+
+  export type BrandsDetailsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BrandsDetailsWhereInput
+    orderBy?: BrandsDetailsOrderByWithAggregationInput | BrandsDetailsOrderByWithAggregationInput[]
+    by: BrandsDetailsScalarFieldEnum[] | BrandsDetailsScalarFieldEnum
+    having?: BrandsDetailsScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: BrandsDetailsCountAggregateInputType | true
+    _avg?: BrandsDetailsAvgAggregateInputType
+    _sum?: BrandsDetailsSumAggregateInputType
+    _min?: BrandsDetailsMinAggregateInputType
+    _max?: BrandsDetailsMaxAggregateInputType
+  }
+
+  export type BrandsDetailsGroupByOutputType = {
+    id: number
+    productDescription: string
+    productDescriptionFile: string
+    targetAudienceDescription: string | null
+    influencerType: string[]
+    no_Of_Posts_or_PromotionVideos: number
+    campaignGoal: string
+    campaignBudget: number
+    authorId: number
+    _count: BrandsDetailsCountAggregateOutputType | null
+    _avg: BrandsDetailsAvgAggregateOutputType | null
+    _sum: BrandsDetailsSumAggregateOutputType | null
+    _min: BrandsDetailsMinAggregateOutputType | null
+    _max: BrandsDetailsMaxAggregateOutputType | null
+  }
+
+  type GetBrandsDetailsGroupByPayload<T extends BrandsDetailsGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<BrandsDetailsGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof BrandsDetailsGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], BrandsDetailsGroupByOutputType[P]>
+            : GetScalarType<T[P], BrandsDetailsGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type BrandsDetailsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    productDescription?: boolean
+    productDescriptionFile?: boolean
+    targetAudienceDescription?: boolean
+    influencerType?: boolean
+    no_Of_Posts_or_PromotionVideos?: boolean
+    campaignGoal?: boolean
+    campaignBudget?: boolean
+    authorId?: boolean
+    author?: boolean | BrandsDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["brandsDetails"]>
+
+  export type BrandsDetailsSelectScalar = {
+    id?: boolean
+    productDescription?: boolean
+    productDescriptionFile?: boolean
+    targetAudienceDescription?: boolean
+    influencerType?: boolean
+    no_Of_Posts_or_PromotionVideos?: boolean
+    campaignGoal?: boolean
+    campaignBudget?: boolean
+    authorId?: boolean
+  }
+
+  export type BrandsDetailsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    author?: boolean | BrandsDefaultArgs<ExtArgs>
+  }
+
+
+  export type $BrandsDetailsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "BrandsDetails"
+    objects: {
+      author: Prisma.$BrandsPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      productDescription: string
+      productDescriptionFile: string
+      targetAudienceDescription: string | null
+      influencerType: string[]
+      no_Of_Posts_or_PromotionVideos: number
+      campaignGoal: string
+      campaignBudget: number
+      authorId: number
+    }, ExtArgs["result"]["brandsDetails"]>
+    composites: {}
+  }
+
+
+  type BrandsDetailsGetPayload<S extends boolean | null | undefined | BrandsDetailsDefaultArgs> = $Result.GetResult<Prisma.$BrandsDetailsPayload, S>
+
+  type BrandsDetailsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<BrandsDetailsFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: BrandsDetailsCountAggregateInputType | true
+    }
+
+  export interface BrandsDetailsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['BrandsDetails'], meta: { name: 'BrandsDetails' } }
+    /**
+     * Find zero or one BrandsDetails that matches the filter.
+     * @param {BrandsDetailsFindUniqueArgs} args - Arguments to find a BrandsDetails
+     * @example
+     * // Get one BrandsDetails
+     * const brandsDetails = await prisma.brandsDetails.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends BrandsDetailsFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, BrandsDetailsFindUniqueArgs<ExtArgs>>
+    ): Prisma__BrandsDetailsClient<$Result.GetResult<Prisma.$BrandsDetailsPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one BrandsDetails that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {BrandsDetailsFindUniqueOrThrowArgs} args - Arguments to find a BrandsDetails
+     * @example
+     * // Get one BrandsDetails
+     * const brandsDetails = await prisma.brandsDetails.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends BrandsDetailsFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, BrandsDetailsFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__BrandsDetailsClient<$Result.GetResult<Prisma.$BrandsDetailsPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first BrandsDetails that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BrandsDetailsFindFirstArgs} args - Arguments to find a BrandsDetails
+     * @example
+     * // Get one BrandsDetails
+     * const brandsDetails = await prisma.brandsDetails.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends BrandsDetailsFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, BrandsDetailsFindFirstArgs<ExtArgs>>
+    ): Prisma__BrandsDetailsClient<$Result.GetResult<Prisma.$BrandsDetailsPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first BrandsDetails that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BrandsDetailsFindFirstOrThrowArgs} args - Arguments to find a BrandsDetails
+     * @example
+     * // Get one BrandsDetails
+     * const brandsDetails = await prisma.brandsDetails.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends BrandsDetailsFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, BrandsDetailsFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__BrandsDetailsClient<$Result.GetResult<Prisma.$BrandsDetailsPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more BrandsDetails that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BrandsDetailsFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all BrandsDetails
+     * const brandsDetails = await prisma.brandsDetails.findMany()
+     * 
+     * // Get first 10 BrandsDetails
+     * const brandsDetails = await prisma.brandsDetails.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const brandsDetailsWithIdOnly = await prisma.brandsDetails.findMany({ select: { id: true } })
+     * 
+    **/
+    findMany<T extends BrandsDetailsFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, BrandsDetailsFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BrandsDetailsPayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a BrandsDetails.
+     * @param {BrandsDetailsCreateArgs} args - Arguments to create a BrandsDetails.
+     * @example
+     * // Create one BrandsDetails
+     * const BrandsDetails = await prisma.brandsDetails.create({
+     *   data: {
+     *     // ... data to create a BrandsDetails
+     *   }
+     * })
+     * 
+    **/
+    create<T extends BrandsDetailsCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, BrandsDetailsCreateArgs<ExtArgs>>
+    ): Prisma__BrandsDetailsClient<$Result.GetResult<Prisma.$BrandsDetailsPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many BrandsDetails.
+     *     @param {BrandsDetailsCreateManyArgs} args - Arguments to create many BrandsDetails.
+     *     @example
+     *     // Create many BrandsDetails
+     *     const brandsDetails = await prisma.brandsDetails.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends BrandsDetailsCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, BrandsDetailsCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a BrandsDetails.
+     * @param {BrandsDetailsDeleteArgs} args - Arguments to delete one BrandsDetails.
+     * @example
+     * // Delete one BrandsDetails
+     * const BrandsDetails = await prisma.brandsDetails.delete({
+     *   where: {
+     *     // ... filter to delete one BrandsDetails
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends BrandsDetailsDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, BrandsDetailsDeleteArgs<ExtArgs>>
+    ): Prisma__BrandsDetailsClient<$Result.GetResult<Prisma.$BrandsDetailsPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one BrandsDetails.
+     * @param {BrandsDetailsUpdateArgs} args - Arguments to update one BrandsDetails.
+     * @example
+     * // Update one BrandsDetails
+     * const brandsDetails = await prisma.brandsDetails.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends BrandsDetailsUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, BrandsDetailsUpdateArgs<ExtArgs>>
+    ): Prisma__BrandsDetailsClient<$Result.GetResult<Prisma.$BrandsDetailsPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more BrandsDetails.
+     * @param {BrandsDetailsDeleteManyArgs} args - Arguments to filter BrandsDetails to delete.
+     * @example
+     * // Delete a few BrandsDetails
+     * const { count } = await prisma.brandsDetails.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends BrandsDetailsDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, BrandsDetailsDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more BrandsDetails.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BrandsDetailsUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many BrandsDetails
+     * const brandsDetails = await prisma.brandsDetails.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends BrandsDetailsUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, BrandsDetailsUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one BrandsDetails.
+     * @param {BrandsDetailsUpsertArgs} args - Arguments to update or create a BrandsDetails.
+     * @example
+     * // Update or create a BrandsDetails
+     * const brandsDetails = await prisma.brandsDetails.upsert({
+     *   create: {
+     *     // ... data to create a BrandsDetails
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the BrandsDetails we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends BrandsDetailsUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, BrandsDetailsUpsertArgs<ExtArgs>>
+    ): Prisma__BrandsDetailsClient<$Result.GetResult<Prisma.$BrandsDetailsPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of BrandsDetails.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BrandsDetailsCountArgs} args - Arguments to filter BrandsDetails to count.
+     * @example
+     * // Count the number of BrandsDetails
+     * const count = await prisma.brandsDetails.count({
+     *   where: {
+     *     // ... the filter for the BrandsDetails we want to count
+     *   }
+     * })
+    **/
+    count<T extends BrandsDetailsCountArgs>(
+      args?: Subset<T, BrandsDetailsCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], BrandsDetailsCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a BrandsDetails.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BrandsDetailsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends BrandsDetailsAggregateArgs>(args: Subset<T, BrandsDetailsAggregateArgs>): Prisma.PrismaPromise<GetBrandsDetailsAggregateType<T>>
+
+    /**
+     * Group by BrandsDetails.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BrandsDetailsGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends BrandsDetailsGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: BrandsDetailsGroupByArgs['orderBy'] }
+        : { orderBy?: BrandsDetailsGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, BrandsDetailsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBrandsDetailsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the BrandsDetails model
+   */
+  readonly fields: BrandsDetailsFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for BrandsDetails.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__BrandsDetailsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+    author<T extends BrandsDefaultArgs<ExtArgs> = {}>(args?: Subset<T, BrandsDefaultArgs<ExtArgs>>): Prisma__BrandsClient<$Result.GetResult<Prisma.$BrandsPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the BrandsDetails model
+   */ 
+  interface BrandsDetailsFieldRefs {
+    readonly id: FieldRef<"BrandsDetails", 'Int'>
+    readonly productDescription: FieldRef<"BrandsDetails", 'String'>
+    readonly productDescriptionFile: FieldRef<"BrandsDetails", 'String'>
+    readonly targetAudienceDescription: FieldRef<"BrandsDetails", 'String'>
+    readonly influencerType: FieldRef<"BrandsDetails", 'String[]'>
+    readonly no_Of_Posts_or_PromotionVideos: FieldRef<"BrandsDetails", 'Int'>
+    readonly campaignGoal: FieldRef<"BrandsDetails", 'String'>
+    readonly campaignBudget: FieldRef<"BrandsDetails", 'Int'>
+    readonly authorId: FieldRef<"BrandsDetails", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+
+  /**
+   * BrandsDetails findUnique
+   */
+  export type BrandsDetailsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BrandsDetails
+     */
+    select?: BrandsDetailsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: BrandsDetailsInclude<ExtArgs> | null
+    /**
+     * Filter, which BrandsDetails to fetch.
+     */
+    where: BrandsDetailsWhereUniqueInput
+  }
+
+
+  /**
+   * BrandsDetails findUniqueOrThrow
+   */
+  export type BrandsDetailsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BrandsDetails
+     */
+    select?: BrandsDetailsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: BrandsDetailsInclude<ExtArgs> | null
+    /**
+     * Filter, which BrandsDetails to fetch.
+     */
+    where: BrandsDetailsWhereUniqueInput
+  }
+
+
+  /**
+   * BrandsDetails findFirst
+   */
+  export type BrandsDetailsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BrandsDetails
+     */
+    select?: BrandsDetailsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: BrandsDetailsInclude<ExtArgs> | null
+    /**
+     * Filter, which BrandsDetails to fetch.
+     */
+    where?: BrandsDetailsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BrandsDetails to fetch.
+     */
+    orderBy?: BrandsDetailsOrderByWithRelationInput | BrandsDetailsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for BrandsDetails.
+     */
+    cursor?: BrandsDetailsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BrandsDetails from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BrandsDetails.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of BrandsDetails.
+     */
+    distinct?: BrandsDetailsScalarFieldEnum | BrandsDetailsScalarFieldEnum[]
+  }
+
+
+  /**
+   * BrandsDetails findFirstOrThrow
+   */
+  export type BrandsDetailsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BrandsDetails
+     */
+    select?: BrandsDetailsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: BrandsDetailsInclude<ExtArgs> | null
+    /**
+     * Filter, which BrandsDetails to fetch.
+     */
+    where?: BrandsDetailsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BrandsDetails to fetch.
+     */
+    orderBy?: BrandsDetailsOrderByWithRelationInput | BrandsDetailsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for BrandsDetails.
+     */
+    cursor?: BrandsDetailsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BrandsDetails from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BrandsDetails.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of BrandsDetails.
+     */
+    distinct?: BrandsDetailsScalarFieldEnum | BrandsDetailsScalarFieldEnum[]
+  }
+
+
+  /**
+   * BrandsDetails findMany
+   */
+  export type BrandsDetailsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BrandsDetails
+     */
+    select?: BrandsDetailsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: BrandsDetailsInclude<ExtArgs> | null
+    /**
+     * Filter, which BrandsDetails to fetch.
+     */
+    where?: BrandsDetailsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BrandsDetails to fetch.
+     */
+    orderBy?: BrandsDetailsOrderByWithRelationInput | BrandsDetailsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing BrandsDetails.
+     */
+    cursor?: BrandsDetailsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BrandsDetails from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BrandsDetails.
+     */
+    skip?: number
+    distinct?: BrandsDetailsScalarFieldEnum | BrandsDetailsScalarFieldEnum[]
+  }
+
+
+  /**
+   * BrandsDetails create
+   */
+  export type BrandsDetailsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BrandsDetails
+     */
+    select?: BrandsDetailsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: BrandsDetailsInclude<ExtArgs> | null
+    /**
+     * The data needed to create a BrandsDetails.
+     */
+    data: XOR<BrandsDetailsCreateInput, BrandsDetailsUncheckedCreateInput>
+  }
+
+
+  /**
+   * BrandsDetails createMany
+   */
+  export type BrandsDetailsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many BrandsDetails.
+     */
+    data: BrandsDetailsCreateManyInput | BrandsDetailsCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * BrandsDetails update
+   */
+  export type BrandsDetailsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BrandsDetails
+     */
+    select?: BrandsDetailsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: BrandsDetailsInclude<ExtArgs> | null
+    /**
+     * The data needed to update a BrandsDetails.
+     */
+    data: XOR<BrandsDetailsUpdateInput, BrandsDetailsUncheckedUpdateInput>
+    /**
+     * Choose, which BrandsDetails to update.
+     */
+    where: BrandsDetailsWhereUniqueInput
+  }
+
+
+  /**
+   * BrandsDetails updateMany
+   */
+  export type BrandsDetailsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update BrandsDetails.
+     */
+    data: XOR<BrandsDetailsUpdateManyMutationInput, BrandsDetailsUncheckedUpdateManyInput>
+    /**
+     * Filter which BrandsDetails to update
+     */
+    where?: BrandsDetailsWhereInput
+  }
+
+
+  /**
+   * BrandsDetails upsert
+   */
+  export type BrandsDetailsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BrandsDetails
+     */
+    select?: BrandsDetailsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: BrandsDetailsInclude<ExtArgs> | null
+    /**
+     * The filter to search for the BrandsDetails to update in case it exists.
+     */
+    where: BrandsDetailsWhereUniqueInput
+    /**
+     * In case the BrandsDetails found by the `where` argument doesn't exist, create a new BrandsDetails with this data.
+     */
+    create: XOR<BrandsDetailsCreateInput, BrandsDetailsUncheckedCreateInput>
+    /**
+     * In case the BrandsDetails was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<BrandsDetailsUpdateInput, BrandsDetailsUncheckedUpdateInput>
+  }
+
+
+  /**
+   * BrandsDetails delete
+   */
+  export type BrandsDetailsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BrandsDetails
+     */
+    select?: BrandsDetailsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: BrandsDetailsInclude<ExtArgs> | null
+    /**
+     * Filter which BrandsDetails to delete.
+     */
+    where: BrandsDetailsWhereUniqueInput
+  }
+
+
+  /**
+   * BrandsDetails deleteMany
+   */
+  export type BrandsDetailsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which BrandsDetails to delete
+     */
+    where?: BrandsDetailsWhereInput
+  }
+
+
+  /**
+   * BrandsDetails without action
+   */
+  export type BrandsDetailsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BrandsDetails
+     */
+    select?: BrandsDetailsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: BrandsDetailsInclude<ExtArgs> | null
   }
 
 
@@ -2919,17 +5004,17 @@ export namespace Prisma {
   export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
-  export const UserScalarFieldEnum: {
+  export const InfluencersScalarFieldEnum: {
     id: 'id',
     email: 'email',
     insta_username: 'insta_username',
     name: 'name'
   };
 
-  export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+  export type InfluencersScalarFieldEnum = (typeof InfluencersScalarFieldEnum)[keyof typeof InfluencersScalarFieldEnum]
 
 
-  export const UserDetailScalarFieldEnum: {
+  export const InfluencerDetailScalarFieldEnum: {
     id: 'id',
     contentType: 'contentType',
     influencerType: 'influencerType',
@@ -2939,7 +5024,32 @@ export namespace Prisma {
     authorId: 'authorId'
   };
 
-  export type UserDetailScalarFieldEnum = (typeof UserDetailScalarFieldEnum)[keyof typeof UserDetailScalarFieldEnum]
+  export type InfluencerDetailScalarFieldEnum = (typeof InfluencerDetailScalarFieldEnum)[keyof typeof InfluencerDetailScalarFieldEnum]
+
+
+  export const BrandsScalarFieldEnum: {
+    id: 'id',
+    email: 'email',
+    insta_username: 'insta_username',
+    companyName: 'companyName'
+  };
+
+  export type BrandsScalarFieldEnum = (typeof BrandsScalarFieldEnum)[keyof typeof BrandsScalarFieldEnum]
+
+
+  export const BrandsDetailsScalarFieldEnum: {
+    id: 'id',
+    productDescription: 'productDescription',
+    productDescriptionFile: 'productDescriptionFile',
+    targetAudienceDescription: 'targetAudienceDescription',
+    influencerType: 'influencerType',
+    no_Of_Posts_or_PromotionVideos: 'no_Of_Posts_or_PromotionVideos',
+    campaignGoal: 'campaignGoal',
+    campaignBudget: 'campaignBudget',
+    authorId: 'authorId'
+  };
+
+  export type BrandsDetailsScalarFieldEnum = (typeof BrandsDetailsScalarFieldEnum)[keyof typeof BrandsDetailsScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -3016,73 +5126,73 @@ export namespace Prisma {
    */
 
 
-  export type UserWhereInput = {
-    AND?: UserWhereInput | UserWhereInput[]
-    OR?: UserWhereInput[]
-    NOT?: UserWhereInput | UserWhereInput[]
-    id?: IntFilter<"User"> | number
-    email?: StringFilter<"User"> | string
-    insta_username?: StringFilter<"User"> | string
-    name?: StringNullableFilter<"User"> | string | null
-    Details?: UserDetailListRelationFilter
+  export type InfluencersWhereInput = {
+    AND?: InfluencersWhereInput | InfluencersWhereInput[]
+    OR?: InfluencersWhereInput[]
+    NOT?: InfluencersWhereInput | InfluencersWhereInput[]
+    id?: IntFilter<"Influencers"> | number
+    email?: StringFilter<"Influencers"> | string
+    insta_username?: StringFilter<"Influencers"> | string
+    name?: StringNullableFilter<"Influencers"> | string | null
+    Details?: XOR<InfluencerDetailNullableRelationFilter, InfluencerDetailWhereInput> | null
   }
 
-  export type UserOrderByWithRelationInput = {
+  export type InfluencersOrderByWithRelationInput = {
     id?: SortOrder
     email?: SortOrder
     insta_username?: SortOrder
     name?: SortOrderInput | SortOrder
-    Details?: UserDetailOrderByRelationAggregateInput
+    Details?: InfluencerDetailOrderByWithRelationInput
   }
 
-  export type UserWhereUniqueInput = Prisma.AtLeast<{
+  export type InfluencersWhereUniqueInput = Prisma.AtLeast<{
     id?: number
     email?: string
     insta_username?: string
-    AND?: UserWhereInput | UserWhereInput[]
-    OR?: UserWhereInput[]
-    NOT?: UserWhereInput | UserWhereInput[]
-    name?: StringNullableFilter<"User"> | string | null
-    Details?: UserDetailListRelationFilter
+    AND?: InfluencersWhereInput | InfluencersWhereInput[]
+    OR?: InfluencersWhereInput[]
+    NOT?: InfluencersWhereInput | InfluencersWhereInput[]
+    name?: StringNullableFilter<"Influencers"> | string | null
+    Details?: XOR<InfluencerDetailNullableRelationFilter, InfluencerDetailWhereInput> | null
   }, "id" | "email" | "insta_username">
 
-  export type UserOrderByWithAggregationInput = {
+  export type InfluencersOrderByWithAggregationInput = {
     id?: SortOrder
     email?: SortOrder
     insta_username?: SortOrder
     name?: SortOrderInput | SortOrder
-    _count?: UserCountOrderByAggregateInput
-    _avg?: UserAvgOrderByAggregateInput
-    _max?: UserMaxOrderByAggregateInput
-    _min?: UserMinOrderByAggregateInput
-    _sum?: UserSumOrderByAggregateInput
+    _count?: InfluencersCountOrderByAggregateInput
+    _avg?: InfluencersAvgOrderByAggregateInput
+    _max?: InfluencersMaxOrderByAggregateInput
+    _min?: InfluencersMinOrderByAggregateInput
+    _sum?: InfluencersSumOrderByAggregateInput
   }
 
-  export type UserScalarWhereWithAggregatesInput = {
-    AND?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
-    OR?: UserScalarWhereWithAggregatesInput[]
-    NOT?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"User"> | number
-    email?: StringWithAggregatesFilter<"User"> | string
-    insta_username?: StringWithAggregatesFilter<"User"> | string
-    name?: StringNullableWithAggregatesFilter<"User"> | string | null
+  export type InfluencersScalarWhereWithAggregatesInput = {
+    AND?: InfluencersScalarWhereWithAggregatesInput | InfluencersScalarWhereWithAggregatesInput[]
+    OR?: InfluencersScalarWhereWithAggregatesInput[]
+    NOT?: InfluencersScalarWhereWithAggregatesInput | InfluencersScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Influencers"> | number
+    email?: StringWithAggregatesFilter<"Influencers"> | string
+    insta_username?: StringWithAggregatesFilter<"Influencers"> | string
+    name?: StringNullableWithAggregatesFilter<"Influencers"> | string | null
   }
 
-  export type UserDetailWhereInput = {
-    AND?: UserDetailWhereInput | UserDetailWhereInput[]
-    OR?: UserDetailWhereInput[]
-    NOT?: UserDetailWhereInput | UserDetailWhereInput[]
-    id?: IntFilter<"UserDetail"> | number
-    contentType?: StringNullableListFilter<"UserDetail">
-    influencerType?: StringNullableListFilter<"UserDetail">
-    audienceAge?: IntFilter<"UserDetail"> | number
-    posts?: StringFilter<"UserDetail"> | string
-    platformLink?: StringNullableListFilter<"UserDetail">
-    authorId?: IntFilter<"UserDetail"> | number
-    author?: XOR<UserRelationFilter, UserWhereInput>
+  export type InfluencerDetailWhereInput = {
+    AND?: InfluencerDetailWhereInput | InfluencerDetailWhereInput[]
+    OR?: InfluencerDetailWhereInput[]
+    NOT?: InfluencerDetailWhereInput | InfluencerDetailWhereInput[]
+    id?: IntFilter<"InfluencerDetail"> | number
+    contentType?: StringNullableListFilter<"InfluencerDetail">
+    influencerType?: StringNullableListFilter<"InfluencerDetail">
+    audienceAge?: IntFilter<"InfluencerDetail"> | number
+    posts?: StringFilter<"InfluencerDetail"> | string
+    platformLink?: StringNullableListFilter<"InfluencerDetail">
+    authorId?: IntFilter<"InfluencerDetail"> | number
+    author?: XOR<InfluencersRelationFilter, InfluencersWhereInput>
   }
 
-  export type UserDetailOrderByWithRelationInput = {
+  export type InfluencerDetailOrderByWithRelationInput = {
     id?: SortOrder
     contentType?: SortOrder
     influencerType?: SortOrder
@@ -3090,24 +5200,24 @@ export namespace Prisma {
     posts?: SortOrder
     platformLink?: SortOrder
     authorId?: SortOrder
-    author?: UserOrderByWithRelationInput
+    author?: InfluencersOrderByWithRelationInput
   }
 
-  export type UserDetailWhereUniqueInput = Prisma.AtLeast<{
+  export type InfluencerDetailWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    AND?: UserDetailWhereInput | UserDetailWhereInput[]
-    OR?: UserDetailWhereInput[]
-    NOT?: UserDetailWhereInput | UserDetailWhereInput[]
-    contentType?: StringNullableListFilter<"UserDetail">
-    influencerType?: StringNullableListFilter<"UserDetail">
-    audienceAge?: IntFilter<"UserDetail"> | number
-    posts?: StringFilter<"UserDetail"> | string
-    platformLink?: StringNullableListFilter<"UserDetail">
-    authorId?: IntFilter<"UserDetail"> | number
-    author?: XOR<UserRelationFilter, UserWhereInput>
-  }, "id">
+    authorId?: number
+    AND?: InfluencerDetailWhereInput | InfluencerDetailWhereInput[]
+    OR?: InfluencerDetailWhereInput[]
+    NOT?: InfluencerDetailWhereInput | InfluencerDetailWhereInput[]
+    contentType?: StringNullableListFilter<"InfluencerDetail">
+    influencerType?: StringNullableListFilter<"InfluencerDetail">
+    audienceAge?: IntFilter<"InfluencerDetail"> | number
+    posts?: StringFilter<"InfluencerDetail"> | string
+    platformLink?: StringNullableListFilter<"InfluencerDetail">
+    author?: XOR<InfluencersRelationFilter, InfluencersWhereInput>
+  }, "id" | "authorId">
 
-  export type UserDetailOrderByWithAggregationInput = {
+  export type InfluencerDetailOrderByWithAggregationInput = {
     id?: SortOrder
     contentType?: SortOrder
     influencerType?: SortOrder
@@ -3115,139 +5225,398 @@ export namespace Prisma {
     posts?: SortOrder
     platformLink?: SortOrder
     authorId?: SortOrder
-    _count?: UserDetailCountOrderByAggregateInput
-    _avg?: UserDetailAvgOrderByAggregateInput
-    _max?: UserDetailMaxOrderByAggregateInput
-    _min?: UserDetailMinOrderByAggregateInput
-    _sum?: UserDetailSumOrderByAggregateInput
+    _count?: InfluencerDetailCountOrderByAggregateInput
+    _avg?: InfluencerDetailAvgOrderByAggregateInput
+    _max?: InfluencerDetailMaxOrderByAggregateInput
+    _min?: InfluencerDetailMinOrderByAggregateInput
+    _sum?: InfluencerDetailSumOrderByAggregateInput
   }
 
-  export type UserDetailScalarWhereWithAggregatesInput = {
-    AND?: UserDetailScalarWhereWithAggregatesInput | UserDetailScalarWhereWithAggregatesInput[]
-    OR?: UserDetailScalarWhereWithAggregatesInput[]
-    NOT?: UserDetailScalarWhereWithAggregatesInput | UserDetailScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"UserDetail"> | number
-    contentType?: StringNullableListFilter<"UserDetail">
-    influencerType?: StringNullableListFilter<"UserDetail">
-    audienceAge?: IntWithAggregatesFilter<"UserDetail"> | number
-    posts?: StringWithAggregatesFilter<"UserDetail"> | string
-    platformLink?: StringNullableListFilter<"UserDetail">
-    authorId?: IntWithAggregatesFilter<"UserDetail"> | number
+  export type InfluencerDetailScalarWhereWithAggregatesInput = {
+    AND?: InfluencerDetailScalarWhereWithAggregatesInput | InfluencerDetailScalarWhereWithAggregatesInput[]
+    OR?: InfluencerDetailScalarWhereWithAggregatesInput[]
+    NOT?: InfluencerDetailScalarWhereWithAggregatesInput | InfluencerDetailScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"InfluencerDetail"> | number
+    contentType?: StringNullableListFilter<"InfluencerDetail">
+    influencerType?: StringNullableListFilter<"InfluencerDetail">
+    audienceAge?: IntWithAggregatesFilter<"InfluencerDetail"> | number
+    posts?: StringWithAggregatesFilter<"InfluencerDetail"> | string
+    platformLink?: StringNullableListFilter<"InfluencerDetail">
+    authorId?: IntWithAggregatesFilter<"InfluencerDetail"> | number
   }
 
-  export type UserCreateInput = {
+  export type BrandsWhereInput = {
+    AND?: BrandsWhereInput | BrandsWhereInput[]
+    OR?: BrandsWhereInput[]
+    NOT?: BrandsWhereInput | BrandsWhereInput[]
+    id?: IntFilter<"Brands"> | number
+    email?: StringFilter<"Brands"> | string
+    insta_username?: StringFilter<"Brands"> | string
+    companyName?: StringFilter<"Brands"> | string
+    Details?: XOR<BrandsDetailsNullableRelationFilter, BrandsDetailsWhereInput> | null
+  }
+
+  export type BrandsOrderByWithRelationInput = {
+    id?: SortOrder
+    email?: SortOrder
+    insta_username?: SortOrder
+    companyName?: SortOrder
+    Details?: BrandsDetailsOrderByWithRelationInput
+  }
+
+  export type BrandsWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    email?: string
+    insta_username?: string
+    AND?: BrandsWhereInput | BrandsWhereInput[]
+    OR?: BrandsWhereInput[]
+    NOT?: BrandsWhereInput | BrandsWhereInput[]
+    companyName?: StringFilter<"Brands"> | string
+    Details?: XOR<BrandsDetailsNullableRelationFilter, BrandsDetailsWhereInput> | null
+  }, "id" | "email" | "insta_username">
+
+  export type BrandsOrderByWithAggregationInput = {
+    id?: SortOrder
+    email?: SortOrder
+    insta_username?: SortOrder
+    companyName?: SortOrder
+    _count?: BrandsCountOrderByAggregateInput
+    _avg?: BrandsAvgOrderByAggregateInput
+    _max?: BrandsMaxOrderByAggregateInput
+    _min?: BrandsMinOrderByAggregateInput
+    _sum?: BrandsSumOrderByAggregateInput
+  }
+
+  export type BrandsScalarWhereWithAggregatesInput = {
+    AND?: BrandsScalarWhereWithAggregatesInput | BrandsScalarWhereWithAggregatesInput[]
+    OR?: BrandsScalarWhereWithAggregatesInput[]
+    NOT?: BrandsScalarWhereWithAggregatesInput | BrandsScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Brands"> | number
+    email?: StringWithAggregatesFilter<"Brands"> | string
+    insta_username?: StringWithAggregatesFilter<"Brands"> | string
+    companyName?: StringWithAggregatesFilter<"Brands"> | string
+  }
+
+  export type BrandsDetailsWhereInput = {
+    AND?: BrandsDetailsWhereInput | BrandsDetailsWhereInput[]
+    OR?: BrandsDetailsWhereInput[]
+    NOT?: BrandsDetailsWhereInput | BrandsDetailsWhereInput[]
+    id?: IntFilter<"BrandsDetails"> | number
+    productDescription?: StringFilter<"BrandsDetails"> | string
+    productDescriptionFile?: StringFilter<"BrandsDetails"> | string
+    targetAudienceDescription?: StringNullableFilter<"BrandsDetails"> | string | null
+    influencerType?: StringNullableListFilter<"BrandsDetails">
+    no_Of_Posts_or_PromotionVideos?: IntFilter<"BrandsDetails"> | number
+    campaignGoal?: StringFilter<"BrandsDetails"> | string
+    campaignBudget?: IntFilter<"BrandsDetails"> | number
+    authorId?: IntFilter<"BrandsDetails"> | number
+    author?: XOR<BrandsRelationFilter, BrandsWhereInput>
+  }
+
+  export type BrandsDetailsOrderByWithRelationInput = {
+    id?: SortOrder
+    productDescription?: SortOrder
+    productDescriptionFile?: SortOrder
+    targetAudienceDescription?: SortOrderInput | SortOrder
+    influencerType?: SortOrder
+    no_Of_Posts_or_PromotionVideos?: SortOrder
+    campaignGoal?: SortOrder
+    campaignBudget?: SortOrder
+    authorId?: SortOrder
+    author?: BrandsOrderByWithRelationInput
+  }
+
+  export type BrandsDetailsWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    authorId?: number
+    AND?: BrandsDetailsWhereInput | BrandsDetailsWhereInput[]
+    OR?: BrandsDetailsWhereInput[]
+    NOT?: BrandsDetailsWhereInput | BrandsDetailsWhereInput[]
+    productDescription?: StringFilter<"BrandsDetails"> | string
+    productDescriptionFile?: StringFilter<"BrandsDetails"> | string
+    targetAudienceDescription?: StringNullableFilter<"BrandsDetails"> | string | null
+    influencerType?: StringNullableListFilter<"BrandsDetails">
+    no_Of_Posts_or_PromotionVideos?: IntFilter<"BrandsDetails"> | number
+    campaignGoal?: StringFilter<"BrandsDetails"> | string
+    campaignBudget?: IntFilter<"BrandsDetails"> | number
+    author?: XOR<BrandsRelationFilter, BrandsWhereInput>
+  }, "id" | "authorId">
+
+  export type BrandsDetailsOrderByWithAggregationInput = {
+    id?: SortOrder
+    productDescription?: SortOrder
+    productDescriptionFile?: SortOrder
+    targetAudienceDescription?: SortOrderInput | SortOrder
+    influencerType?: SortOrder
+    no_Of_Posts_or_PromotionVideos?: SortOrder
+    campaignGoal?: SortOrder
+    campaignBudget?: SortOrder
+    authorId?: SortOrder
+    _count?: BrandsDetailsCountOrderByAggregateInput
+    _avg?: BrandsDetailsAvgOrderByAggregateInput
+    _max?: BrandsDetailsMaxOrderByAggregateInput
+    _min?: BrandsDetailsMinOrderByAggregateInput
+    _sum?: BrandsDetailsSumOrderByAggregateInput
+  }
+
+  export type BrandsDetailsScalarWhereWithAggregatesInput = {
+    AND?: BrandsDetailsScalarWhereWithAggregatesInput | BrandsDetailsScalarWhereWithAggregatesInput[]
+    OR?: BrandsDetailsScalarWhereWithAggregatesInput[]
+    NOT?: BrandsDetailsScalarWhereWithAggregatesInput | BrandsDetailsScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"BrandsDetails"> | number
+    productDescription?: StringWithAggregatesFilter<"BrandsDetails"> | string
+    productDescriptionFile?: StringWithAggregatesFilter<"BrandsDetails"> | string
+    targetAudienceDescription?: StringNullableWithAggregatesFilter<"BrandsDetails"> | string | null
+    influencerType?: StringNullableListFilter<"BrandsDetails">
+    no_Of_Posts_or_PromotionVideos?: IntWithAggregatesFilter<"BrandsDetails"> | number
+    campaignGoal?: StringWithAggregatesFilter<"BrandsDetails"> | string
+    campaignBudget?: IntWithAggregatesFilter<"BrandsDetails"> | number
+    authorId?: IntWithAggregatesFilter<"BrandsDetails"> | number
+  }
+
+  export type InfluencersCreateInput = {
     email: string
     insta_username: string
     name?: string | null
-    Details?: UserDetailCreateNestedManyWithoutAuthorInput
+    Details?: InfluencerDetailCreateNestedOneWithoutAuthorInput
   }
 
-  export type UserUncheckedCreateInput = {
+  export type InfluencersUncheckedCreateInput = {
     id?: number
     email: string
     insta_username: string
     name?: string | null
-    Details?: UserDetailUncheckedCreateNestedManyWithoutAuthorInput
+    Details?: InfluencerDetailUncheckedCreateNestedOneWithoutAuthorInput
   }
 
-  export type UserUpdateInput = {
+  export type InfluencersUpdateInput = {
     email?: StringFieldUpdateOperationsInput | string
     insta_username?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    Details?: UserDetailUpdateManyWithoutAuthorNestedInput
+    Details?: InfluencerDetailUpdateOneWithoutAuthorNestedInput
   }
 
-  export type UserUncheckedUpdateInput = {
+  export type InfluencersUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     email?: StringFieldUpdateOperationsInput | string
     insta_username?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    Details?: UserDetailUncheckedUpdateManyWithoutAuthorNestedInput
+    Details?: InfluencerDetailUncheckedUpdateOneWithoutAuthorNestedInput
   }
 
-  export type UserCreateManyInput = {
+  export type InfluencersCreateManyInput = {
     id?: number
     email: string
     insta_username: string
     name?: string | null
   }
 
-  export type UserUpdateManyMutationInput = {
+  export type InfluencersUpdateManyMutationInput = {
     email?: StringFieldUpdateOperationsInput | string
     insta_username?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
-  export type UserUncheckedUpdateManyInput = {
+  export type InfluencersUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     email?: StringFieldUpdateOperationsInput | string
     insta_username?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
-  export type UserDetailCreateInput = {
-    contentType?: UserDetailCreatecontentTypeInput | string[]
-    influencerType?: UserDetailCreateinfluencerTypeInput | string[]
+  export type InfluencerDetailCreateInput = {
+    contentType?: InfluencerDetailCreatecontentTypeInput | string[]
+    influencerType?: InfluencerDetailCreateinfluencerTypeInput | string[]
     audienceAge: number
     posts: string
-    platformLink?: UserDetailCreateplatformLinkInput | string[]
-    author: UserCreateNestedOneWithoutDetailsInput
+    platformLink?: InfluencerDetailCreateplatformLinkInput | string[]
+    author: InfluencersCreateNestedOneWithoutDetailsInput
   }
 
-  export type UserDetailUncheckedCreateInput = {
+  export type InfluencerDetailUncheckedCreateInput = {
     id?: number
-    contentType?: UserDetailCreatecontentTypeInput | string[]
-    influencerType?: UserDetailCreateinfluencerTypeInput | string[]
+    contentType?: InfluencerDetailCreatecontentTypeInput | string[]
+    influencerType?: InfluencerDetailCreateinfluencerTypeInput | string[]
     audienceAge: number
     posts: string
-    platformLink?: UserDetailCreateplatformLinkInput | string[]
+    platformLink?: InfluencerDetailCreateplatformLinkInput | string[]
     authorId: number
   }
 
-  export type UserDetailUpdateInput = {
-    contentType?: UserDetailUpdatecontentTypeInput | string[]
-    influencerType?: UserDetailUpdateinfluencerTypeInput | string[]
+  export type InfluencerDetailUpdateInput = {
+    contentType?: InfluencerDetailUpdatecontentTypeInput | string[]
+    influencerType?: InfluencerDetailUpdateinfluencerTypeInput | string[]
     audienceAge?: IntFieldUpdateOperationsInput | number
     posts?: StringFieldUpdateOperationsInput | string
-    platformLink?: UserDetailUpdateplatformLinkInput | string[]
-    author?: UserUpdateOneRequiredWithoutDetailsNestedInput
+    platformLink?: InfluencerDetailUpdateplatformLinkInput | string[]
+    author?: InfluencersUpdateOneRequiredWithoutDetailsNestedInput
   }
 
-  export type UserDetailUncheckedUpdateInput = {
+  export type InfluencerDetailUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    contentType?: UserDetailUpdatecontentTypeInput | string[]
-    influencerType?: UserDetailUpdateinfluencerTypeInput | string[]
+    contentType?: InfluencerDetailUpdatecontentTypeInput | string[]
+    influencerType?: InfluencerDetailUpdateinfluencerTypeInput | string[]
     audienceAge?: IntFieldUpdateOperationsInput | number
     posts?: StringFieldUpdateOperationsInput | string
-    platformLink?: UserDetailUpdateplatformLinkInput | string[]
+    platformLink?: InfluencerDetailUpdateplatformLinkInput | string[]
     authorId?: IntFieldUpdateOperationsInput | number
   }
 
-  export type UserDetailCreateManyInput = {
+  export type InfluencerDetailCreateManyInput = {
     id?: number
-    contentType?: UserDetailCreatecontentTypeInput | string[]
-    influencerType?: UserDetailCreateinfluencerTypeInput | string[]
+    contentType?: InfluencerDetailCreatecontentTypeInput | string[]
+    influencerType?: InfluencerDetailCreateinfluencerTypeInput | string[]
     audienceAge: number
     posts: string
-    platformLink?: UserDetailCreateplatformLinkInput | string[]
+    platformLink?: InfluencerDetailCreateplatformLinkInput | string[]
     authorId: number
   }
 
-  export type UserDetailUpdateManyMutationInput = {
-    contentType?: UserDetailUpdatecontentTypeInput | string[]
-    influencerType?: UserDetailUpdateinfluencerTypeInput | string[]
+  export type InfluencerDetailUpdateManyMutationInput = {
+    contentType?: InfluencerDetailUpdatecontentTypeInput | string[]
+    influencerType?: InfluencerDetailUpdateinfluencerTypeInput | string[]
     audienceAge?: IntFieldUpdateOperationsInput | number
     posts?: StringFieldUpdateOperationsInput | string
-    platformLink?: UserDetailUpdateplatformLinkInput | string[]
+    platformLink?: InfluencerDetailUpdateplatformLinkInput | string[]
   }
 
-  export type UserDetailUncheckedUpdateManyInput = {
+  export type InfluencerDetailUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    contentType?: UserDetailUpdatecontentTypeInput | string[]
-    influencerType?: UserDetailUpdateinfluencerTypeInput | string[]
+    contentType?: InfluencerDetailUpdatecontentTypeInput | string[]
+    influencerType?: InfluencerDetailUpdateinfluencerTypeInput | string[]
     audienceAge?: IntFieldUpdateOperationsInput | number
     posts?: StringFieldUpdateOperationsInput | string
-    platformLink?: UserDetailUpdateplatformLinkInput | string[]
+    platformLink?: InfluencerDetailUpdateplatformLinkInput | string[]
+    authorId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type BrandsCreateInput = {
+    email: string
+    insta_username: string
+    companyName: string
+    Details?: BrandsDetailsCreateNestedOneWithoutAuthorInput
+  }
+
+  export type BrandsUncheckedCreateInput = {
+    id?: number
+    email: string
+    insta_username: string
+    companyName: string
+    Details?: BrandsDetailsUncheckedCreateNestedOneWithoutAuthorInput
+  }
+
+  export type BrandsUpdateInput = {
+    email?: StringFieldUpdateOperationsInput | string
+    insta_username?: StringFieldUpdateOperationsInput | string
+    companyName?: StringFieldUpdateOperationsInput | string
+    Details?: BrandsDetailsUpdateOneWithoutAuthorNestedInput
+  }
+
+  export type BrandsUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    email?: StringFieldUpdateOperationsInput | string
+    insta_username?: StringFieldUpdateOperationsInput | string
+    companyName?: StringFieldUpdateOperationsInput | string
+    Details?: BrandsDetailsUncheckedUpdateOneWithoutAuthorNestedInput
+  }
+
+  export type BrandsCreateManyInput = {
+    id?: number
+    email: string
+    insta_username: string
+    companyName: string
+  }
+
+  export type BrandsUpdateManyMutationInput = {
+    email?: StringFieldUpdateOperationsInput | string
+    insta_username?: StringFieldUpdateOperationsInput | string
+    companyName?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type BrandsUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    email?: StringFieldUpdateOperationsInput | string
+    insta_username?: StringFieldUpdateOperationsInput | string
+    companyName?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type BrandsDetailsCreateInput = {
+    productDescription: string
+    productDescriptionFile: string
+    targetAudienceDescription?: string | null
+    influencerType?: BrandsDetailsCreateinfluencerTypeInput | string[]
+    no_Of_Posts_or_PromotionVideos: number
+    campaignGoal: string
+    campaignBudget: number
+    author: BrandsCreateNestedOneWithoutDetailsInput
+  }
+
+  export type BrandsDetailsUncheckedCreateInput = {
+    id?: number
+    productDescription: string
+    productDescriptionFile: string
+    targetAudienceDescription?: string | null
+    influencerType?: BrandsDetailsCreateinfluencerTypeInput | string[]
+    no_Of_Posts_or_PromotionVideos: number
+    campaignGoal: string
+    campaignBudget: number
+    authorId: number
+  }
+
+  export type BrandsDetailsUpdateInput = {
+    productDescription?: StringFieldUpdateOperationsInput | string
+    productDescriptionFile?: StringFieldUpdateOperationsInput | string
+    targetAudienceDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    influencerType?: BrandsDetailsUpdateinfluencerTypeInput | string[]
+    no_Of_Posts_or_PromotionVideos?: IntFieldUpdateOperationsInput | number
+    campaignGoal?: StringFieldUpdateOperationsInput | string
+    campaignBudget?: IntFieldUpdateOperationsInput | number
+    author?: BrandsUpdateOneRequiredWithoutDetailsNestedInput
+  }
+
+  export type BrandsDetailsUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    productDescription?: StringFieldUpdateOperationsInput | string
+    productDescriptionFile?: StringFieldUpdateOperationsInput | string
+    targetAudienceDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    influencerType?: BrandsDetailsUpdateinfluencerTypeInput | string[]
+    no_Of_Posts_or_PromotionVideos?: IntFieldUpdateOperationsInput | number
+    campaignGoal?: StringFieldUpdateOperationsInput | string
+    campaignBudget?: IntFieldUpdateOperationsInput | number
+    authorId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type BrandsDetailsCreateManyInput = {
+    id?: number
+    productDescription: string
+    productDescriptionFile: string
+    targetAudienceDescription?: string | null
+    influencerType?: BrandsDetailsCreateinfluencerTypeInput | string[]
+    no_Of_Posts_or_PromotionVideos: number
+    campaignGoal: string
+    campaignBudget: number
+    authorId: number
+  }
+
+  export type BrandsDetailsUpdateManyMutationInput = {
+    productDescription?: StringFieldUpdateOperationsInput | string
+    productDescriptionFile?: StringFieldUpdateOperationsInput | string
+    targetAudienceDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    influencerType?: BrandsDetailsUpdateinfluencerTypeInput | string[]
+    no_Of_Posts_or_PromotionVideos?: IntFieldUpdateOperationsInput | number
+    campaignGoal?: StringFieldUpdateOperationsInput | string
+    campaignBudget?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type BrandsDetailsUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    productDescription?: StringFieldUpdateOperationsInput | string
+    productDescriptionFile?: StringFieldUpdateOperationsInput | string
+    targetAudienceDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    influencerType?: BrandsDetailsUpdateinfluencerTypeInput | string[]
+    no_Of_Posts_or_PromotionVideos?: IntFieldUpdateOperationsInput | number
+    campaignGoal?: StringFieldUpdateOperationsInput | string
+    campaignBudget?: IntFieldUpdateOperationsInput | number
     authorId?: IntFieldUpdateOperationsInput | number
   }
 
@@ -3292,10 +5661,9 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
-  export type UserDetailListRelationFilter = {
-    every?: UserDetailWhereInput
-    some?: UserDetailWhereInput
-    none?: UserDetailWhereInput
+  export type InfluencerDetailNullableRelationFilter = {
+    is?: InfluencerDetailWhereInput | null
+    isNot?: InfluencerDetailWhereInput | null
   }
 
   export type SortOrderInput = {
@@ -3303,36 +5671,32 @@ export namespace Prisma {
     nulls?: NullsOrder
   }
 
-  export type UserDetailOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type UserCountOrderByAggregateInput = {
+  export type InfluencersCountOrderByAggregateInput = {
     id?: SortOrder
     email?: SortOrder
     insta_username?: SortOrder
     name?: SortOrder
   }
 
-  export type UserAvgOrderByAggregateInput = {
+  export type InfluencersAvgOrderByAggregateInput = {
     id?: SortOrder
   }
 
-  export type UserMaxOrderByAggregateInput = {
-    id?: SortOrder
-    email?: SortOrder
-    insta_username?: SortOrder
-    name?: SortOrder
-  }
-
-  export type UserMinOrderByAggregateInput = {
+  export type InfluencersMaxOrderByAggregateInput = {
     id?: SortOrder
     email?: SortOrder
     insta_username?: SortOrder
     name?: SortOrder
   }
 
-  export type UserSumOrderByAggregateInput = {
+  export type InfluencersMinOrderByAggregateInput = {
+    id?: SortOrder
+    email?: SortOrder
+    insta_username?: SortOrder
+    name?: SortOrder
+  }
+
+  export type InfluencersSumOrderByAggregateInput = {
     id?: SortOrder
   }
 
@@ -3396,12 +5760,12 @@ export namespace Prisma {
     isEmpty?: boolean
   }
 
-  export type UserRelationFilter = {
-    is?: UserWhereInput
-    isNot?: UserWhereInput
+  export type InfluencersRelationFilter = {
+    is?: InfluencersWhereInput
+    isNot?: InfluencersWhereInput
   }
 
-  export type UserDetailCountOrderByAggregateInput = {
+  export type InfluencerDetailCountOrderByAggregateInput = {
     id?: SortOrder
     contentType?: SortOrder
     influencerType?: SortOrder
@@ -3411,44 +5775,129 @@ export namespace Prisma {
     authorId?: SortOrder
   }
 
-  export type UserDetailAvgOrderByAggregateInput = {
+  export type InfluencerDetailAvgOrderByAggregateInput = {
     id?: SortOrder
     audienceAge?: SortOrder
     authorId?: SortOrder
   }
 
-  export type UserDetailMaxOrderByAggregateInput = {
-    id?: SortOrder
-    audienceAge?: SortOrder
-    posts?: SortOrder
-    authorId?: SortOrder
-  }
-
-  export type UserDetailMinOrderByAggregateInput = {
+  export type InfluencerDetailMaxOrderByAggregateInput = {
     id?: SortOrder
     audienceAge?: SortOrder
     posts?: SortOrder
     authorId?: SortOrder
   }
 
-  export type UserDetailSumOrderByAggregateInput = {
+  export type InfluencerDetailMinOrderByAggregateInput = {
+    id?: SortOrder
+    audienceAge?: SortOrder
+    posts?: SortOrder
+    authorId?: SortOrder
+  }
+
+  export type InfluencerDetailSumOrderByAggregateInput = {
     id?: SortOrder
     audienceAge?: SortOrder
     authorId?: SortOrder
   }
 
-  export type UserDetailCreateNestedManyWithoutAuthorInput = {
-    create?: XOR<UserDetailCreateWithoutAuthorInput, UserDetailUncheckedCreateWithoutAuthorInput> | UserDetailCreateWithoutAuthorInput[] | UserDetailUncheckedCreateWithoutAuthorInput[]
-    connectOrCreate?: UserDetailCreateOrConnectWithoutAuthorInput | UserDetailCreateOrConnectWithoutAuthorInput[]
-    createMany?: UserDetailCreateManyAuthorInputEnvelope
-    connect?: UserDetailWhereUniqueInput | UserDetailWhereUniqueInput[]
+  export type BrandsDetailsNullableRelationFilter = {
+    is?: BrandsDetailsWhereInput | null
+    isNot?: BrandsDetailsWhereInput | null
   }
 
-  export type UserDetailUncheckedCreateNestedManyWithoutAuthorInput = {
-    create?: XOR<UserDetailCreateWithoutAuthorInput, UserDetailUncheckedCreateWithoutAuthorInput> | UserDetailCreateWithoutAuthorInput[] | UserDetailUncheckedCreateWithoutAuthorInput[]
-    connectOrCreate?: UserDetailCreateOrConnectWithoutAuthorInput | UserDetailCreateOrConnectWithoutAuthorInput[]
-    createMany?: UserDetailCreateManyAuthorInputEnvelope
-    connect?: UserDetailWhereUniqueInput | UserDetailWhereUniqueInput[]
+  export type BrandsCountOrderByAggregateInput = {
+    id?: SortOrder
+    email?: SortOrder
+    insta_username?: SortOrder
+    companyName?: SortOrder
+  }
+
+  export type BrandsAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type BrandsMaxOrderByAggregateInput = {
+    id?: SortOrder
+    email?: SortOrder
+    insta_username?: SortOrder
+    companyName?: SortOrder
+  }
+
+  export type BrandsMinOrderByAggregateInput = {
+    id?: SortOrder
+    email?: SortOrder
+    insta_username?: SortOrder
+    companyName?: SortOrder
+  }
+
+  export type BrandsSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type BrandsRelationFilter = {
+    is?: BrandsWhereInput
+    isNot?: BrandsWhereInput
+  }
+
+  export type BrandsDetailsCountOrderByAggregateInput = {
+    id?: SortOrder
+    productDescription?: SortOrder
+    productDescriptionFile?: SortOrder
+    targetAudienceDescription?: SortOrder
+    influencerType?: SortOrder
+    no_Of_Posts_or_PromotionVideos?: SortOrder
+    campaignGoal?: SortOrder
+    campaignBudget?: SortOrder
+    authorId?: SortOrder
+  }
+
+  export type BrandsDetailsAvgOrderByAggregateInput = {
+    id?: SortOrder
+    no_Of_Posts_or_PromotionVideos?: SortOrder
+    campaignBudget?: SortOrder
+    authorId?: SortOrder
+  }
+
+  export type BrandsDetailsMaxOrderByAggregateInput = {
+    id?: SortOrder
+    productDescription?: SortOrder
+    productDescriptionFile?: SortOrder
+    targetAudienceDescription?: SortOrder
+    no_Of_Posts_or_PromotionVideos?: SortOrder
+    campaignGoal?: SortOrder
+    campaignBudget?: SortOrder
+    authorId?: SortOrder
+  }
+
+  export type BrandsDetailsMinOrderByAggregateInput = {
+    id?: SortOrder
+    productDescription?: SortOrder
+    productDescriptionFile?: SortOrder
+    targetAudienceDescription?: SortOrder
+    no_Of_Posts_or_PromotionVideos?: SortOrder
+    campaignGoal?: SortOrder
+    campaignBudget?: SortOrder
+    authorId?: SortOrder
+  }
+
+  export type BrandsDetailsSumOrderByAggregateInput = {
+    id?: SortOrder
+    no_Of_Posts_or_PromotionVideos?: SortOrder
+    campaignBudget?: SortOrder
+    authorId?: SortOrder
+  }
+
+  export type InfluencerDetailCreateNestedOneWithoutAuthorInput = {
+    create?: XOR<InfluencerDetailCreateWithoutAuthorInput, InfluencerDetailUncheckedCreateWithoutAuthorInput>
+    connectOrCreate?: InfluencerDetailCreateOrConnectWithoutAuthorInput
+    connect?: InfluencerDetailWhereUniqueInput
+  }
+
+  export type InfluencerDetailUncheckedCreateNestedOneWithoutAuthorInput = {
+    create?: XOR<InfluencerDetailCreateWithoutAuthorInput, InfluencerDetailUncheckedCreateWithoutAuthorInput>
+    connectOrCreate?: InfluencerDetailCreateOrConnectWithoutAuthorInput
+    connect?: InfluencerDetailWhereUniqueInput
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -3459,18 +5908,14 @@ export namespace Prisma {
     set?: string | null
   }
 
-  export type UserDetailUpdateManyWithoutAuthorNestedInput = {
-    create?: XOR<UserDetailCreateWithoutAuthorInput, UserDetailUncheckedCreateWithoutAuthorInput> | UserDetailCreateWithoutAuthorInput[] | UserDetailUncheckedCreateWithoutAuthorInput[]
-    connectOrCreate?: UserDetailCreateOrConnectWithoutAuthorInput | UserDetailCreateOrConnectWithoutAuthorInput[]
-    upsert?: UserDetailUpsertWithWhereUniqueWithoutAuthorInput | UserDetailUpsertWithWhereUniqueWithoutAuthorInput[]
-    createMany?: UserDetailCreateManyAuthorInputEnvelope
-    set?: UserDetailWhereUniqueInput | UserDetailWhereUniqueInput[]
-    disconnect?: UserDetailWhereUniqueInput | UserDetailWhereUniqueInput[]
-    delete?: UserDetailWhereUniqueInput | UserDetailWhereUniqueInput[]
-    connect?: UserDetailWhereUniqueInput | UserDetailWhereUniqueInput[]
-    update?: UserDetailUpdateWithWhereUniqueWithoutAuthorInput | UserDetailUpdateWithWhereUniqueWithoutAuthorInput[]
-    updateMany?: UserDetailUpdateManyWithWhereWithoutAuthorInput | UserDetailUpdateManyWithWhereWithoutAuthorInput[]
-    deleteMany?: UserDetailScalarWhereInput | UserDetailScalarWhereInput[]
+  export type InfluencerDetailUpdateOneWithoutAuthorNestedInput = {
+    create?: XOR<InfluencerDetailCreateWithoutAuthorInput, InfluencerDetailUncheckedCreateWithoutAuthorInput>
+    connectOrCreate?: InfluencerDetailCreateOrConnectWithoutAuthorInput
+    upsert?: InfluencerDetailUpsertWithoutAuthorInput
+    disconnect?: InfluencerDetailWhereInput | boolean
+    delete?: InfluencerDetailWhereInput | boolean
+    connect?: InfluencerDetailWhereUniqueInput
+    update?: XOR<XOR<InfluencerDetailUpdateToOneWithWhereWithoutAuthorInput, InfluencerDetailUpdateWithoutAuthorInput>, InfluencerDetailUncheckedUpdateWithoutAuthorInput>
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -3481,59 +5926,110 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type UserDetailUncheckedUpdateManyWithoutAuthorNestedInput = {
-    create?: XOR<UserDetailCreateWithoutAuthorInput, UserDetailUncheckedCreateWithoutAuthorInput> | UserDetailCreateWithoutAuthorInput[] | UserDetailUncheckedCreateWithoutAuthorInput[]
-    connectOrCreate?: UserDetailCreateOrConnectWithoutAuthorInput | UserDetailCreateOrConnectWithoutAuthorInput[]
-    upsert?: UserDetailUpsertWithWhereUniqueWithoutAuthorInput | UserDetailUpsertWithWhereUniqueWithoutAuthorInput[]
-    createMany?: UserDetailCreateManyAuthorInputEnvelope
-    set?: UserDetailWhereUniqueInput | UserDetailWhereUniqueInput[]
-    disconnect?: UserDetailWhereUniqueInput | UserDetailWhereUniqueInput[]
-    delete?: UserDetailWhereUniqueInput | UserDetailWhereUniqueInput[]
-    connect?: UserDetailWhereUniqueInput | UserDetailWhereUniqueInput[]
-    update?: UserDetailUpdateWithWhereUniqueWithoutAuthorInput | UserDetailUpdateWithWhereUniqueWithoutAuthorInput[]
-    updateMany?: UserDetailUpdateManyWithWhereWithoutAuthorInput | UserDetailUpdateManyWithWhereWithoutAuthorInput[]
-    deleteMany?: UserDetailScalarWhereInput | UserDetailScalarWhereInput[]
+  export type InfluencerDetailUncheckedUpdateOneWithoutAuthorNestedInput = {
+    create?: XOR<InfluencerDetailCreateWithoutAuthorInput, InfluencerDetailUncheckedCreateWithoutAuthorInput>
+    connectOrCreate?: InfluencerDetailCreateOrConnectWithoutAuthorInput
+    upsert?: InfluencerDetailUpsertWithoutAuthorInput
+    disconnect?: InfluencerDetailWhereInput | boolean
+    delete?: InfluencerDetailWhereInput | boolean
+    connect?: InfluencerDetailWhereUniqueInput
+    update?: XOR<XOR<InfluencerDetailUpdateToOneWithWhereWithoutAuthorInput, InfluencerDetailUpdateWithoutAuthorInput>, InfluencerDetailUncheckedUpdateWithoutAuthorInput>
   }
 
-  export type UserDetailCreatecontentTypeInput = {
+  export type InfluencerDetailCreatecontentTypeInput = {
     set: string[]
   }
 
-  export type UserDetailCreateinfluencerTypeInput = {
+  export type InfluencerDetailCreateinfluencerTypeInput = {
     set: string[]
   }
 
-  export type UserDetailCreateplatformLinkInput = {
+  export type InfluencerDetailCreateplatformLinkInput = {
     set: string[]
   }
 
-  export type UserCreateNestedOneWithoutDetailsInput = {
-    create?: XOR<UserCreateWithoutDetailsInput, UserUncheckedCreateWithoutDetailsInput>
-    connectOrCreate?: UserCreateOrConnectWithoutDetailsInput
-    connect?: UserWhereUniqueInput
+  export type InfluencersCreateNestedOneWithoutDetailsInput = {
+    create?: XOR<InfluencersCreateWithoutDetailsInput, InfluencersUncheckedCreateWithoutDetailsInput>
+    connectOrCreate?: InfluencersCreateOrConnectWithoutDetailsInput
+    connect?: InfluencersWhereUniqueInput
   }
 
-  export type UserDetailUpdatecontentTypeInput = {
+  export type InfluencerDetailUpdatecontentTypeInput = {
     set?: string[]
     push?: string | string[]
   }
 
-  export type UserDetailUpdateinfluencerTypeInput = {
+  export type InfluencerDetailUpdateinfluencerTypeInput = {
     set?: string[]
     push?: string | string[]
   }
 
-  export type UserDetailUpdateplatformLinkInput = {
+  export type InfluencerDetailUpdateplatformLinkInput = {
     set?: string[]
     push?: string | string[]
   }
 
-  export type UserUpdateOneRequiredWithoutDetailsNestedInput = {
-    create?: XOR<UserCreateWithoutDetailsInput, UserUncheckedCreateWithoutDetailsInput>
-    connectOrCreate?: UserCreateOrConnectWithoutDetailsInput
-    upsert?: UserUpsertWithoutDetailsInput
-    connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutDetailsInput, UserUpdateWithoutDetailsInput>, UserUncheckedUpdateWithoutDetailsInput>
+  export type InfluencersUpdateOneRequiredWithoutDetailsNestedInput = {
+    create?: XOR<InfluencersCreateWithoutDetailsInput, InfluencersUncheckedCreateWithoutDetailsInput>
+    connectOrCreate?: InfluencersCreateOrConnectWithoutDetailsInput
+    upsert?: InfluencersUpsertWithoutDetailsInput
+    connect?: InfluencersWhereUniqueInput
+    update?: XOR<XOR<InfluencersUpdateToOneWithWhereWithoutDetailsInput, InfluencersUpdateWithoutDetailsInput>, InfluencersUncheckedUpdateWithoutDetailsInput>
+  }
+
+  export type BrandsDetailsCreateNestedOneWithoutAuthorInput = {
+    create?: XOR<BrandsDetailsCreateWithoutAuthorInput, BrandsDetailsUncheckedCreateWithoutAuthorInput>
+    connectOrCreate?: BrandsDetailsCreateOrConnectWithoutAuthorInput
+    connect?: BrandsDetailsWhereUniqueInput
+  }
+
+  export type BrandsDetailsUncheckedCreateNestedOneWithoutAuthorInput = {
+    create?: XOR<BrandsDetailsCreateWithoutAuthorInput, BrandsDetailsUncheckedCreateWithoutAuthorInput>
+    connectOrCreate?: BrandsDetailsCreateOrConnectWithoutAuthorInput
+    connect?: BrandsDetailsWhereUniqueInput
+  }
+
+  export type BrandsDetailsUpdateOneWithoutAuthorNestedInput = {
+    create?: XOR<BrandsDetailsCreateWithoutAuthorInput, BrandsDetailsUncheckedCreateWithoutAuthorInput>
+    connectOrCreate?: BrandsDetailsCreateOrConnectWithoutAuthorInput
+    upsert?: BrandsDetailsUpsertWithoutAuthorInput
+    disconnect?: BrandsDetailsWhereInput | boolean
+    delete?: BrandsDetailsWhereInput | boolean
+    connect?: BrandsDetailsWhereUniqueInput
+    update?: XOR<XOR<BrandsDetailsUpdateToOneWithWhereWithoutAuthorInput, BrandsDetailsUpdateWithoutAuthorInput>, BrandsDetailsUncheckedUpdateWithoutAuthorInput>
+  }
+
+  export type BrandsDetailsUncheckedUpdateOneWithoutAuthorNestedInput = {
+    create?: XOR<BrandsDetailsCreateWithoutAuthorInput, BrandsDetailsUncheckedCreateWithoutAuthorInput>
+    connectOrCreate?: BrandsDetailsCreateOrConnectWithoutAuthorInput
+    upsert?: BrandsDetailsUpsertWithoutAuthorInput
+    disconnect?: BrandsDetailsWhereInput | boolean
+    delete?: BrandsDetailsWhereInput | boolean
+    connect?: BrandsDetailsWhereUniqueInput
+    update?: XOR<XOR<BrandsDetailsUpdateToOneWithWhereWithoutAuthorInput, BrandsDetailsUpdateWithoutAuthorInput>, BrandsDetailsUncheckedUpdateWithoutAuthorInput>
+  }
+
+  export type BrandsDetailsCreateinfluencerTypeInput = {
+    set: string[]
+  }
+
+  export type BrandsCreateNestedOneWithoutDetailsInput = {
+    create?: XOR<BrandsCreateWithoutDetailsInput, BrandsUncheckedCreateWithoutDetailsInput>
+    connectOrCreate?: BrandsCreateOrConnectWithoutDetailsInput
+    connect?: BrandsWhereUniqueInput
+  }
+
+  export type BrandsDetailsUpdateinfluencerTypeInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
+  export type BrandsUpdateOneRequiredWithoutDetailsNestedInput = {
+    create?: XOR<BrandsCreateWithoutDetailsInput, BrandsUncheckedCreateWithoutDetailsInput>
+    connectOrCreate?: BrandsCreateOrConnectWithoutDetailsInput
+    upsert?: BrandsUpsertWithoutDetailsInput
+    connect?: BrandsWhereUniqueInput
+    update?: XOR<XOR<BrandsUpdateToOneWithWhereWithoutDetailsInput, BrandsUpdateWithoutDetailsInput>, BrandsUncheckedUpdateWithoutDetailsInput>
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -3647,137 +6143,196 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
-  export type UserDetailCreateWithoutAuthorInput = {
-    contentType?: UserDetailCreatecontentTypeInput | string[]
-    influencerType?: UserDetailCreateinfluencerTypeInput | string[]
+  export type InfluencerDetailCreateWithoutAuthorInput = {
+    contentType?: InfluencerDetailCreatecontentTypeInput | string[]
+    influencerType?: InfluencerDetailCreateinfluencerTypeInput | string[]
     audienceAge: number
     posts: string
-    platformLink?: UserDetailCreateplatformLinkInput | string[]
+    platformLink?: InfluencerDetailCreateplatformLinkInput | string[]
   }
 
-  export type UserDetailUncheckedCreateWithoutAuthorInput = {
+  export type InfluencerDetailUncheckedCreateWithoutAuthorInput = {
     id?: number
-    contentType?: UserDetailCreatecontentTypeInput | string[]
-    influencerType?: UserDetailCreateinfluencerTypeInput | string[]
+    contentType?: InfluencerDetailCreatecontentTypeInput | string[]
+    influencerType?: InfluencerDetailCreateinfluencerTypeInput | string[]
     audienceAge: number
     posts: string
-    platformLink?: UserDetailCreateplatformLinkInput | string[]
+    platformLink?: InfluencerDetailCreateplatformLinkInput | string[]
   }
 
-  export type UserDetailCreateOrConnectWithoutAuthorInput = {
-    where: UserDetailWhereUniqueInput
-    create: XOR<UserDetailCreateWithoutAuthorInput, UserDetailUncheckedCreateWithoutAuthorInput>
+  export type InfluencerDetailCreateOrConnectWithoutAuthorInput = {
+    where: InfluencerDetailWhereUniqueInput
+    create: XOR<InfluencerDetailCreateWithoutAuthorInput, InfluencerDetailUncheckedCreateWithoutAuthorInput>
   }
 
-  export type UserDetailCreateManyAuthorInputEnvelope = {
-    data: UserDetailCreateManyAuthorInput | UserDetailCreateManyAuthorInput[]
-    skipDuplicates?: boolean
+  export type InfluencerDetailUpsertWithoutAuthorInput = {
+    update: XOR<InfluencerDetailUpdateWithoutAuthorInput, InfluencerDetailUncheckedUpdateWithoutAuthorInput>
+    create: XOR<InfluencerDetailCreateWithoutAuthorInput, InfluencerDetailUncheckedCreateWithoutAuthorInput>
+    where?: InfluencerDetailWhereInput
   }
 
-  export type UserDetailUpsertWithWhereUniqueWithoutAuthorInput = {
-    where: UserDetailWhereUniqueInput
-    update: XOR<UserDetailUpdateWithoutAuthorInput, UserDetailUncheckedUpdateWithoutAuthorInput>
-    create: XOR<UserDetailCreateWithoutAuthorInput, UserDetailUncheckedCreateWithoutAuthorInput>
+  export type InfluencerDetailUpdateToOneWithWhereWithoutAuthorInput = {
+    where?: InfluencerDetailWhereInput
+    data: XOR<InfluencerDetailUpdateWithoutAuthorInput, InfluencerDetailUncheckedUpdateWithoutAuthorInput>
   }
 
-  export type UserDetailUpdateWithWhereUniqueWithoutAuthorInput = {
-    where: UserDetailWhereUniqueInput
-    data: XOR<UserDetailUpdateWithoutAuthorInput, UserDetailUncheckedUpdateWithoutAuthorInput>
+  export type InfluencerDetailUpdateWithoutAuthorInput = {
+    contentType?: InfluencerDetailUpdatecontentTypeInput | string[]
+    influencerType?: InfluencerDetailUpdateinfluencerTypeInput | string[]
+    audienceAge?: IntFieldUpdateOperationsInput | number
+    posts?: StringFieldUpdateOperationsInput | string
+    platformLink?: InfluencerDetailUpdateplatformLinkInput | string[]
   }
 
-  export type UserDetailUpdateManyWithWhereWithoutAuthorInput = {
-    where: UserDetailScalarWhereInput
-    data: XOR<UserDetailUpdateManyMutationInput, UserDetailUncheckedUpdateManyWithoutAuthorInput>
+  export type InfluencerDetailUncheckedUpdateWithoutAuthorInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    contentType?: InfluencerDetailUpdatecontentTypeInput | string[]
+    influencerType?: InfluencerDetailUpdateinfluencerTypeInput | string[]
+    audienceAge?: IntFieldUpdateOperationsInput | number
+    posts?: StringFieldUpdateOperationsInput | string
+    platformLink?: InfluencerDetailUpdateplatformLinkInput | string[]
   }
 
-  export type UserDetailScalarWhereInput = {
-    AND?: UserDetailScalarWhereInput | UserDetailScalarWhereInput[]
-    OR?: UserDetailScalarWhereInput[]
-    NOT?: UserDetailScalarWhereInput | UserDetailScalarWhereInput[]
-    id?: IntFilter<"UserDetail"> | number
-    contentType?: StringNullableListFilter<"UserDetail">
-    influencerType?: StringNullableListFilter<"UserDetail">
-    audienceAge?: IntFilter<"UserDetail"> | number
-    posts?: StringFilter<"UserDetail"> | string
-    platformLink?: StringNullableListFilter<"UserDetail">
-    authorId?: IntFilter<"UserDetail"> | number
-  }
-
-  export type UserCreateWithoutDetailsInput = {
+  export type InfluencersCreateWithoutDetailsInput = {
     email: string
     insta_username: string
     name?: string | null
   }
 
-  export type UserUncheckedCreateWithoutDetailsInput = {
+  export type InfluencersUncheckedCreateWithoutDetailsInput = {
     id?: number
     email: string
     insta_username: string
     name?: string | null
   }
 
-  export type UserCreateOrConnectWithoutDetailsInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutDetailsInput, UserUncheckedCreateWithoutDetailsInput>
+  export type InfluencersCreateOrConnectWithoutDetailsInput = {
+    where: InfluencersWhereUniqueInput
+    create: XOR<InfluencersCreateWithoutDetailsInput, InfluencersUncheckedCreateWithoutDetailsInput>
   }
 
-  export type UserUpsertWithoutDetailsInput = {
-    update: XOR<UserUpdateWithoutDetailsInput, UserUncheckedUpdateWithoutDetailsInput>
-    create: XOR<UserCreateWithoutDetailsInput, UserUncheckedCreateWithoutDetailsInput>
-    where?: UserWhereInput
+  export type InfluencersUpsertWithoutDetailsInput = {
+    update: XOR<InfluencersUpdateWithoutDetailsInput, InfluencersUncheckedUpdateWithoutDetailsInput>
+    create: XOR<InfluencersCreateWithoutDetailsInput, InfluencersUncheckedCreateWithoutDetailsInput>
+    where?: InfluencersWhereInput
   }
 
-  export type UserUpdateToOneWithWhereWithoutDetailsInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutDetailsInput, UserUncheckedUpdateWithoutDetailsInput>
+  export type InfluencersUpdateToOneWithWhereWithoutDetailsInput = {
+    where?: InfluencersWhereInput
+    data: XOR<InfluencersUpdateWithoutDetailsInput, InfluencersUncheckedUpdateWithoutDetailsInput>
   }
 
-  export type UserUpdateWithoutDetailsInput = {
+  export type InfluencersUpdateWithoutDetailsInput = {
     email?: StringFieldUpdateOperationsInput | string
     insta_username?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
-  export type UserUncheckedUpdateWithoutDetailsInput = {
+  export type InfluencersUncheckedUpdateWithoutDetailsInput = {
     id?: IntFieldUpdateOperationsInput | number
     email?: StringFieldUpdateOperationsInput | string
     insta_username?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
-  export type UserDetailCreateManyAuthorInput = {
+  export type BrandsDetailsCreateWithoutAuthorInput = {
+    productDescription: string
+    productDescriptionFile: string
+    targetAudienceDescription?: string | null
+    influencerType?: BrandsDetailsCreateinfluencerTypeInput | string[]
+    no_Of_Posts_or_PromotionVideos: number
+    campaignGoal: string
+    campaignBudget: number
+  }
+
+  export type BrandsDetailsUncheckedCreateWithoutAuthorInput = {
     id?: number
-    contentType?: UserDetailCreatecontentTypeInput | string[]
-    influencerType?: UserDetailCreateinfluencerTypeInput | string[]
-    audienceAge: number
-    posts: string
-    platformLink?: UserDetailCreateplatformLinkInput | string[]
+    productDescription: string
+    productDescriptionFile: string
+    targetAudienceDescription?: string | null
+    influencerType?: BrandsDetailsCreateinfluencerTypeInput | string[]
+    no_Of_Posts_or_PromotionVideos: number
+    campaignGoal: string
+    campaignBudget: number
   }
 
-  export type UserDetailUpdateWithoutAuthorInput = {
-    contentType?: UserDetailUpdatecontentTypeInput | string[]
-    influencerType?: UserDetailUpdateinfluencerTypeInput | string[]
-    audienceAge?: IntFieldUpdateOperationsInput | number
-    posts?: StringFieldUpdateOperationsInput | string
-    platformLink?: UserDetailUpdateplatformLinkInput | string[]
+  export type BrandsDetailsCreateOrConnectWithoutAuthorInput = {
+    where: BrandsDetailsWhereUniqueInput
+    create: XOR<BrandsDetailsCreateWithoutAuthorInput, BrandsDetailsUncheckedCreateWithoutAuthorInput>
   }
 
-  export type UserDetailUncheckedUpdateWithoutAuthorInput = {
+  export type BrandsDetailsUpsertWithoutAuthorInput = {
+    update: XOR<BrandsDetailsUpdateWithoutAuthorInput, BrandsDetailsUncheckedUpdateWithoutAuthorInput>
+    create: XOR<BrandsDetailsCreateWithoutAuthorInput, BrandsDetailsUncheckedCreateWithoutAuthorInput>
+    where?: BrandsDetailsWhereInput
+  }
+
+  export type BrandsDetailsUpdateToOneWithWhereWithoutAuthorInput = {
+    where?: BrandsDetailsWhereInput
+    data: XOR<BrandsDetailsUpdateWithoutAuthorInput, BrandsDetailsUncheckedUpdateWithoutAuthorInput>
+  }
+
+  export type BrandsDetailsUpdateWithoutAuthorInput = {
+    productDescription?: StringFieldUpdateOperationsInput | string
+    productDescriptionFile?: StringFieldUpdateOperationsInput | string
+    targetAudienceDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    influencerType?: BrandsDetailsUpdateinfluencerTypeInput | string[]
+    no_Of_Posts_or_PromotionVideos?: IntFieldUpdateOperationsInput | number
+    campaignGoal?: StringFieldUpdateOperationsInput | string
+    campaignBudget?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type BrandsDetailsUncheckedUpdateWithoutAuthorInput = {
     id?: IntFieldUpdateOperationsInput | number
-    contentType?: UserDetailUpdatecontentTypeInput | string[]
-    influencerType?: UserDetailUpdateinfluencerTypeInput | string[]
-    audienceAge?: IntFieldUpdateOperationsInput | number
-    posts?: StringFieldUpdateOperationsInput | string
-    platformLink?: UserDetailUpdateplatformLinkInput | string[]
+    productDescription?: StringFieldUpdateOperationsInput | string
+    productDescriptionFile?: StringFieldUpdateOperationsInput | string
+    targetAudienceDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    influencerType?: BrandsDetailsUpdateinfluencerTypeInput | string[]
+    no_Of_Posts_or_PromotionVideos?: IntFieldUpdateOperationsInput | number
+    campaignGoal?: StringFieldUpdateOperationsInput | string
+    campaignBudget?: IntFieldUpdateOperationsInput | number
   }
 
-  export type UserDetailUncheckedUpdateManyWithoutAuthorInput = {
+  export type BrandsCreateWithoutDetailsInput = {
+    email: string
+    insta_username: string
+    companyName: string
+  }
+
+  export type BrandsUncheckedCreateWithoutDetailsInput = {
+    id?: number
+    email: string
+    insta_username: string
+    companyName: string
+  }
+
+  export type BrandsCreateOrConnectWithoutDetailsInput = {
+    where: BrandsWhereUniqueInput
+    create: XOR<BrandsCreateWithoutDetailsInput, BrandsUncheckedCreateWithoutDetailsInput>
+  }
+
+  export type BrandsUpsertWithoutDetailsInput = {
+    update: XOR<BrandsUpdateWithoutDetailsInput, BrandsUncheckedUpdateWithoutDetailsInput>
+    create: XOR<BrandsCreateWithoutDetailsInput, BrandsUncheckedCreateWithoutDetailsInput>
+    where?: BrandsWhereInput
+  }
+
+  export type BrandsUpdateToOneWithWhereWithoutDetailsInput = {
+    where?: BrandsWhereInput
+    data: XOR<BrandsUpdateWithoutDetailsInput, BrandsUncheckedUpdateWithoutDetailsInput>
+  }
+
+  export type BrandsUpdateWithoutDetailsInput = {
+    email?: StringFieldUpdateOperationsInput | string
+    insta_username?: StringFieldUpdateOperationsInput | string
+    companyName?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type BrandsUncheckedUpdateWithoutDetailsInput = {
     id?: IntFieldUpdateOperationsInput | number
-    contentType?: UserDetailUpdatecontentTypeInput | string[]
-    influencerType?: UserDetailUpdateinfluencerTypeInput | string[]
-    audienceAge?: IntFieldUpdateOperationsInput | number
-    posts?: StringFieldUpdateOperationsInput | string
-    platformLink?: UserDetailUpdateplatformLinkInput | string[]
+    email?: StringFieldUpdateOperationsInput | string
+    insta_username?: StringFieldUpdateOperationsInput | string
+    companyName?: StringFieldUpdateOperationsInput | string
   }
 
 
@@ -3786,17 +6341,21 @@ export namespace Prisma {
    * Aliases for legacy arg types
    */
     /**
-     * @deprecated Use UserCountOutputTypeDefaultArgs instead
+     * @deprecated Use InfluencersDefaultArgs instead
      */
-    export type UserCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = UserCountOutputTypeDefaultArgs<ExtArgs>
+    export type InfluencersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = InfluencersDefaultArgs<ExtArgs>
     /**
-     * @deprecated Use UserDefaultArgs instead
+     * @deprecated Use InfluencerDetailDefaultArgs instead
      */
-    export type UserArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = UserDefaultArgs<ExtArgs>
+    export type InfluencerDetailArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = InfluencerDetailDefaultArgs<ExtArgs>
     /**
-     * @deprecated Use UserDetailDefaultArgs instead
+     * @deprecated Use BrandsDefaultArgs instead
      */
-    export type UserDetailArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = UserDetailDefaultArgs<ExtArgs>
+    export type BrandsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = BrandsDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use BrandsDetailsDefaultArgs instead
+     */
+    export type BrandsDetailsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = BrandsDetailsDefaultArgs<ExtArgs>
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany

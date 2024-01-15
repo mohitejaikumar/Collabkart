@@ -78,7 +78,7 @@
 
 .phone-image {
   
-  width: 15%; /* Adjust the width of each phone image */
+  width: 20%; /* Adjust the width of each phone image */
   height: auto; /* Maintain aspect ratio */
   margin-right: 0vw;
   margin-left: 0vw; /* Adjust the spacing between phone images */
@@ -181,14 +181,19 @@
 
 @media (max-width:660px) {
   .main-content {
-    max-width: 70%;
+    max-width: 80%;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
   .headline {
-    font-size: 4vw;
+    font-size: 5vw;
   }
   .description {
-    font-size: 3vw;
+    font-size: 3.5vw;
     margin-bottom: 20px;
+    margin-top:10px;
   }
   .cta-button {
     padding: 1.5vw 2vw;
@@ -196,6 +201,24 @@
     border-radius: 10px;
     margin-bottom:10px;
   }
+  .cta-button-early {
+    padding: 1vw 4vw;
+    font-size: 4vw;
+    border-radius: 0px;
+    margin-bottom: 10px;
+    
+  }
+  .phones-container {
+  
+    
+    margin: 4vw 1vw; /* Adjust the margin as needed */
+  }
+  
+  .phone-image {
+    
+    width: 27%; /* Adjust the width of each phone image */
+  }
+  
   .campaign-container {
     margin-top: 20px; /* Adjust margin as needed */
   }
