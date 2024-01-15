@@ -31,7 +31,7 @@ export default function BrandRegistrationPage() {
 
   const fetcher = (url) => fetch(url).then((res) => res.json());
   const { data, isLoading } = useSWR("/api/mebrand", fetcher);
-  
+
   const User = useRecoilValue(user);
   const method = useForm<BrandFormParams>({
 
@@ -217,6 +217,6 @@ export default function BrandRegistrationPage() {
   )
 
 }
-BrandRegistrationPage.auth = true;
+// BrandRegistrationPage.auth = true;
 
 

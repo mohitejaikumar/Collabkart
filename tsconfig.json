@@ -18,6 +18,6 @@
       "level-up/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "known_hosts.text"],
   "exclude": ["node_modules"]
 }
