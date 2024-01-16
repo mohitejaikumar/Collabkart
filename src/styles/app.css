@@ -9,7 +9,7 @@ body {
   height: calc(100% - 70px);
   display: flex;
   justify-content: center;
-  padding-top: 50px;
+  padding-top: 50vh;
 }
 #signin-card {
   width: 30%;
