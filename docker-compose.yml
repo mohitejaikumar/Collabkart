@@ -16,11 +16,11 @@ services:
       restart: unless-stopped
       
       environment:
-           DATABASE_URL: postgresql://postgres:jk2003@postgresdb:5432/level_up_db?schema=public
+           DATABASE_URL: postgresql://postgres:collabkart@postgresdb:5432/collabkart_db?schema=public
            INSTAGRAM_CLIENT_ID: 902780958221471
            INSTAGRAM_CLIENT_SECRET: 1cd38dda1047f2e1c91e1525ae719b02
            NEXT_AUTH_SECRET: JAI12062003MOHITE
-           NEXTAUTH_URL: https://localhost:3000
+           NEXTAUTH_URL: https://collabkart.in
       ports:
         - 3000:3000
         - 5555:5555
