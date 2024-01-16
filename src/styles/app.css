@@ -89,6 +89,23 @@ body {
 .success-content{
   padding:50px;
 }
+.submit-button {
+  padding: 0.5vw 1.3vw;
+  margin-top: 15px;
+  font-family: roboto;
+  font-size: 1.5vw;
+  color: white;
+  background-color: #535353;
+  border: none;
+  border-radius: 10px;
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+}
+.submit-button:hover {
+  background-color: #e4e4e4;
+  color: #000000;
+}
 @media (max-width: 600px) {
   
  
@@ -97,6 +114,12 @@ body {
     margin-top:5vw;
     height: 7vw;
     font-size: 4vw;
+  }
+  .submit-button {
+    padding: 1.5vw 2vw;
+    font-size: 4vw;
+    border-radius: 10px;
+    margin-bottom:10px;
   }
   .influencer-registration-form {
     padding-top: 2vw;

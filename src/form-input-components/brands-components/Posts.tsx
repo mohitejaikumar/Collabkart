@@ -44,7 +44,7 @@ export default function Posts({
                     size={"medium"}
                     error={!!error}
                     onChange={(e) => {
-                        onChange(Number(e.target.value));
+                        onChange((e.target.value));
                     }}
                     value={value}
                     fullWidth={true}

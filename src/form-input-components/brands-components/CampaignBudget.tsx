@@ -40,19 +40,21 @@ export default function CampaignBudget({
             }) => (
                 <TextField
                     required
-                    id={"outlined-required"}
+
+                    id="formatted-numberformat-input"
                     type="number"
                     helperText={error ? error.message : null}
                     size={"medium"}
                     error={!!error}
                     onChange={(e) => {
-                        onChange(Number(e.target.value));
+                        onChange((e.target.value));
                     }}
                     value={value}
                     fullWidth={true}
                     label={label}
                     margin={"normal"}
                 />
+                
             )}
         >
 

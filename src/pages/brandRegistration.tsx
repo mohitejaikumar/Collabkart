@@ -202,10 +202,10 @@ export default function BrandRegistrationPage() {
 
             <center>
               {!method.formState.isSubmitting ?
-                <button className='cta-button'>Submit</button>
+                <button className='submit-button'>Submit</button>
                 : <CircularProgress color="primary" variant="indeterminate" />
               }
-              
+
             </center>
           </form>
 

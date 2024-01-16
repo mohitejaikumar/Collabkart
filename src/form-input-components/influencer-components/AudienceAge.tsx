@@ -12,12 +12,12 @@ export default function AudienceAge({
     name,
     label,
     inputType,
-    control,
+    control
+
 }) {
       
 
-    // const form = useFormContext();
-   
+ 
 
     function typeTransform(value:string, typ:formInputType) {
         if (typ === formInputType.string) {
@@ -44,7 +44,7 @@ export default function AudienceAge({
                     size={"medium"}
                     error={!!error}
                     onChange={(e) => {
-                        onChange(Number(e.target.value));
+                        onChange(e.target.value);
                     }}
                     value={value}
                     fullWidth={true}
