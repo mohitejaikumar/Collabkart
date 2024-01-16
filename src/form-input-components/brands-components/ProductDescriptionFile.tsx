@@ -37,11 +37,13 @@ export default function ProductDescriptionFile({
                 
             }) => (
                 <>
-                <InputLabel size="normal" style={{margin:"10px 0px"}}>Product Description File (if any)</InputLabel> 
+                <InputLabel size="normal" style={{margin:"10px 2px"}}>Product Description File (if any)</InputLabel> 
                 
                 <Button
                     variant="contained"
                     component="label"
+                    // size={"small"}
+                    style={{margin:"0px 2px",backgroundColor:"#535353"}}
                 >
                     Upload File
                     <input

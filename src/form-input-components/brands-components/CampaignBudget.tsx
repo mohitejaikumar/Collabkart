@@ -47,7 +47,7 @@ export default function CampaignBudget({
                     size={"medium"}
                     error={!!error}
                     onChange={(e) => {
-                        onChange((e.target.value));
+                        onChange(Number(e.target.value));
                     }}
                     value={value}
                     fullWidth={true}
