@@ -203,5 +203,5 @@ export default function InfluencerRegistrationPage() {
 }
 
 
-// InfluencerRegistrationPage.auth = true;
+InfluencerRegistrationPage.auth = true;
 

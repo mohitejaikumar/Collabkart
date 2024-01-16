@@ -218,6 +218,6 @@ export default function BrandRegistrationPage() {
   )
 
 }
-// BrandRegistrationPage.auth = true;
+BrandRegistrationPage.auth = true;
 
 
