@@ -186,7 +186,7 @@ export default function InfluencerRegistrationPage() {
 
               <center>
                 {!method.formState.isSubmitting ?
-                  <button className='form-button' >Submit</button>
+                  <button className='cta-button' >Submit</button>
                   : <CircularProgress color="primary" variant="indeterminate" />
                 }
               </center>
