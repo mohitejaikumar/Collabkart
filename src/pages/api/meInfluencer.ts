@@ -25,7 +25,7 @@ export default async function handler(
       
            const brand = await prisma.influencers.findUnique({
             where:{
-                insta_username:session.user.name
+                insta_username:session?.user?.name
             }
            })
            if(brand!=null){
