@@ -47,7 +47,7 @@ body {
   width: 60%;
   height: 100%;
   padding: 2vw;
-  border: 2px solid #0056b3;
+  border: 2px solid black;
 }
 .influencer-registration-user {
   display: flex;
