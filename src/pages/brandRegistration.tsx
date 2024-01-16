@@ -205,6 +205,7 @@ export default function BrandRegistrationPage() {
                 <button className='cta-button'>Submit</button>
                 : <CircularProgress color="primary" variant="indeterminate" />
               }
+              
             </center>
           </form>
 
