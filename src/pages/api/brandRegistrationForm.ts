@@ -24,7 +24,7 @@ export default async function handler(
     if (!session) {
         return res.status(401).json({ message: "unauthorised User" });
     }
-
+    
     switch (req.method) {
         case 'POST':
             // zod validation
@@ -44,7 +44,7 @@ export default async function handler(
             }
 
             
-            // // connect to db
+            // connect to db
             await prisma.brands.create({
                 data: {
                     email: session?.user?.Email,
