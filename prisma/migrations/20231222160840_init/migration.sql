@@ -1,6 +1,0 @@
--- AlterTable
-ALTER TABLE "UserDetail" ALTER COLUMN "contentType" DROP NOT NULL,
-ALTER COLUMN "audienceType" DROP NOT NULL,
-ALTER COLUMN "audienceAge" DROP NOT NULL,
-ALTER COLUMN "posts" DROP NOT NULL,
-ALTER COLUMN "platformLink" DROP NOT NULL;

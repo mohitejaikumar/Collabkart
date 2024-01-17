@@ -1,25 +1,18 @@
-/*
-  Warnings:
+-- CreateTable
+CREATE TABLE "Users" (
+    "id" SERIAL NOT NULL,
+    "email" TEXT NOT NULL,
+    "password" TEXT NOT NULL,
 
-  - You are about to drop the `User` table. If the table is not empty, all the data it contains will be lost.
-  - You are about to drop the `UserDetail` table. If the table is not empty, all the data it contains will be lost.
-
-*/
--- DropForeignKey
-ALTER TABLE "UserDetail" DROP CONSTRAINT "UserDetail_authorId_fkey";
-
--- DropTable
-DROP TABLE "User";
-
--- DropTable
-DROP TABLE "UserDetail";
+    CONSTRAINT "Users_pkey" PRIMARY KEY ("id")
+);
 
 -- CreateTable
 CREATE TABLE "Influencers" (
     "id" SERIAL NOT NULL,
     "email" TEXT NOT NULL,
-    "insta_username" TEXT NOT NULL,
-    "name" TEXT,
+    "password" TEXT NOT NULL,
+    "name" TEXT NOT NULL,
 
     CONSTRAINT "Influencers_pkey" PRIMARY KEY ("id")
 );
@@ -27,6 +20,7 @@ CREATE TABLE "Influencers" (
 -- CreateTable
 CREATE TABLE "InfluencerDetail" (
     "id" SERIAL NOT NULL,
+    "bussiness_email" TEXT NOT NULL,
     "contentType" TEXT[],
     "influencerType" TEXT[],
     "audienceAge" INTEGER NOT NULL,
@@ -41,7 +35,7 @@ CREATE TABLE "InfluencerDetail" (
 CREATE TABLE "Brands" (
     "id" SERIAL NOT NULL,
     "email" TEXT NOT NULL,
-    "insta_username" TEXT NOT NULL,
+    "password" TEXT NOT NULL,
     "companyName" TEXT NOT NULL,
 
     CONSTRAINT "Brands_pkey" PRIMARY KEY ("id")
@@ -50,6 +44,7 @@ CREATE TABLE "Brands" (
 -- CreateTable
 CREATE TABLE "BrandsDetails" (
     "id" SERIAL NOT NULL,
+    "bussiness_email" TEXT NOT NULL,
     "productDescription" TEXT NOT NULL,
     "productDescriptionFile" TEXT NOT NULL,
     "targetAudienceDescription" TEXT,
@@ -63,19 +58,16 @@ CREATE TABLE "BrandsDetails" (
 );
 
 -- CreateIndex
-CREATE UNIQUE INDEX "Influencers_email_key" ON "Influencers"("email");
+CREATE UNIQUE INDEX "Users_email_key" ON "Users"("email");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "Influencers_insta_username_key" ON "Influencers"("insta_username");
+CREATE UNIQUE INDEX "Influencers_email_key" ON "Influencers"("email");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "InfluencerDetail_authorId_key" ON "InfluencerDetail"("authorId");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Brands_email_key" ON "Brands"("email");
-
--- CreateIndex
-CREATE UNIQUE INDEX "Brands_insta_username_key" ON "Brands"("insta_username");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "BrandsDetails_authorId_key" ON "BrandsDetails"("authorId");
