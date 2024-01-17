@@ -1,3 +1,4 @@
+
 name: Deploy
 
 on:
@@ -11,14 +12,15 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v2
 
     - name: Set up SSH key
       run: |
-        echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
-        chmod 600 ~/.ssh/deploy_key
+        echo "${{ secrets.SSH_PRIVATE_KEY }}" > deploy_key
+        chmod 600 deploy_key
+
         cp known_hosts ~/.ssh/known_hosts
 
     - name: Deploy to EC2
       run: |
-        ssh -i ~/.ssh/deploy_key ubuntu@ec2-65-2-150-89.ap-south-1.compute.amazonaws.com "sudo bash ~/deploy.sh"
+        ssh -t -i deploy_key ubuntu@ec2-65-2-150-89.ap-south-1.compute.amazonaws.com "sudo bash deploy.sh"
