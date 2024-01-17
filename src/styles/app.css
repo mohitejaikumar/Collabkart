@@ -132,6 +132,11 @@ body {
     font-size: 5vw;
     margin-bottom: 10px;
   }
+  #signin-card {
+    width: 90%;
+    height: 50%;
+    padding: 4vw;
+  }
   .influencer-registration-form {
     padding-top: 2vw;
     display: flex;
@@ -170,9 +175,9 @@ body {
     margin-right: 5vw;
   }
 }
-@media (max-width:850px) and ( min-width:750px) {
+@media (max-width:850px) and ( min-width:600px) {
   #signin-card {
-    width: 60%;
+    width: 65%;
     height: 50%;
     padding: 4vw;
   }
