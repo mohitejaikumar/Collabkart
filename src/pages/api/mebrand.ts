@@ -19,33 +19,40 @@ export default async function handler(
     const session = await getServerSession(req, res, authOptions);
 
     if (!session) {
-        return res.status(200).json({message:false});
+        return res.status(200).json({ message: false });
     }
-       
-    console.log(session);
+
+    // console.log(session);
     switch (req.method) {
         case 'GET':
-          
-           const brand = await prisma.brands.findUnique({
-            where:{
-                email:session?.user?.Email,
+            let brand;
+            try {
+                brand = await prisma.brands.findUnique({
+                    where: {
+                        email: session?.user?.Email,
+                    }
+                })
             }
-           })
-           
+            catch (error) {
+                console.log(error);
+                return res.status(200).json({
+                    message: false
+                });
+            }
 
-           if(brand!=null){
+            if (brand != null) {
+                return res.status(200).json({
+                    message: true
+                });
+            }
+
             return res.status(200).json({
-                message:true
+                message: false
             });
-           }
 
-           return res.status(200).json({
-            message:false
-           });
-            
         default:
             res.status(401);
             break;
     }
-       res.status(200).json({message:true});
+    res.status(200).json({ message: true });
 }
