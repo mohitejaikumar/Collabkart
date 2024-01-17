@@ -46,9 +46,9 @@ export default async function handler(
             // // connect to db
             await prisma.brands.create({
                 data: {
-                    email: session?.user?.email,
+                    email: session?.user?.Email,
                     companyName: parsedFormInput.data.companyName,
-                    password: session?.user?.password,
+                    password: session?.user?.Password,
                       Details: {
                         create: {
                             bussiness_email:parsedFormInput.data.bussiness_email,

@@ -23,7 +23,7 @@ export default async function handler(
     switch (req.method) {
         case 'POST':
             // zod validation
-            console.log(req.body);
+        
             const parsedFormInput = SignInSchema.safeParse(req.body);
 
             if (!parsedFormInput.success) {

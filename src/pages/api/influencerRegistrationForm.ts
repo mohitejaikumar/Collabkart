@@ -50,8 +50,8 @@ export default async function handler(
       await prisma.influencers.create({
         data: {
           name: parsedFormInput.data.name,
-          email: session?.user?.email,
-          password: session?.user?.password,
+          email: session?.user?.Email,
+          password: session?.user?.Password,
           Details: {
             create: {
               bussiness_email: parsedFormInput.data.bussiness_email,

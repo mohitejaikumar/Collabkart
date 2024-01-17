@@ -26,7 +26,7 @@ export default function SignIn(props: InferGetServerSidePropsType<typeof getServ
       
         try {
             const res = await axios.post("/api/me", data);
-            console.log(res);
+            
             if (res.data.messageType == "zodError") {
                 let zodError = res.data.message;
                 Object.keys(zodError).forEach((key) => {

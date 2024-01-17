@@ -9,9 +9,11 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "../api/auth/[...nextauth]";
 
 
+
 export default function Appbar() {
 
   const { data: session } = useSession();
+  
   const router = useRouter();
   const setUser = useSetRecoilState(user);
   const setIsLoading = useSetRecoilState(isLoading);
@@ -23,7 +25,7 @@ export default function Appbar() {
     setIsLoading(false);
     router.push('/');
   }
-  
+
   if (session) {
       const name = session.user?.name!;
       setUser(name);

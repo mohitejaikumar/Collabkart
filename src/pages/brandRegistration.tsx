@@ -130,7 +130,8 @@ export default function BrandRegistrationPage() {
   return (
 
     <>
-     
+      
+
       <div className='influencer-registration-form'>
 
         <Card className='influencer-registration-card'>

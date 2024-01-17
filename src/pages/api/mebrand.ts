@@ -19,20 +19,20 @@ export default async function handler(
     const session = await getServerSession(req, res, authOptions);
 
     if (!session) {
-        return res.status(401).json({message:false});
+        return res.status(200).json({message:false});
     }
-
-
+       
+    console.log(session);
     switch (req.method) {
         case 'GET':
           
            const brand = await prisma.brands.findUnique({
             where:{
-                email:session?.user?.email,
+                email:session?.user?.Email,
             }
            })
            
-           
+
            if(brand!=null){
             return res.status(200).json({
                 message:true
