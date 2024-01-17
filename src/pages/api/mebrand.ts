@@ -28,9 +28,10 @@ export default async function handler(
           
            const brand = await prisma.brands.findUnique({
             where:{
-                email:session.user.email
+                email:session?.user?.email,
             }
            })
+           
            
            if(brand!=null){
             return res.status(200).json({

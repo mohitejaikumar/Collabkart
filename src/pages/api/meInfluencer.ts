@@ -25,7 +25,7 @@ export default async function handler(
       
            const brand = await prisma.influencers.findUnique({
             where:{
-                email:session.user.email
+                email:session?.user?.email,
             }
            })
            if(brand!=null){
