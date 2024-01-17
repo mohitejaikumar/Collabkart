@@ -7,7 +7,7 @@ import { SignInSchema } from "../../../../zod/form"
 export const authOptions = {
     // all the providers
     providers: [
-
+        
         CredentialsProvider({
             id: 'credentials',
             name: 'Credentials',
@@ -17,6 +17,7 @@ export const authOptions = {
                 Email: { label: "email", type: "text", placeholder: "jsmith" },
                 Password: { label: "password", type: "password" }
             },
+            // @ts-ignore
             async authorize(credentials, req) {
 
                 if(credentials===undefined){
