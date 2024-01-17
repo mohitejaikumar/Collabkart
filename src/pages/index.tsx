@@ -23,7 +23,7 @@ export default function MainPage({session}) {
         <div className="landing-page">
       <div className="main-content">
         <h1 className="headline">
-          hi
+          hi 
           Revolutionize Your Brand's Impact with Effortless Influencer Marketing!
         </h1>
         <p className="description">
