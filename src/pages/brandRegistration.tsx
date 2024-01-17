@@ -18,8 +18,7 @@ import { authOptions } from "./api/auth/[...nextauth]";
 import ProductDescriptionFile from "level-up/form-input-components/brands-components/ProductDescriptionFile";
 import useSWR from "swr";
 import Loading from "./components/Loading";
-import { useRecoilValue } from "recoil";
-import { user } from "../../store/atoms/user";
+
 
 
 enum formInputType {
@@ -32,7 +31,7 @@ export default function BrandRegistrationPage() {
   const fetcher = (url) => fetch(url).then((res) => res.json());
   const { data, isLoading } = useSWR("/api/mebrand", fetcher);
 
-  const User = useRecoilValue(user);
+
   const method = useForm<BrandFormParams>({
 
     resolver: zodResolver(BrandFormSchema),
@@ -130,9 +129,9 @@ export default function BrandRegistrationPage() {
   return (
 
     <>
-      <div className='influencer-registration-user'>
+      {/* <div className='influencer-registration-user'>
         Hello {User}!
-      </div>
+      </div> */}
 
       <div className='influencer-registration-form'>
 
@@ -218,6 +217,7 @@ export default function BrandRegistrationPage() {
   )
 
 }
-BrandRegistrationPage.auth = true;
+
+// BrandRegistrationPage.auth = true;
 
 

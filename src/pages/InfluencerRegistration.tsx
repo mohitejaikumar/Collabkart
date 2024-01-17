@@ -1,8 +1,7 @@
-'use-client'
+// 'use-client'
 
-import { user } from '../../store/atoms/user';
+
 import { Card, CircularProgress } from '@mui/material';
-import { useRecoilValue } from 'recoil';
 import axios, { AxiosError } from 'axios';
 import { InfluencerFormParams, InfluencerFormSchema } from '../../zod/form';
 import { useForm } from 'react-hook-form';
@@ -51,7 +50,7 @@ export default function InfluencerRegistrationPage() {
   });
    
 
-  const User = useRecoilValue(user);
+ 
 
   async function onSubmit(data: InfluencerFormParams) {
 
@@ -132,9 +131,9 @@ export default function InfluencerRegistrationPage() {
 
     <>
 
-      <div className='influencer-registration-user'>
+      {/* <div className='influencer-registration-user'>
         Hello {User}!
-      </div>
+      </div> */}
       <div className='influencer-registration-form'>
 
         <Card className='influencer-registration-card'>
@@ -203,5 +202,5 @@ export default function InfluencerRegistrationPage() {
 }
 
 
-InfluencerRegistrationPage.auth = true;
+// InfluencerRegistrationPage.auth = true;
 
