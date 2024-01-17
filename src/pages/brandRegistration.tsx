@@ -37,7 +37,7 @@ export default function BrandRegistrationPage() {
     resolver: zodResolver(BrandFormSchema),
     defaultValues: {
       companyName: "",
-      email: "",
+      bussiness_email: "",
       productDescription: "",
       productDescriptionFile: "",
       targetAudienceDescription: "",
@@ -63,8 +63,8 @@ export default function BrandRegistrationPage() {
         Object.keys(zodError).forEach((key) => {
 
 
-          if (key === "email") {
-            method.setError("email", zodError[key]);
+          if (key === "bussiness_email") {
+            method.setError("bussiness_email", zodError[key]);
           }
           if (key === "companyName") {
             method.setError("companyName", zodError[key]);
@@ -106,13 +106,14 @@ export default function BrandRegistrationPage() {
     }
 
   }
-
+  //  Loader
   if (isLoading) {
     return (
       <Loading></Loading>
     )
   }
-
+   
+  //  form filled successfully
   if (data.message) {
     return (
       <>
@@ -129,10 +130,7 @@ export default function BrandRegistrationPage() {
   return (
 
     <>
-      {/* <div className='influencer-registration-user'>
-        Hello {User}!
-      </div> */}
-
+     
       <div className='influencer-registration-form'>
 
         <Card className='influencer-registration-card'>
@@ -146,7 +144,7 @@ export default function BrandRegistrationPage() {
 
             />
             <Email
-              name={"email"}
+              name={"bussiness_email"}
               label={"E-mail"}
               inputType={formInputType.string}
               control={method.control}
@@ -218,6 +216,6 @@ export default function BrandRegistrationPage() {
 
 }
 
-// BrandRegistrationPage.auth = true;
+BrandRegistrationPage.auth = true;
 
 

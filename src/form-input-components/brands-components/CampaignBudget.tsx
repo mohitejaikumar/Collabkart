@@ -49,7 +49,7 @@ export default function CampaignBudget({
                     onChange={(e) => {
                         onChange(Number(e.target.value));
                     }}
-                    value={value}
+                    // value={value}
                     fullWidth={true}
                     label={label}
                     margin={"normal"}

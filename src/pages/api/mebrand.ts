@@ -22,13 +22,13 @@ export default async function handler(
         return res.status(401).json({message:false});
     }
 
-    
+
     switch (req.method) {
         case 'GET':
           
            const brand = await prisma.brands.findUnique({
             where:{
-                insta_username:session?.user?.name!
+                email:session.user.email
             }
            })
            

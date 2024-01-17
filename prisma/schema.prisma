@@ -11,18 +11,26 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+
+model Users{
+  id              Int      @id @default(autoincrement())
+  email           String   @unique
+  password        String   
+  
+}
 model Influencers{
   id              Int      @id @default(autoincrement())
   email           String   @unique
-  insta_username  String   @unique
-  name            String?   
+  password        String
+  name            String   
   Details         InfluencerDetail?
 
 }
 
 model InfluencerDetail{
 
-  id             Int       @id @default(autoincrement())
+  id                  Int       @id @default(autoincrement())
+  bussiness_email     String 
   contentType    String[]
   influencerType String[]
   audienceAge    Int
@@ -36,7 +44,7 @@ model InfluencerDetail{
 model Brands{
   id             Int        @id @default(autoincrement())
   email          String     @unique
-  insta_username String     @unique
+  password       String     
   companyName    String     
   Details        BrandsDetails?
 
@@ -44,6 +52,7 @@ model Brands{
 
 model BrandsDetails{
   id                             Int        @id @default(autoincrement())
+  bussiness_email                String
   productDescription             String
   productDescriptionFile         String
   targetAudienceDescription      String?

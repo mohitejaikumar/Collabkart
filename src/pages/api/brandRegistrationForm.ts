@@ -43,14 +43,15 @@ export default async function handler(
                 });
             }
 
-            // connect to db
+            // // connect to db
             await prisma.brands.create({
                 data: {
-                    email: parsedFormInput.data.email,
+                    email: session?.user?.email,
                     companyName: parsedFormInput.data.companyName,
-                    insta_username: session?.user?.name!,
+                    password: session?.user?.password,
                       Details: {
                         create: {
+                            bussiness_email:parsedFormInput.data.bussiness_email,
                             productDescription: parsedFormInput.data.productDescription,
                             productDescriptionFile: parsedFormInput.data.productDescriptionFile,
                             targetAudienceDescription: parsedFormInput.data.targetAudienceDescription, 

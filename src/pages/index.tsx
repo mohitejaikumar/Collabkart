@@ -1,7 +1,9 @@
 
+import { getServerSession } from "next-auth";
 import Typewriter from "typewriter-effect"
+import { authOptions } from "./api/auth/[...nextauth]";
 
-export default function MainPage() {
+export default function MainPage({session}) {
     
     return (
         // <div className="landing-page">
@@ -68,3 +70,4 @@ export default function MainPage() {
     </div>
     )
 }
+

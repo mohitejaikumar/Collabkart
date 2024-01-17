@@ -14,6 +14,11 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
 
 
 /**
+ * Model Users
+ * 
+ */
+export type Users = $Result.DefaultSelection<Prisma.$UsersPayload>
+/**
  * Model Influencers
  * 
  */
@@ -41,8 +46,8 @@ export type BrandsDetails = $Result.DefaultSelection<Prisma.$BrandsDetailsPayloa
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more Influencers
- * const influencers = await prisma.influencers.findMany()
+ * // Fetch zero or more Users
+ * const users = await prisma.users.findMany()
  * ```
  *
  * 
@@ -62,8 +67,8 @@ export class PrismaClient<
    * @example
    * ```
    * const prisma = new PrismaClient()
-   * // Fetch zero or more Influencers
-   * const influencers = await prisma.influencers.findMany()
+   * // Fetch zero or more Users
+   * const users = await prisma.users.findMany()
    * ```
    *
    * 
@@ -157,6 +162,16 @@ export class PrismaClient<
   $extends: $Extensions.ExtendsHook<'extends', Prisma.TypeMapCb, ExtArgs>
 
       /**
+   * `prisma.users`: Exposes CRUD operations for the **Users** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Users
+    * const users = await prisma.users.findMany()
+    * ```
+    */
+  get users(): Prisma.UsersDelegate<ExtArgs>;
+
+  /**
    * `prisma.influencers`: Exposes CRUD operations for the **Influencers** model.
     * Example usage:
     * ```ts
@@ -665,6 +680,7 @@ export namespace Prisma {
 
 
   export const ModelName: {
+    Users: 'Users',
     Influencers: 'Influencers',
     InfluencerDetail: 'InfluencerDetail',
     Brands: 'Brands',
@@ -685,10 +701,76 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'influencers' | 'influencerDetail' | 'brands' | 'brandsDetails'
+      modelProps: 'users' | 'influencers' | 'influencerDetail' | 'brands' | 'brandsDetails'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
+      Users: {
+        payload: Prisma.$UsersPayload<ExtArgs>
+        fields: Prisma.UsersFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.UsersFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$UsersPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.UsersFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$UsersPayload>
+          }
+          findFirst: {
+            args: Prisma.UsersFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$UsersPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.UsersFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$UsersPayload>
+          }
+          findMany: {
+            args: Prisma.UsersFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$UsersPayload>[]
+          }
+          create: {
+            args: Prisma.UsersCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$UsersPayload>
+          }
+          createMany: {
+            args: Prisma.UsersCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          delete: {
+            args: Prisma.UsersDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$UsersPayload>
+          }
+          update: {
+            args: Prisma.UsersUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$UsersPayload>
+          }
+          deleteMany: {
+            args: Prisma.UsersDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.UsersUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.UsersUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$UsersPayload>
+          }
+          aggregate: {
+            args: Prisma.UsersAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateUsers>
+          }
+          groupBy: {
+            args: Prisma.UsersGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<UsersGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.UsersCountArgs<ExtArgs>,
+            result: $Utils.Optional<UsersCountAggregateOutputType> | number
+          }
+        }
+      }
       Influencers: {
         payload: Prisma.$InfluencersPayload<ExtArgs>
         fields: Prisma.InfluencersFieldRefs
@@ -1103,6 +1185,888 @@ export namespace Prisma {
    */
 
   /**
+   * Model Users
+   */
+
+  export type AggregateUsers = {
+    _count: UsersCountAggregateOutputType | null
+    _avg: UsersAvgAggregateOutputType | null
+    _sum: UsersSumAggregateOutputType | null
+    _min: UsersMinAggregateOutputType | null
+    _max: UsersMaxAggregateOutputType | null
+  }
+
+  export type UsersAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type UsersSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type UsersMinAggregateOutputType = {
+    id: number | null
+    email: string | null
+    password: string | null
+  }
+
+  export type UsersMaxAggregateOutputType = {
+    id: number | null
+    email: string | null
+    password: string | null
+  }
+
+  export type UsersCountAggregateOutputType = {
+    id: number
+    email: number
+    password: number
+    _all: number
+  }
+
+
+  export type UsersAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type UsersSumAggregateInputType = {
+    id?: true
+  }
+
+  export type UsersMinAggregateInputType = {
+    id?: true
+    email?: true
+    password?: true
+  }
+
+  export type UsersMaxAggregateInputType = {
+    id?: true
+    email?: true
+    password?: true
+  }
+
+  export type UsersCountAggregateInputType = {
+    id?: true
+    email?: true
+    password?: true
+    _all?: true
+  }
+
+  export type UsersAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Users to aggregate.
+     */
+    where?: UsersWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Users to fetch.
+     */
+    orderBy?: UsersOrderByWithRelationInput | UsersOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: UsersWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Users from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Users.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Users
+    **/
+    _count?: true | UsersCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: UsersAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: UsersSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: UsersMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: UsersMaxAggregateInputType
+  }
+
+  export type GetUsersAggregateType<T extends UsersAggregateArgs> = {
+        [P in keyof T & keyof AggregateUsers]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateUsers[P]>
+      : GetScalarType<T[P], AggregateUsers[P]>
+  }
+
+
+
+
+  export type UsersGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UsersWhereInput
+    orderBy?: UsersOrderByWithAggregationInput | UsersOrderByWithAggregationInput[]
+    by: UsersScalarFieldEnum[] | UsersScalarFieldEnum
+    having?: UsersScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: UsersCountAggregateInputType | true
+    _avg?: UsersAvgAggregateInputType
+    _sum?: UsersSumAggregateInputType
+    _min?: UsersMinAggregateInputType
+    _max?: UsersMaxAggregateInputType
+  }
+
+  export type UsersGroupByOutputType = {
+    id: number
+    email: string
+    password: string
+    _count: UsersCountAggregateOutputType | null
+    _avg: UsersAvgAggregateOutputType | null
+    _sum: UsersSumAggregateOutputType | null
+    _min: UsersMinAggregateOutputType | null
+    _max: UsersMaxAggregateOutputType | null
+  }
+
+  type GetUsersGroupByPayload<T extends UsersGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<UsersGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof UsersGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], UsersGroupByOutputType[P]>
+            : GetScalarType<T[P], UsersGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type UsersSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    email?: boolean
+    password?: boolean
+  }, ExtArgs["result"]["users"]>
+
+  export type UsersSelectScalar = {
+    id?: boolean
+    email?: boolean
+    password?: boolean
+  }
+
+
+  export type $UsersPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Users"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      email: string
+      password: string
+    }, ExtArgs["result"]["users"]>
+    composites: {}
+  }
+
+
+  type UsersGetPayload<S extends boolean | null | undefined | UsersDefaultArgs> = $Result.GetResult<Prisma.$UsersPayload, S>
+
+  type UsersCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<UsersFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: UsersCountAggregateInputType | true
+    }
+
+  export interface UsersDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Users'], meta: { name: 'Users' } }
+    /**
+     * Find zero or one Users that matches the filter.
+     * @param {UsersFindUniqueArgs} args - Arguments to find a Users
+     * @example
+     * // Get one Users
+     * const users = await prisma.users.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends UsersFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, UsersFindUniqueArgs<ExtArgs>>
+    ): Prisma__UsersClient<$Result.GetResult<Prisma.$UsersPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one Users that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {UsersFindUniqueOrThrowArgs} args - Arguments to find a Users
+     * @example
+     * // Get one Users
+     * const users = await prisma.users.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends UsersFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, UsersFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__UsersClient<$Result.GetResult<Prisma.$UsersPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first Users that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UsersFindFirstArgs} args - Arguments to find a Users
+     * @example
+     * // Get one Users
+     * const users = await prisma.users.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends UsersFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, UsersFindFirstArgs<ExtArgs>>
+    ): Prisma__UsersClient<$Result.GetResult<Prisma.$UsersPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first Users that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UsersFindFirstOrThrowArgs} args - Arguments to find a Users
+     * @example
+     * // Get one Users
+     * const users = await prisma.users.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends UsersFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, UsersFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__UsersClient<$Result.GetResult<Prisma.$UsersPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more Users that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UsersFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Users
+     * const users = await prisma.users.findMany()
+     * 
+     * // Get first 10 Users
+     * const users = await prisma.users.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const usersWithIdOnly = await prisma.users.findMany({ select: { id: true } })
+     * 
+    **/
+    findMany<T extends UsersFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, UsersFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UsersPayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a Users.
+     * @param {UsersCreateArgs} args - Arguments to create a Users.
+     * @example
+     * // Create one Users
+     * const Users = await prisma.users.create({
+     *   data: {
+     *     // ... data to create a Users
+     *   }
+     * })
+     * 
+    **/
+    create<T extends UsersCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, UsersCreateArgs<ExtArgs>>
+    ): Prisma__UsersClient<$Result.GetResult<Prisma.$UsersPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many Users.
+     *     @param {UsersCreateManyArgs} args - Arguments to create many Users.
+     *     @example
+     *     // Create many Users
+     *     const users = await prisma.users.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends UsersCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, UsersCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Users.
+     * @param {UsersDeleteArgs} args - Arguments to delete one Users.
+     * @example
+     * // Delete one Users
+     * const Users = await prisma.users.delete({
+     *   where: {
+     *     // ... filter to delete one Users
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends UsersDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, UsersDeleteArgs<ExtArgs>>
+    ): Prisma__UsersClient<$Result.GetResult<Prisma.$UsersPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one Users.
+     * @param {UsersUpdateArgs} args - Arguments to update one Users.
+     * @example
+     * // Update one Users
+     * const users = await prisma.users.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends UsersUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, UsersUpdateArgs<ExtArgs>>
+    ): Prisma__UsersClient<$Result.GetResult<Prisma.$UsersPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Users.
+     * @param {UsersDeleteManyArgs} args - Arguments to filter Users to delete.
+     * @example
+     * // Delete a few Users
+     * const { count } = await prisma.users.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends UsersDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, UsersDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Users.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UsersUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Users
+     * const users = await prisma.users.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends UsersUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, UsersUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Users.
+     * @param {UsersUpsertArgs} args - Arguments to update or create a Users.
+     * @example
+     * // Update or create a Users
+     * const users = await prisma.users.upsert({
+     *   create: {
+     *     // ... data to create a Users
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Users we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends UsersUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, UsersUpsertArgs<ExtArgs>>
+    ): Prisma__UsersClient<$Result.GetResult<Prisma.$UsersPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of Users.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UsersCountArgs} args - Arguments to filter Users to count.
+     * @example
+     * // Count the number of Users
+     * const count = await prisma.users.count({
+     *   where: {
+     *     // ... the filter for the Users we want to count
+     *   }
+     * })
+    **/
+    count<T extends UsersCountArgs>(
+      args?: Subset<T, UsersCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], UsersCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Users.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UsersAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends UsersAggregateArgs>(args: Subset<T, UsersAggregateArgs>): Prisma.PrismaPromise<GetUsersAggregateType<T>>
+
+    /**
+     * Group by Users.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UsersGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends UsersGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: UsersGroupByArgs['orderBy'] }
+        : { orderBy?: UsersGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, UsersGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUsersGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Users model
+   */
+  readonly fields: UsersFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Users.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__UsersClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the Users model
+   */ 
+  interface UsersFieldRefs {
+    readonly id: FieldRef<"Users", 'Int'>
+    readonly email: FieldRef<"Users", 'String'>
+    readonly password: FieldRef<"Users", 'String'>
+  }
+    
+
+  // Custom InputTypes
+
+  /**
+   * Users findUnique
+   */
+  export type UsersFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Users
+     */
+    select?: UsersSelect<ExtArgs> | null
+    /**
+     * Filter, which Users to fetch.
+     */
+    where: UsersWhereUniqueInput
+  }
+
+
+  /**
+   * Users findUniqueOrThrow
+   */
+  export type UsersFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Users
+     */
+    select?: UsersSelect<ExtArgs> | null
+    /**
+     * Filter, which Users to fetch.
+     */
+    where: UsersWhereUniqueInput
+  }
+
+
+  /**
+   * Users findFirst
+   */
+  export type UsersFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Users
+     */
+    select?: UsersSelect<ExtArgs> | null
+    /**
+     * Filter, which Users to fetch.
+     */
+    where?: UsersWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Users to fetch.
+     */
+    orderBy?: UsersOrderByWithRelationInput | UsersOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Users.
+     */
+    cursor?: UsersWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Users from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Users.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Users.
+     */
+    distinct?: UsersScalarFieldEnum | UsersScalarFieldEnum[]
+  }
+
+
+  /**
+   * Users findFirstOrThrow
+   */
+  export type UsersFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Users
+     */
+    select?: UsersSelect<ExtArgs> | null
+    /**
+     * Filter, which Users to fetch.
+     */
+    where?: UsersWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Users to fetch.
+     */
+    orderBy?: UsersOrderByWithRelationInput | UsersOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Users.
+     */
+    cursor?: UsersWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Users from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Users.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Users.
+     */
+    distinct?: UsersScalarFieldEnum | UsersScalarFieldEnum[]
+  }
+
+
+  /**
+   * Users findMany
+   */
+  export type UsersFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Users
+     */
+    select?: UsersSelect<ExtArgs> | null
+    /**
+     * Filter, which Users to fetch.
+     */
+    where?: UsersWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Users to fetch.
+     */
+    orderBy?: UsersOrderByWithRelationInput | UsersOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Users.
+     */
+    cursor?: UsersWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Users from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Users.
+     */
+    skip?: number
+    distinct?: UsersScalarFieldEnum | UsersScalarFieldEnum[]
+  }
+
+
+  /**
+   * Users create
+   */
+  export type UsersCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Users
+     */
+    select?: UsersSelect<ExtArgs> | null
+    /**
+     * The data needed to create a Users.
+     */
+    data: XOR<UsersCreateInput, UsersUncheckedCreateInput>
+  }
+
+
+  /**
+   * Users createMany
+   */
+  export type UsersCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Users.
+     */
+    data: UsersCreateManyInput | UsersCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * Users update
+   */
+  export type UsersUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Users
+     */
+    select?: UsersSelect<ExtArgs> | null
+    /**
+     * The data needed to update a Users.
+     */
+    data: XOR<UsersUpdateInput, UsersUncheckedUpdateInput>
+    /**
+     * Choose, which Users to update.
+     */
+    where: UsersWhereUniqueInput
+  }
+
+
+  /**
+   * Users updateMany
+   */
+  export type UsersUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Users.
+     */
+    data: XOR<UsersUpdateManyMutationInput, UsersUncheckedUpdateManyInput>
+    /**
+     * Filter which Users to update
+     */
+    where?: UsersWhereInput
+  }
+
+
+  /**
+   * Users upsert
+   */
+  export type UsersUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Users
+     */
+    select?: UsersSelect<ExtArgs> | null
+    /**
+     * The filter to search for the Users to update in case it exists.
+     */
+    where: UsersWhereUniqueInput
+    /**
+     * In case the Users found by the `where` argument doesn't exist, create a new Users with this data.
+     */
+    create: XOR<UsersCreateInput, UsersUncheckedCreateInput>
+    /**
+     * In case the Users was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<UsersUpdateInput, UsersUncheckedUpdateInput>
+  }
+
+
+  /**
+   * Users delete
+   */
+  export type UsersDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Users
+     */
+    select?: UsersSelect<ExtArgs> | null
+    /**
+     * Filter which Users to delete.
+     */
+    where: UsersWhereUniqueInput
+  }
+
+
+  /**
+   * Users deleteMany
+   */
+  export type UsersDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Users to delete
+     */
+    where?: UsersWhereInput
+  }
+
+
+  /**
+   * Users without action
+   */
+  export type UsersDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Users
+     */
+    select?: UsersSelect<ExtArgs> | null
+  }
+
+
+
+  /**
    * Model Influencers
    */
 
@@ -1125,21 +2089,21 @@ export namespace Prisma {
   export type InfluencersMinAggregateOutputType = {
     id: number | null
     email: string | null
-    insta_username: string | null
+    password: string | null
     name: string | null
   }
 
   export type InfluencersMaxAggregateOutputType = {
     id: number | null
     email: string | null
-    insta_username: string | null
+    password: string | null
     name: string | null
   }
 
   export type InfluencersCountAggregateOutputType = {
     id: number
     email: number
-    insta_username: number
+    password: number
     name: number
     _all: number
   }
@@ -1156,21 +2120,21 @@ export namespace Prisma {
   export type InfluencersMinAggregateInputType = {
     id?: true
     email?: true
-    insta_username?: true
+    password?: true
     name?: true
   }
 
   export type InfluencersMaxAggregateInputType = {
     id?: true
     email?: true
-    insta_username?: true
+    password?: true
     name?: true
   }
 
   export type InfluencersCountAggregateInputType = {
     id?: true
     email?: true
-    insta_username?: true
+    password?: true
     name?: true
     _all?: true
   }
@@ -1264,8 +2228,8 @@ export namespace Prisma {
   export type InfluencersGroupByOutputType = {
     id: number
     email: string
-    insta_username: string
-    name: string | null
+    password: string
+    name: string
     _count: InfluencersCountAggregateOutputType | null
     _avg: InfluencersAvgAggregateOutputType | null
     _sum: InfluencersSumAggregateOutputType | null
@@ -1290,7 +2254,7 @@ export namespace Prisma {
   export type InfluencersSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     email?: boolean
-    insta_username?: boolean
+    password?: boolean
     name?: boolean
     Details?: boolean | Influencers$DetailsArgs<ExtArgs>
   }, ExtArgs["result"]["influencers"]>
@@ -1298,7 +2262,7 @@ export namespace Prisma {
   export type InfluencersSelectScalar = {
     id?: boolean
     email?: boolean
-    insta_username?: boolean
+    password?: boolean
     name?: boolean
   }
 
@@ -1315,8 +2279,8 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: number
       email: string
-      insta_username: string
-      name: string | null
+      password: string
+      name: string
     }, ExtArgs["result"]["influencers"]>
     composites: {}
   }
@@ -1714,7 +2678,7 @@ export namespace Prisma {
   interface InfluencersFieldRefs {
     readonly id: FieldRef<"Influencers", 'Int'>
     readonly email: FieldRef<"Influencers", 'String'>
-    readonly insta_username: FieldRef<"Influencers", 'String'>
+    readonly password: FieldRef<"Influencers", 'String'>
     readonly name: FieldRef<"Influencers", 'String'>
   }
     
@@ -2085,6 +3049,7 @@ export namespace Prisma {
 
   export type InfluencerDetailMinAggregateOutputType = {
     id: number | null
+    bussiness_email: string | null
     audienceAge: number | null
     posts: string | null
     authorId: number | null
@@ -2092,6 +3057,7 @@ export namespace Prisma {
 
   export type InfluencerDetailMaxAggregateOutputType = {
     id: number | null
+    bussiness_email: string | null
     audienceAge: number | null
     posts: string | null
     authorId: number | null
@@ -2099,6 +3065,7 @@ export namespace Prisma {
 
   export type InfluencerDetailCountAggregateOutputType = {
     id: number
+    bussiness_email: number
     contentType: number
     influencerType: number
     audienceAge: number
@@ -2123,6 +3090,7 @@ export namespace Prisma {
 
   export type InfluencerDetailMinAggregateInputType = {
     id?: true
+    bussiness_email?: true
     audienceAge?: true
     posts?: true
     authorId?: true
@@ -2130,6 +3098,7 @@ export namespace Prisma {
 
   export type InfluencerDetailMaxAggregateInputType = {
     id?: true
+    bussiness_email?: true
     audienceAge?: true
     posts?: true
     authorId?: true
@@ -2137,6 +3106,7 @@ export namespace Prisma {
 
   export type InfluencerDetailCountAggregateInputType = {
     id?: true
+    bussiness_email?: true
     contentType?: true
     influencerType?: true
     audienceAge?: true
@@ -2234,6 +3204,7 @@ export namespace Prisma {
 
   export type InfluencerDetailGroupByOutputType = {
     id: number
+    bussiness_email: string
     contentType: string[]
     influencerType: string[]
     audienceAge: number
@@ -2263,6 +3234,7 @@ export namespace Prisma {
 
   export type InfluencerDetailSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    bussiness_email?: boolean
     contentType?: boolean
     influencerType?: boolean
     audienceAge?: boolean
@@ -2274,6 +3246,7 @@ export namespace Prisma {
 
   export type InfluencerDetailSelectScalar = {
     id?: boolean
+    bussiness_email?: boolean
     contentType?: boolean
     influencerType?: boolean
     audienceAge?: boolean
@@ -2294,6 +3267,7 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
+      bussiness_email: string
       contentType: string[]
       influencerType: string[]
       audienceAge: number
@@ -2696,6 +3670,7 @@ export namespace Prisma {
    */ 
   interface InfluencerDetailFieldRefs {
     readonly id: FieldRef<"InfluencerDetail", 'Int'>
+    readonly bussiness_email: FieldRef<"InfluencerDetail", 'String'>
     readonly contentType: FieldRef<"InfluencerDetail", 'String[]'>
     readonly influencerType: FieldRef<"InfluencerDetail", 'String[]'>
     readonly audienceAge: FieldRef<"InfluencerDetail", 'Int'>
@@ -3052,21 +4027,21 @@ export namespace Prisma {
   export type BrandsMinAggregateOutputType = {
     id: number | null
     email: string | null
-    insta_username: string | null
+    password: string | null
     companyName: string | null
   }
 
   export type BrandsMaxAggregateOutputType = {
     id: number | null
     email: string | null
-    insta_username: string | null
+    password: string | null
     companyName: string | null
   }
 
   export type BrandsCountAggregateOutputType = {
     id: number
     email: number
-    insta_username: number
+    password: number
     companyName: number
     _all: number
   }
@@ -3083,21 +4058,21 @@ export namespace Prisma {
   export type BrandsMinAggregateInputType = {
     id?: true
     email?: true
-    insta_username?: true
+    password?: true
     companyName?: true
   }
 
   export type BrandsMaxAggregateInputType = {
     id?: true
     email?: true
-    insta_username?: true
+    password?: true
     companyName?: true
   }
 
   export type BrandsCountAggregateInputType = {
     id?: true
     email?: true
-    insta_username?: true
+    password?: true
     companyName?: true
     _all?: true
   }
@@ -3191,7 +4166,7 @@ export namespace Prisma {
   export type BrandsGroupByOutputType = {
     id: number
     email: string
-    insta_username: string
+    password: string
     companyName: string
     _count: BrandsCountAggregateOutputType | null
     _avg: BrandsAvgAggregateOutputType | null
@@ -3217,7 +4192,7 @@ export namespace Prisma {
   export type BrandsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     email?: boolean
-    insta_username?: boolean
+    password?: boolean
     companyName?: boolean
     Details?: boolean | Brands$DetailsArgs<ExtArgs>
   }, ExtArgs["result"]["brands"]>
@@ -3225,7 +4200,7 @@ export namespace Prisma {
   export type BrandsSelectScalar = {
     id?: boolean
     email?: boolean
-    insta_username?: boolean
+    password?: boolean
     companyName?: boolean
   }
 
@@ -3242,7 +4217,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: number
       email: string
-      insta_username: string
+      password: string
       companyName: string
     }, ExtArgs["result"]["brands"]>
     composites: {}
@@ -3641,7 +4616,7 @@ export namespace Prisma {
   interface BrandsFieldRefs {
     readonly id: FieldRef<"Brands", 'Int'>
     readonly email: FieldRef<"Brands", 'String'>
-    readonly insta_username: FieldRef<"Brands", 'String'>
+    readonly password: FieldRef<"Brands", 'String'>
     readonly companyName: FieldRef<"Brands", 'String'>
   }
     
@@ -4014,6 +4989,7 @@ export namespace Prisma {
 
   export type BrandsDetailsMinAggregateOutputType = {
     id: number | null
+    bussiness_email: string | null
     productDescription: string | null
     productDescriptionFile: string | null
     targetAudienceDescription: string | null
@@ -4025,6 +5001,7 @@ export namespace Prisma {
 
   export type BrandsDetailsMaxAggregateOutputType = {
     id: number | null
+    bussiness_email: string | null
     productDescription: string | null
     productDescriptionFile: string | null
     targetAudienceDescription: string | null
@@ -4036,6 +5013,7 @@ export namespace Prisma {
 
   export type BrandsDetailsCountAggregateOutputType = {
     id: number
+    bussiness_email: number
     productDescription: number
     productDescriptionFile: number
     targetAudienceDescription: number
@@ -4064,6 +5042,7 @@ export namespace Prisma {
 
   export type BrandsDetailsMinAggregateInputType = {
     id?: true
+    bussiness_email?: true
     productDescription?: true
     productDescriptionFile?: true
     targetAudienceDescription?: true
@@ -4075,6 +5054,7 @@ export namespace Prisma {
 
   export type BrandsDetailsMaxAggregateInputType = {
     id?: true
+    bussiness_email?: true
     productDescription?: true
     productDescriptionFile?: true
     targetAudienceDescription?: true
@@ -4086,6 +5066,7 @@ export namespace Prisma {
 
   export type BrandsDetailsCountAggregateInputType = {
     id?: true
+    bussiness_email?: true
     productDescription?: true
     productDescriptionFile?: true
     targetAudienceDescription?: true
@@ -4185,6 +5166,7 @@ export namespace Prisma {
 
   export type BrandsDetailsGroupByOutputType = {
     id: number
+    bussiness_email: string
     productDescription: string
     productDescriptionFile: string
     targetAudienceDescription: string | null
@@ -4216,6 +5198,7 @@ export namespace Prisma {
 
   export type BrandsDetailsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    bussiness_email?: boolean
     productDescription?: boolean
     productDescriptionFile?: boolean
     targetAudienceDescription?: boolean
@@ -4229,6 +5212,7 @@ export namespace Prisma {
 
   export type BrandsDetailsSelectScalar = {
     id?: boolean
+    bussiness_email?: boolean
     productDescription?: boolean
     productDescriptionFile?: boolean
     targetAudienceDescription?: boolean
@@ -4251,6 +5235,7 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
+      bussiness_email: string
       productDescription: string
       productDescriptionFile: string
       targetAudienceDescription: string | null
@@ -4655,6 +5640,7 @@ export namespace Prisma {
    */ 
   interface BrandsDetailsFieldRefs {
     readonly id: FieldRef<"BrandsDetails", 'Int'>
+    readonly bussiness_email: FieldRef<"BrandsDetails", 'String'>
     readonly productDescription: FieldRef<"BrandsDetails", 'String'>
     readonly productDescriptionFile: FieldRef<"BrandsDetails", 'String'>
     readonly targetAudienceDescription: FieldRef<"BrandsDetails", 'String'>
@@ -5004,10 +5990,19 @@ export namespace Prisma {
   export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
+  export const UsersScalarFieldEnum: {
+    id: 'id',
+    email: 'email',
+    password: 'password'
+  };
+
+  export type UsersScalarFieldEnum = (typeof UsersScalarFieldEnum)[keyof typeof UsersScalarFieldEnum]
+
+
   export const InfluencersScalarFieldEnum: {
     id: 'id',
     email: 'email',
-    insta_username: 'insta_username',
+    password: 'password',
     name: 'name'
   };
 
@@ -5016,6 +6011,7 @@ export namespace Prisma {
 
   export const InfluencerDetailScalarFieldEnum: {
     id: 'id',
+    bussiness_email: 'bussiness_email',
     contentType: 'contentType',
     influencerType: 'influencerType',
     audienceAge: 'audienceAge',
@@ -5030,7 +6026,7 @@ export namespace Prisma {
   export const BrandsScalarFieldEnum: {
     id: 'id',
     email: 'email',
-    insta_username: 'insta_username',
+    password: 'password',
     companyName: 'companyName'
   };
 
@@ -5039,6 +6035,7 @@ export namespace Prisma {
 
   export const BrandsDetailsScalarFieldEnum: {
     id: 'id',
+    bussiness_email: 'bussiness_email',
     productDescription: 'productDescription',
     productDescriptionFile: 'productDescriptionFile',
     targetAudienceDescription: 'targetAudienceDescription',
@@ -5126,41 +6123,85 @@ export namespace Prisma {
    */
 
 
+  export type UsersWhereInput = {
+    AND?: UsersWhereInput | UsersWhereInput[]
+    OR?: UsersWhereInput[]
+    NOT?: UsersWhereInput | UsersWhereInput[]
+    id?: IntFilter<"Users"> | number
+    email?: StringFilter<"Users"> | string
+    password?: StringFilter<"Users"> | string
+  }
+
+  export type UsersOrderByWithRelationInput = {
+    id?: SortOrder
+    email?: SortOrder
+    password?: SortOrder
+  }
+
+  export type UsersWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    email?: string
+    AND?: UsersWhereInput | UsersWhereInput[]
+    OR?: UsersWhereInput[]
+    NOT?: UsersWhereInput | UsersWhereInput[]
+    password?: StringFilter<"Users"> | string
+  }, "id" | "email">
+
+  export type UsersOrderByWithAggregationInput = {
+    id?: SortOrder
+    email?: SortOrder
+    password?: SortOrder
+    _count?: UsersCountOrderByAggregateInput
+    _avg?: UsersAvgOrderByAggregateInput
+    _max?: UsersMaxOrderByAggregateInput
+    _min?: UsersMinOrderByAggregateInput
+    _sum?: UsersSumOrderByAggregateInput
+  }
+
+  export type UsersScalarWhereWithAggregatesInput = {
+    AND?: UsersScalarWhereWithAggregatesInput | UsersScalarWhereWithAggregatesInput[]
+    OR?: UsersScalarWhereWithAggregatesInput[]
+    NOT?: UsersScalarWhereWithAggregatesInput | UsersScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Users"> | number
+    email?: StringWithAggregatesFilter<"Users"> | string
+    password?: StringWithAggregatesFilter<"Users"> | string
+  }
+
   export type InfluencersWhereInput = {
     AND?: InfluencersWhereInput | InfluencersWhereInput[]
     OR?: InfluencersWhereInput[]
     NOT?: InfluencersWhereInput | InfluencersWhereInput[]
     id?: IntFilter<"Influencers"> | number
     email?: StringFilter<"Influencers"> | string
-    insta_username?: StringFilter<"Influencers"> | string
-    name?: StringNullableFilter<"Influencers"> | string | null
+    password?: StringFilter<"Influencers"> | string
+    name?: StringFilter<"Influencers"> | string
     Details?: XOR<InfluencerDetailNullableRelationFilter, InfluencerDetailWhereInput> | null
   }
 
   export type InfluencersOrderByWithRelationInput = {
     id?: SortOrder
     email?: SortOrder
-    insta_username?: SortOrder
-    name?: SortOrderInput | SortOrder
+    password?: SortOrder
+    name?: SortOrder
     Details?: InfluencerDetailOrderByWithRelationInput
   }
 
   export type InfluencersWhereUniqueInput = Prisma.AtLeast<{
     id?: number
     email?: string
-    insta_username?: string
     AND?: InfluencersWhereInput | InfluencersWhereInput[]
     OR?: InfluencersWhereInput[]
     NOT?: InfluencersWhereInput | InfluencersWhereInput[]
-    name?: StringNullableFilter<"Influencers"> | string | null
+    password?: StringFilter<"Influencers"> | string
+    name?: StringFilter<"Influencers"> | string
     Details?: XOR<InfluencerDetailNullableRelationFilter, InfluencerDetailWhereInput> | null
-  }, "id" | "email" | "insta_username">
+  }, "id" | "email">
 
   export type InfluencersOrderByWithAggregationInput = {
     id?: SortOrder
     email?: SortOrder
-    insta_username?: SortOrder
-    name?: SortOrderInput | SortOrder
+    password?: SortOrder
+    name?: SortOrder
     _count?: InfluencersCountOrderByAggregateInput
     _avg?: InfluencersAvgOrderByAggregateInput
     _max?: InfluencersMaxOrderByAggregateInput
@@ -5174,8 +6215,8 @@ export namespace Prisma {
     NOT?: InfluencersScalarWhereWithAggregatesInput | InfluencersScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Influencers"> | number
     email?: StringWithAggregatesFilter<"Influencers"> | string
-    insta_username?: StringWithAggregatesFilter<"Influencers"> | string
-    name?: StringNullableWithAggregatesFilter<"Influencers"> | string | null
+    password?: StringWithAggregatesFilter<"Influencers"> | string
+    name?: StringWithAggregatesFilter<"Influencers"> | string
   }
 
   export type InfluencerDetailWhereInput = {
@@ -5183,6 +6224,7 @@ export namespace Prisma {
     OR?: InfluencerDetailWhereInput[]
     NOT?: InfluencerDetailWhereInput | InfluencerDetailWhereInput[]
     id?: IntFilter<"InfluencerDetail"> | number
+    bussiness_email?: StringFilter<"InfluencerDetail"> | string
     contentType?: StringNullableListFilter<"InfluencerDetail">
     influencerType?: StringNullableListFilter<"InfluencerDetail">
     audienceAge?: IntFilter<"InfluencerDetail"> | number
@@ -5194,6 +6236,7 @@ export namespace Prisma {
 
   export type InfluencerDetailOrderByWithRelationInput = {
     id?: SortOrder
+    bussiness_email?: SortOrder
     contentType?: SortOrder
     influencerType?: SortOrder
     audienceAge?: SortOrder
@@ -5209,6 +6252,7 @@ export namespace Prisma {
     AND?: InfluencerDetailWhereInput | InfluencerDetailWhereInput[]
     OR?: InfluencerDetailWhereInput[]
     NOT?: InfluencerDetailWhereInput | InfluencerDetailWhereInput[]
+    bussiness_email?: StringFilter<"InfluencerDetail"> | string
     contentType?: StringNullableListFilter<"InfluencerDetail">
     influencerType?: StringNullableListFilter<"InfluencerDetail">
     audienceAge?: IntFilter<"InfluencerDetail"> | number
@@ -5219,6 +6263,7 @@ export namespace Prisma {
 
   export type InfluencerDetailOrderByWithAggregationInput = {
     id?: SortOrder
+    bussiness_email?: SortOrder
     contentType?: SortOrder
     influencerType?: SortOrder
     audienceAge?: SortOrder
@@ -5237,6 +6282,7 @@ export namespace Prisma {
     OR?: InfluencerDetailScalarWhereWithAggregatesInput[]
     NOT?: InfluencerDetailScalarWhereWithAggregatesInput | InfluencerDetailScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"InfluencerDetail"> | number
+    bussiness_email?: StringWithAggregatesFilter<"InfluencerDetail"> | string
     contentType?: StringNullableListFilter<"InfluencerDetail">
     influencerType?: StringNullableListFilter<"InfluencerDetail">
     audienceAge?: IntWithAggregatesFilter<"InfluencerDetail"> | number
@@ -5251,7 +6297,7 @@ export namespace Prisma {
     NOT?: BrandsWhereInput | BrandsWhereInput[]
     id?: IntFilter<"Brands"> | number
     email?: StringFilter<"Brands"> | string
-    insta_username?: StringFilter<"Brands"> | string
+    password?: StringFilter<"Brands"> | string
     companyName?: StringFilter<"Brands"> | string
     Details?: XOR<BrandsDetailsNullableRelationFilter, BrandsDetailsWhereInput> | null
   }
@@ -5259,7 +6305,7 @@ export namespace Prisma {
   export type BrandsOrderByWithRelationInput = {
     id?: SortOrder
     email?: SortOrder
-    insta_username?: SortOrder
+    password?: SortOrder
     companyName?: SortOrder
     Details?: BrandsDetailsOrderByWithRelationInput
   }
@@ -5267,18 +6313,18 @@ export namespace Prisma {
   export type BrandsWhereUniqueInput = Prisma.AtLeast<{
     id?: number
     email?: string
-    insta_username?: string
     AND?: BrandsWhereInput | BrandsWhereInput[]
     OR?: BrandsWhereInput[]
     NOT?: BrandsWhereInput | BrandsWhereInput[]
+    password?: StringFilter<"Brands"> | string
     companyName?: StringFilter<"Brands"> | string
     Details?: XOR<BrandsDetailsNullableRelationFilter, BrandsDetailsWhereInput> | null
-  }, "id" | "email" | "insta_username">
+  }, "id" | "email">
 
   export type BrandsOrderByWithAggregationInput = {
     id?: SortOrder
     email?: SortOrder
-    insta_username?: SortOrder
+    password?: SortOrder
     companyName?: SortOrder
     _count?: BrandsCountOrderByAggregateInput
     _avg?: BrandsAvgOrderByAggregateInput
@@ -5293,7 +6339,7 @@ export namespace Prisma {
     NOT?: BrandsScalarWhereWithAggregatesInput | BrandsScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Brands"> | number
     email?: StringWithAggregatesFilter<"Brands"> | string
-    insta_username?: StringWithAggregatesFilter<"Brands"> | string
+    password?: StringWithAggregatesFilter<"Brands"> | string
     companyName?: StringWithAggregatesFilter<"Brands"> | string
   }
 
@@ -5302,6 +6348,7 @@ export namespace Prisma {
     OR?: BrandsDetailsWhereInput[]
     NOT?: BrandsDetailsWhereInput | BrandsDetailsWhereInput[]
     id?: IntFilter<"BrandsDetails"> | number
+    bussiness_email?: StringFilter<"BrandsDetails"> | string
     productDescription?: StringFilter<"BrandsDetails"> | string
     productDescriptionFile?: StringFilter<"BrandsDetails"> | string
     targetAudienceDescription?: StringNullableFilter<"BrandsDetails"> | string | null
@@ -5315,6 +6362,7 @@ export namespace Prisma {
 
   export type BrandsDetailsOrderByWithRelationInput = {
     id?: SortOrder
+    bussiness_email?: SortOrder
     productDescription?: SortOrder
     productDescriptionFile?: SortOrder
     targetAudienceDescription?: SortOrderInput | SortOrder
@@ -5332,6 +6380,7 @@ export namespace Prisma {
     AND?: BrandsDetailsWhereInput | BrandsDetailsWhereInput[]
     OR?: BrandsDetailsWhereInput[]
     NOT?: BrandsDetailsWhereInput | BrandsDetailsWhereInput[]
+    bussiness_email?: StringFilter<"BrandsDetails"> | string
     productDescription?: StringFilter<"BrandsDetails"> | string
     productDescriptionFile?: StringFilter<"BrandsDetails"> | string
     targetAudienceDescription?: StringNullableFilter<"BrandsDetails"> | string | null
@@ -5344,6 +6393,7 @@ export namespace Prisma {
 
   export type BrandsDetailsOrderByWithAggregationInput = {
     id?: SortOrder
+    bussiness_email?: SortOrder
     productDescription?: SortOrder
     productDescriptionFile?: SortOrder
     targetAudienceDescription?: SortOrderInput | SortOrder
@@ -5364,6 +6414,7 @@ export namespace Prisma {
     OR?: BrandsDetailsScalarWhereWithAggregatesInput[]
     NOT?: BrandsDetailsScalarWhereWithAggregatesInput | BrandsDetailsScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"BrandsDetails"> | number
+    bussiness_email?: StringWithAggregatesFilter<"BrandsDetails"> | string
     productDescription?: StringWithAggregatesFilter<"BrandsDetails"> | string
     productDescriptionFile?: StringWithAggregatesFilter<"BrandsDetails"> | string
     targetAudienceDescription?: StringNullableWithAggregatesFilter<"BrandsDetails"> | string | null
@@ -5374,57 +6425,97 @@ export namespace Prisma {
     authorId?: IntWithAggregatesFilter<"BrandsDetails"> | number
   }
 
+  export type UsersCreateInput = {
+    email: string
+    password: string
+  }
+
+  export type UsersUncheckedCreateInput = {
+    id?: number
+    email: string
+    password: string
+  }
+
+  export type UsersUpdateInput = {
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type UsersUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type UsersCreateManyInput = {
+    id?: number
+    email: string
+    password: string
+  }
+
+  export type UsersUpdateManyMutationInput = {
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type UsersUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+  }
+
   export type InfluencersCreateInput = {
     email: string
-    insta_username: string
-    name?: string | null
+    password: string
+    name: string
     Details?: InfluencerDetailCreateNestedOneWithoutAuthorInput
   }
 
   export type InfluencersUncheckedCreateInput = {
     id?: number
     email: string
-    insta_username: string
-    name?: string | null
+    password: string
+    name: string
     Details?: InfluencerDetailUncheckedCreateNestedOneWithoutAuthorInput
   }
 
   export type InfluencersUpdateInput = {
     email?: StringFieldUpdateOperationsInput | string
-    insta_username?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     Details?: InfluencerDetailUpdateOneWithoutAuthorNestedInput
   }
 
   export type InfluencersUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     email?: StringFieldUpdateOperationsInput | string
-    insta_username?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     Details?: InfluencerDetailUncheckedUpdateOneWithoutAuthorNestedInput
   }
 
   export type InfluencersCreateManyInput = {
     id?: number
     email: string
-    insta_username: string
-    name?: string | null
+    password: string
+    name: string
   }
 
   export type InfluencersUpdateManyMutationInput = {
     email?: StringFieldUpdateOperationsInput | string
-    insta_username?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
   }
 
   export type InfluencersUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     email?: StringFieldUpdateOperationsInput | string
-    insta_username?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
   }
 
   export type InfluencerDetailCreateInput = {
+    bussiness_email: string
     contentType?: InfluencerDetailCreatecontentTypeInput | string[]
     influencerType?: InfluencerDetailCreateinfluencerTypeInput | string[]
     audienceAge: number
@@ -5435,6 +6526,7 @@ export namespace Prisma {
 
   export type InfluencerDetailUncheckedCreateInput = {
     id?: number
+    bussiness_email: string
     contentType?: InfluencerDetailCreatecontentTypeInput | string[]
     influencerType?: InfluencerDetailCreateinfluencerTypeInput | string[]
     audienceAge: number
@@ -5444,6 +6536,7 @@ export namespace Prisma {
   }
 
   export type InfluencerDetailUpdateInput = {
+    bussiness_email?: StringFieldUpdateOperationsInput | string
     contentType?: InfluencerDetailUpdatecontentTypeInput | string[]
     influencerType?: InfluencerDetailUpdateinfluencerTypeInput | string[]
     audienceAge?: IntFieldUpdateOperationsInput | number
@@ -5454,6 +6547,7 @@ export namespace Prisma {
 
   export type InfluencerDetailUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
+    bussiness_email?: StringFieldUpdateOperationsInput | string
     contentType?: InfluencerDetailUpdatecontentTypeInput | string[]
     influencerType?: InfluencerDetailUpdateinfluencerTypeInput | string[]
     audienceAge?: IntFieldUpdateOperationsInput | number
@@ -5464,6 +6558,7 @@ export namespace Prisma {
 
   export type InfluencerDetailCreateManyInput = {
     id?: number
+    bussiness_email: string
     contentType?: InfluencerDetailCreatecontentTypeInput | string[]
     influencerType?: InfluencerDetailCreateinfluencerTypeInput | string[]
     audienceAge: number
@@ -5473,6 +6568,7 @@ export namespace Prisma {
   }
 
   export type InfluencerDetailUpdateManyMutationInput = {
+    bussiness_email?: StringFieldUpdateOperationsInput | string
     contentType?: InfluencerDetailUpdatecontentTypeInput | string[]
     influencerType?: InfluencerDetailUpdateinfluencerTypeInput | string[]
     audienceAge?: IntFieldUpdateOperationsInput | number
@@ -5482,6 +6578,7 @@ export namespace Prisma {
 
   export type InfluencerDetailUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
+    bussiness_email?: StringFieldUpdateOperationsInput | string
     contentType?: InfluencerDetailUpdatecontentTypeInput | string[]
     influencerType?: InfluencerDetailUpdateinfluencerTypeInput | string[]
     audienceAge?: IntFieldUpdateOperationsInput | number
@@ -5492,7 +6589,7 @@ export namespace Prisma {
 
   export type BrandsCreateInput = {
     email: string
-    insta_username: string
+    password: string
     companyName: string
     Details?: BrandsDetailsCreateNestedOneWithoutAuthorInput
   }
@@ -5500,14 +6597,14 @@ export namespace Prisma {
   export type BrandsUncheckedCreateInput = {
     id?: number
     email: string
-    insta_username: string
+    password: string
     companyName: string
     Details?: BrandsDetailsUncheckedCreateNestedOneWithoutAuthorInput
   }
 
   export type BrandsUpdateInput = {
     email?: StringFieldUpdateOperationsInput | string
-    insta_username?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     companyName?: StringFieldUpdateOperationsInput | string
     Details?: BrandsDetailsUpdateOneWithoutAuthorNestedInput
   }
@@ -5515,7 +6612,7 @@ export namespace Prisma {
   export type BrandsUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     email?: StringFieldUpdateOperationsInput | string
-    insta_username?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     companyName?: StringFieldUpdateOperationsInput | string
     Details?: BrandsDetailsUncheckedUpdateOneWithoutAuthorNestedInput
   }
@@ -5523,24 +6620,25 @@ export namespace Prisma {
   export type BrandsCreateManyInput = {
     id?: number
     email: string
-    insta_username: string
+    password: string
     companyName: string
   }
 
   export type BrandsUpdateManyMutationInput = {
     email?: StringFieldUpdateOperationsInput | string
-    insta_username?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     companyName?: StringFieldUpdateOperationsInput | string
   }
 
   export type BrandsUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     email?: StringFieldUpdateOperationsInput | string
-    insta_username?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     companyName?: StringFieldUpdateOperationsInput | string
   }
 
   export type BrandsDetailsCreateInput = {
+    bussiness_email: string
     productDescription: string
     productDescriptionFile: string
     targetAudienceDescription?: string | null
@@ -5553,6 +6651,7 @@ export namespace Prisma {
 
   export type BrandsDetailsUncheckedCreateInput = {
     id?: number
+    bussiness_email: string
     productDescription: string
     productDescriptionFile: string
     targetAudienceDescription?: string | null
@@ -5564,6 +6663,7 @@ export namespace Prisma {
   }
 
   export type BrandsDetailsUpdateInput = {
+    bussiness_email?: StringFieldUpdateOperationsInput | string
     productDescription?: StringFieldUpdateOperationsInput | string
     productDescriptionFile?: StringFieldUpdateOperationsInput | string
     targetAudienceDescription?: NullableStringFieldUpdateOperationsInput | string | null
@@ -5576,6 +6676,7 @@ export namespace Prisma {
 
   export type BrandsDetailsUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
+    bussiness_email?: StringFieldUpdateOperationsInput | string
     productDescription?: StringFieldUpdateOperationsInput | string
     productDescriptionFile?: StringFieldUpdateOperationsInput | string
     targetAudienceDescription?: NullableStringFieldUpdateOperationsInput | string | null
@@ -5588,6 +6689,7 @@ export namespace Prisma {
 
   export type BrandsDetailsCreateManyInput = {
     id?: number
+    bussiness_email: string
     productDescription: string
     productDescriptionFile: string
     targetAudienceDescription?: string | null
@@ -5599,6 +6701,7 @@ export namespace Prisma {
   }
 
   export type BrandsDetailsUpdateManyMutationInput = {
+    bussiness_email?: StringFieldUpdateOperationsInput | string
     productDescription?: StringFieldUpdateOperationsInput | string
     productDescriptionFile?: StringFieldUpdateOperationsInput | string
     targetAudienceDescription?: NullableStringFieldUpdateOperationsInput | string | null
@@ -5610,6 +6713,7 @@ export namespace Prisma {
 
   export type BrandsDetailsUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
+    bussiness_email?: StringFieldUpdateOperationsInput | string
     productDescription?: StringFieldUpdateOperationsInput | string
     productDescriptionFile?: StringFieldUpdateOperationsInput | string
     targetAudienceDescription?: NullableStringFieldUpdateOperationsInput | string | null
@@ -5646,57 +6750,29 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
-  export type StringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
-  }
-
-  export type InfluencerDetailNullableRelationFilter = {
-    is?: InfluencerDetailWhereInput | null
-    isNot?: InfluencerDetailWhereInput | null
-  }
-
-  export type SortOrderInput = {
-    sort: SortOrder
-    nulls?: NullsOrder
-  }
-
-  export type InfluencersCountOrderByAggregateInput = {
+  export type UsersCountOrderByAggregateInput = {
     id?: SortOrder
     email?: SortOrder
-    insta_username?: SortOrder
-    name?: SortOrder
+    password?: SortOrder
   }
 
-  export type InfluencersAvgOrderByAggregateInput = {
+  export type UsersAvgOrderByAggregateInput = {
     id?: SortOrder
   }
 
-  export type InfluencersMaxOrderByAggregateInput = {
-    id?: SortOrder
-    email?: SortOrder
-    insta_username?: SortOrder
-    name?: SortOrder
-  }
-
-  export type InfluencersMinOrderByAggregateInput = {
+  export type UsersMaxOrderByAggregateInput = {
     id?: SortOrder
     email?: SortOrder
-    insta_username?: SortOrder
-    name?: SortOrder
+    password?: SortOrder
   }
 
-  export type InfluencersSumOrderByAggregateInput = {
+  export type UsersMinOrderByAggregateInput = {
+    id?: SortOrder
+    email?: SortOrder
+    password?: SortOrder
+  }
+
+  export type UsersSumOrderByAggregateInput = {
     id?: SortOrder
   }
 
@@ -5734,22 +6810,38 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
-  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
+  export type InfluencerDetailNullableRelationFilter = {
+    is?: InfluencerDetailWhereInput | null
+    isNot?: InfluencerDetailWhereInput | null
+  }
+
+  export type InfluencersCountOrderByAggregateInput = {
+    id?: SortOrder
+    email?: SortOrder
+    password?: SortOrder
+    name?: SortOrder
+  }
+
+  export type InfluencersAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type InfluencersMaxOrderByAggregateInput = {
+    id?: SortOrder
+    email?: SortOrder
+    password?: SortOrder
+    name?: SortOrder
+  }
+
+  export type InfluencersMinOrderByAggregateInput = {
+    id?: SortOrder
+    email?: SortOrder
+    password?: SortOrder
+    name?: SortOrder
+  }
+
+  export type InfluencersSumOrderByAggregateInput = {
+    id?: SortOrder
   }
 
   export type StringNullableListFilter<$PrismaModel = never> = {
@@ -5767,6 +6859,7 @@ export namespace Prisma {
 
   export type InfluencerDetailCountOrderByAggregateInput = {
     id?: SortOrder
+    bussiness_email?: SortOrder
     contentType?: SortOrder
     influencerType?: SortOrder
     audienceAge?: SortOrder
@@ -5783,6 +6876,7 @@ export namespace Prisma {
 
   export type InfluencerDetailMaxOrderByAggregateInput = {
     id?: SortOrder
+    bussiness_email?: SortOrder
     audienceAge?: SortOrder
     posts?: SortOrder
     authorId?: SortOrder
@@ -5790,6 +6884,7 @@ export namespace Prisma {
 
   export type InfluencerDetailMinOrderByAggregateInput = {
     id?: SortOrder
+    bussiness_email?: SortOrder
     audienceAge?: SortOrder
     posts?: SortOrder
     authorId?: SortOrder
@@ -5809,7 +6904,7 @@ export namespace Prisma {
   export type BrandsCountOrderByAggregateInput = {
     id?: SortOrder
     email?: SortOrder
-    insta_username?: SortOrder
+    password?: SortOrder
     companyName?: SortOrder
   }
 
@@ -5820,14 +6915,14 @@ export namespace Prisma {
   export type BrandsMaxOrderByAggregateInput = {
     id?: SortOrder
     email?: SortOrder
-    insta_username?: SortOrder
+    password?: SortOrder
     companyName?: SortOrder
   }
 
   export type BrandsMinOrderByAggregateInput = {
     id?: SortOrder
     email?: SortOrder
-    insta_username?: SortOrder
+    password?: SortOrder
     companyName?: SortOrder
   }
 
@@ -5835,13 +6930,34 @@ export namespace Prisma {
     id?: SortOrder
   }
 
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
   export type BrandsRelationFilter = {
     is?: BrandsWhereInput
     isNot?: BrandsWhereInput
   }
 
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
+  }
+
   export type BrandsDetailsCountOrderByAggregateInput = {
     id?: SortOrder
+    bussiness_email?: SortOrder
     productDescription?: SortOrder
     productDescriptionFile?: SortOrder
     targetAudienceDescription?: SortOrder
@@ -5861,6 +6977,7 @@ export namespace Prisma {
 
   export type BrandsDetailsMaxOrderByAggregateInput = {
     id?: SortOrder
+    bussiness_email?: SortOrder
     productDescription?: SortOrder
     productDescriptionFile?: SortOrder
     targetAudienceDescription?: SortOrder
@@ -5872,6 +6989,7 @@ export namespace Prisma {
 
   export type BrandsDetailsMinOrderByAggregateInput = {
     id?: SortOrder
+    bussiness_email?: SortOrder
     productDescription?: SortOrder
     productDescriptionFile?: SortOrder
     targetAudienceDescription?: SortOrder
@@ -5888,6 +7006,36 @@ export namespace Prisma {
     authorId?: SortOrder
   }
 
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type StringFieldUpdateOperationsInput = {
+    set?: string
+  }
+
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
   export type InfluencerDetailCreateNestedOneWithoutAuthorInput = {
     create?: XOR<InfluencerDetailCreateWithoutAuthorInput, InfluencerDetailUncheckedCreateWithoutAuthorInput>
     connectOrCreate?: InfluencerDetailCreateOrConnectWithoutAuthorInput
@@ -5900,14 +7048,6 @@ export namespace Prisma {
     connect?: InfluencerDetailWhereUniqueInput
   }
 
-  export type StringFieldUpdateOperationsInput = {
-    set?: string
-  }
-
-  export type NullableStringFieldUpdateOperationsInput = {
-    set?: string | null
-  }
-
   export type InfluencerDetailUpdateOneWithoutAuthorNestedInput = {
     create?: XOR<InfluencerDetailCreateWithoutAuthorInput, InfluencerDetailUncheckedCreateWithoutAuthorInput>
     connectOrCreate?: InfluencerDetailCreateOrConnectWithoutAuthorInput
@@ -5916,14 +7056,6 @@ export namespace Prisma {
     delete?: InfluencerDetailWhereInput | boolean
     connect?: InfluencerDetailWhereUniqueInput
     update?: XOR<XOR<InfluencerDetailUpdateToOneWithWhereWithoutAuthorInput, InfluencerDetailUpdateWithoutAuthorInput>, InfluencerDetailUncheckedUpdateWithoutAuthorInput>
-  }
-
-  export type IntFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
   }
 
   export type InfluencerDetailUncheckedUpdateOneWithoutAuthorNestedInput = {
@@ -6019,6 +7151,10 @@ export namespace Prisma {
     connect?: BrandsWhereUniqueInput
   }
 
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
+  }
+
   export type BrandsDetailsUpdateinfluencerTypeInput = {
     set?: string[]
     push?: string | string[]
@@ -6055,20 +7191,6 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     not?: NestedStringFilter<$PrismaModel> | string
-  }
-
-  export type NestedStringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -6115,6 +7237,20 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -6144,6 +7280,7 @@ export namespace Prisma {
   }
 
   export type InfluencerDetailCreateWithoutAuthorInput = {
+    bussiness_email: string
     contentType?: InfluencerDetailCreatecontentTypeInput | string[]
     influencerType?: InfluencerDetailCreateinfluencerTypeInput | string[]
     audienceAge: number
@@ -6153,6 +7290,7 @@ export namespace Prisma {
 
   export type InfluencerDetailUncheckedCreateWithoutAuthorInput = {
     id?: number
+    bussiness_email: string
     contentType?: InfluencerDetailCreatecontentTypeInput | string[]
     influencerType?: InfluencerDetailCreateinfluencerTypeInput | string[]
     audienceAge: number
@@ -6177,6 +7315,7 @@ export namespace Prisma {
   }
 
   export type InfluencerDetailUpdateWithoutAuthorInput = {
+    bussiness_email?: StringFieldUpdateOperationsInput | string
     contentType?: InfluencerDetailUpdatecontentTypeInput | string[]
     influencerType?: InfluencerDetailUpdateinfluencerTypeInput | string[]
     audienceAge?: IntFieldUpdateOperationsInput | number
@@ -6186,6 +7325,7 @@ export namespace Prisma {
 
   export type InfluencerDetailUncheckedUpdateWithoutAuthorInput = {
     id?: IntFieldUpdateOperationsInput | number
+    bussiness_email?: StringFieldUpdateOperationsInput | string
     contentType?: InfluencerDetailUpdatecontentTypeInput | string[]
     influencerType?: InfluencerDetailUpdateinfluencerTypeInput | string[]
     audienceAge?: IntFieldUpdateOperationsInput | number
@@ -6195,15 +7335,15 @@ export namespace Prisma {
 
   export type InfluencersCreateWithoutDetailsInput = {
     email: string
-    insta_username: string
-    name?: string | null
+    password: string
+    name: string
   }
 
   export type InfluencersUncheckedCreateWithoutDetailsInput = {
     id?: number
     email: string
-    insta_username: string
-    name?: string | null
+    password: string
+    name: string
   }
 
   export type InfluencersCreateOrConnectWithoutDetailsInput = {
@@ -6224,18 +7364,19 @@ export namespace Prisma {
 
   export type InfluencersUpdateWithoutDetailsInput = {
     email?: StringFieldUpdateOperationsInput | string
-    insta_username?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
   }
 
   export type InfluencersUncheckedUpdateWithoutDetailsInput = {
     id?: IntFieldUpdateOperationsInput | number
     email?: StringFieldUpdateOperationsInput | string
-    insta_username?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
   }
 
   export type BrandsDetailsCreateWithoutAuthorInput = {
+    bussiness_email: string
     productDescription: string
     productDescriptionFile: string
     targetAudienceDescription?: string | null
@@ -6247,6 +7388,7 @@ export namespace Prisma {
 
   export type BrandsDetailsUncheckedCreateWithoutAuthorInput = {
     id?: number
+    bussiness_email: string
     productDescription: string
     productDescriptionFile: string
     targetAudienceDescription?: string | null
@@ -6273,6 +7415,7 @@ export namespace Prisma {
   }
 
   export type BrandsDetailsUpdateWithoutAuthorInput = {
+    bussiness_email?: StringFieldUpdateOperationsInput | string
     productDescription?: StringFieldUpdateOperationsInput | string
     productDescriptionFile?: StringFieldUpdateOperationsInput | string
     targetAudienceDescription?: NullableStringFieldUpdateOperationsInput | string | null
@@ -6284,6 +7427,7 @@ export namespace Prisma {
 
   export type BrandsDetailsUncheckedUpdateWithoutAuthorInput = {
     id?: IntFieldUpdateOperationsInput | number
+    bussiness_email?: StringFieldUpdateOperationsInput | string
     productDescription?: StringFieldUpdateOperationsInput | string
     productDescriptionFile?: StringFieldUpdateOperationsInput | string
     targetAudienceDescription?: NullableStringFieldUpdateOperationsInput | string | null
@@ -6295,14 +7439,14 @@ export namespace Prisma {
 
   export type BrandsCreateWithoutDetailsInput = {
     email: string
-    insta_username: string
+    password: string
     companyName: string
   }
 
   export type BrandsUncheckedCreateWithoutDetailsInput = {
     id?: number
     email: string
-    insta_username: string
+    password: string
     companyName: string
   }
 
@@ -6324,14 +7468,14 @@ export namespace Prisma {
 
   export type BrandsUpdateWithoutDetailsInput = {
     email?: StringFieldUpdateOperationsInput | string
-    insta_username?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     companyName?: StringFieldUpdateOperationsInput | string
   }
 
   export type BrandsUncheckedUpdateWithoutDetailsInput = {
     id?: IntFieldUpdateOperationsInput | number
     email?: StringFieldUpdateOperationsInput | string
-    insta_username?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     companyName?: StringFieldUpdateOperationsInput | string
   }
 
@@ -6340,6 +7484,10 @@ export namespace Prisma {
   /**
    * Aliases for legacy arg types
    */
+    /**
+     * @deprecated Use UsersDefaultArgs instead
+     */
+    export type UsersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = UsersDefaultArgs<ExtArgs>
     /**
      * @deprecated Use InfluencersDefaultArgs instead
      */

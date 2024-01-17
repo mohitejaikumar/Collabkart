@@ -107,15 +107,22 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
+exports.Prisma.UsersScalarFieldEnum = {
+  id: 'id',
+  email: 'email',
+  password: 'password'
+};
+
 exports.Prisma.InfluencersScalarFieldEnum = {
   id: 'id',
   email: 'email',
-  insta_username: 'insta_username',
+  password: 'password',
   name: 'name'
 };
 
 exports.Prisma.InfluencerDetailScalarFieldEnum = {
   id: 'id',
+  bussiness_email: 'bussiness_email',
   contentType: 'contentType',
   influencerType: 'influencerType',
   audienceAge: 'audienceAge',
@@ -127,12 +134,13 @@ exports.Prisma.InfluencerDetailScalarFieldEnum = {
 exports.Prisma.BrandsScalarFieldEnum = {
   id: 'id',
   email: 'email',
-  insta_username: 'insta_username',
+  password: 'password',
   companyName: 'companyName'
 };
 
 exports.Prisma.BrandsDetailsScalarFieldEnum = {
   id: 'id',
+  bussiness_email: 'bussiness_email',
   productDescription: 'productDescription',
   productDescriptionFile: 'productDescriptionFile',
   targetAudienceDescription: 'targetAudienceDescription',
@@ -160,6 +168,7 @@ exports.Prisma.NullsOrder = {
 
 
 exports.Prisma.ModelName = {
+  Users: 'Users',
   Influencers: 'Influencers',
   InfluencerDetail: 'InfluencerDetail',
   Brands: 'Brands',

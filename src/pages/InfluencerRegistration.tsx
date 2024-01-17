@@ -40,7 +40,7 @@ export default function InfluencerRegistrationPage() {
     resolver: zodResolver(InfluencerFormSchema),
     defaultValues: {
       name: "",
-      email: "",
+      bussiness_email: "",
       contentType: [],
       influencerType: [],
       posts: "",
@@ -68,8 +68,8 @@ export default function InfluencerRegistrationPage() {
         Object.keys(zodError).forEach((key) => {
 
 
-          if (key === "email") {
-            method.setError("email", zodError[key]);
+          if (key === "bussiness_email") {
+            method.setError("bussiness_email", zodError[key]);
           }
           if (key === "name") {
             method.setError("name", zodError[key]);
@@ -147,7 +147,7 @@ export default function InfluencerRegistrationPage() {
               />
 
               <Email
-                name={"email"}
+                name={"bussiness_email"}
                 label={"Bussiness E-mail"}
                 inputType={formInputType.string}
                 control={method.control}
@@ -202,5 +202,5 @@ export default function InfluencerRegistrationPage() {
 }
 
 
-// InfluencerRegistrationPage.auth = true;
+InfluencerRegistrationPage.auth = true;
 

@@ -1,28 +1,71 @@
 import NextAuth from "next-auth"
 import { JWT } from "next-auth/jwt"
-import InstagramProvider from "next-auth/providers/instagram"
-
-
+import CredentialsProvider from "next-auth/providers/credentials"
+import prisma from "../../../../lib/primaClient/db"
+import { SignInSchema } from "../../../../zod/form"
 
 export const authOptions = {
     // all the providers
     providers: [
 
-        InstagramProvider({
-            clientId: process.env.INSTAGRAM_CLIENT_ID!,
-            clientSecret: process.env.INSTAGRAM_CLIENT_SECRET!,
+        CredentialsProvider({
+            id: 'credentials',
+            name: 'Credentials',
+            type: "credentials",
 
-        }),
+            credentials: {
+                Email: { label: "email", type: "text", placeholder: "jsmith" },
+                Password: { label: "password", type: "password" }
+            },
+            async authorize(credentials, req) {
+
+                if(credentials===undefined){
+                    return null;
+                }
+               
+                const userEmail = credentials.Email;
+                const userPassword = credentials.Password;
+                const parseInput = SignInSchema.safeParse({
+                    Email: userEmail,
+                    Password: userPassword
+                })
+                if(!parseInput.success){
+                    return null;
+                }
+    
+                const dbResponse = await prisma.users.findUnique({
+                    where:{
+                        email:userEmail,
+                    }
+                })
+                if(dbResponse){
+                    
+                    return (dbResponse.password === userPassword)? dbResponse : null;
+                }
+                else{
+
+                   await prisma.users.create({
+                     data:{
+                        email:userEmail,
+                        password:userPassword
+                     }
+                   })
+                    return credentials;
+                }
+                
+             }
+            
+        })
 
 
     ],
     secret: process.env.NEXT_AUTH_SECRET,
     strategy: "jwt",
     callbacks: {
-        
+
         async session({ session, token, user }) {
             const sanitizedToken = Object.keys(token).reduce((p, c) => {
-                if (c != "email" &&
+                if (c !== "name" &&
                     c !== "iat" &&
                     c !== "exp" &&
                     c !== "jti" &&
@@ -34,6 +77,10 @@ export const authOptions = {
                     return p
                 }
             }, {})
+            session.apiToken=null;
+            session.user.image=null;
+            session.user.name=null;
+            
             return { ...session, user: sanitizedToken, apiToken: token.apiToken }
         },
         async jwt({ token, user }) {
@@ -46,7 +93,7 @@ export const authOptions = {
     },
 
     pages: {
-        signIn: '/auth/signin',
+        signIn: '/auth/credentials-signin',
     },
 
 

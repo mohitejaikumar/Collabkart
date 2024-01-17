@@ -3,7 +3,7 @@ import {z} from 'zod'
 
 export const InfluencerFormSchema=z.object({
     name:z.string().trim().min(3,{message:"Name must be atleast of 3 characters"}),
-    email:z.string().trim().email({message:"Invalid email address"}),
+    bussiness_email:z.string().trim().email({message:"Invalid email address"}),
     contentType: z.array(z.string()).min(1,{message:"You have to select atleast one option"}),
     influencerType: z.array(z.string()).min(1,{message:"You have to select atleast one option"}),
     audienceAge: z.number().min(5,{message:"minimum age must be 5 years"}),
@@ -16,7 +16,7 @@ export type InfluencerFormParams = z.infer<typeof InfluencerFormSchema>;
 
 export const BrandFormSchema = z.object({
     companyName : z.string().trim().min(2,{message:"Company Name must be atleast of 2 characters"}),
-    email:z.string().trim().email({message:"Invalid email address"}),
+    bussiness_email:z.string().trim().email({message:"Invalid email address"}),
     productDescription : z.string().trim().min(5,{message:"product Description must be atleast of 5 characters"}),
     productDescriptionFile : z.string(),
     targetAudienceDescription : z.string(),
@@ -27,3 +27,9 @@ export const BrandFormSchema = z.object({
 })
 
 export type BrandFormParams = z.infer<typeof BrandFormSchema>;
+
+export const SignInSchema = z.object({
+    Email:z.string().trim().email({message:"Invalid email address"}),
+    Password:z.string().trim().max(6,{message:"Please enter 6 character password"})
+})
+export type SignInParams = z.infer<typeof SignInSchema>
