@@ -114,6 +114,7 @@ export default function BrandRegistrationPage() {
   }
    
   //  form filled successfully
+  
   if (data.message!) {
     return (
       <>
