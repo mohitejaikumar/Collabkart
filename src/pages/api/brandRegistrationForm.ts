@@ -24,7 +24,7 @@ export default async function handler(
     if (!session) {
         return res.status(401).json({ message: "unauthorised User" });
     }
-    
+
     switch (req.method) {
         case 'POST':
             // zod validation
@@ -43,23 +43,23 @@ export default async function handler(
                 });
             }
 
-            
+
             // connect to db
             await prisma.brands.create({
                 data: {
-                    email: session?.user?.Email,
+                    email: session?.user?.email,
                     companyName: parsedFormInput.data.companyName,
-                    password: session?.user?.Password,
-                      Details: {
+                    password: session?.user?.password,
+                    Details: {
                         create: {
-                            bussiness_email:parsedFormInput.data.bussiness_email,
+                            bussiness_email: parsedFormInput.data.bussiness_email,
                             productDescription: parsedFormInput.data.productDescription,
                             productDescriptionFile: parsedFormInput.data.productDescriptionFile,
-                            targetAudienceDescription: parsedFormInput.data.targetAudienceDescription, 
-                            influencerType:parsedFormInput.data.influencerType,
-                            no_Of_Posts_or_PromotionVideos:parsedFormInput.data.no_Of_Posts_or_PromotionVideos,
-                            campaignGoal:parsedFormInput.data.campaignGoal,
-                            campaignBudget:parsedFormInput.data.campaignBudget
+                            targetAudienceDescription: parsedFormInput.data.targetAudienceDescription,
+                            influencerType: parsedFormInput.data.influencerType,
+                            no_Of_Posts_or_PromotionVideos: parsedFormInput.data.no_Of_Posts_or_PromotionVideos,
+                            campaignGoal: parsedFormInput.data.campaignGoal,
+                            campaignBudget: parsedFormInput.data.campaignBudget
                         }
                     }
 

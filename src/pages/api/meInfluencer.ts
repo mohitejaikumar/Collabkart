@@ -27,7 +27,7 @@ export default async function handler(
             try {
                 brand = await prisma.influencers.findUnique({
                     where: {
-                        email: session?.user?.Email,
+                        email: session?.user?.email,
                     }
                 })
             }
