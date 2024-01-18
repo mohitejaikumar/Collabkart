@@ -25,21 +25,14 @@ export default async function handler(
     // console.log(session);
     switch (req.method) {
         case 'GET':
-            let brand;
-            try {
-                brand = await prisma.brands.findUnique({
-                    where: {
-                        email: session?.user?.Email,
-                    }
-                })
-            }
-            catch (error) {
-                console.log(error);
-                return res.status(200).json({
-                    message: false
-                });
-            }
 
+       
+            const brand = await prisma.brands.findUnique({
+                where: {
+                    email: session?.user?.Email,
+                }
+            })
+           
             if (brand != null) {
                 return res.status(200).json({
                     message: true
