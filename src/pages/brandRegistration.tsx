@@ -114,7 +114,7 @@ export default function BrandRegistrationPage() {
   }
    
   //  form filled successfully
-  if (data.message) {
+  if (data.message!) {
     return (
       <>
         <div className="success-container">
