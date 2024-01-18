@@ -1,7 +1,7 @@
 import NextAuth from "next-auth"
 import { JWT } from "next-auth/jwt"
 import CredentialsProvider from "next-auth/providers/credentials"
-import prisma from "../../../../lib/primaClient/db"
+import prisma from "../../../../lib/prismaClient/db"
 import { SignInSchema } from "../../../../zod/form"
 
 export const authOptions = {

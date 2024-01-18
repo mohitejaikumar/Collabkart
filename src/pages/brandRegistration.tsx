@@ -16,9 +16,7 @@ import { useEffect, useState } from "react";
 import { getServerSession } from "next-auth";
 import { authOptions } from "./api/auth/[...nextauth]";
 import ProductDescriptionFile from "level-up/form-input-components/brands-components/ProductDescriptionFile";
-import useSWR from "swr";
-import Loading from "./components/Loading";
-
+import prisma from "../../lib/prismaClient/db"
 
 
 enum formInputType {
@@ -26,11 +24,9 @@ enum formInputType {
   number,
 }
 
-export default function BrandRegistrationPage() {
+export default function BrandRegistrationPage({message}) {
 
-  const fetcher = (url) => fetch(url).then((res) => res.json());
-  const { data, isLoading } = useSWR("/api/mebrand", fetcher);
-
+  
 
   const method = useForm<BrandFormParams>({
 
@@ -106,16 +102,10 @@ export default function BrandRegistrationPage() {
     }
 
   }
-  //  Loader
-  if (isLoading) {
-    return (
-      <Loading></Loading>
-    )
-  }
-   
+ 
   //  form filled successfully
-  
-  if (data.message!) {
+
+  if (message) {
     return (
       <>
         <div className="success-container">
@@ -131,7 +121,7 @@ export default function BrandRegistrationPage() {
   return (
 
     <>
-      
+
 
       <div className='influencer-registration-form'>
 
@@ -220,4 +210,33 @@ export default function BrandRegistrationPage() {
 
 BrandRegistrationPage.auth = true;
 
+export async function getServerSideProps(context) {
+  const session = await getServerSession(context.req, context.res, authOptions);
 
+
+  if (!session) {
+    return {
+      props: {
+        message: false,
+      }
+    };
+  }
+  let brand;
+  try {
+    brand = await prisma.brands.findUnique({
+      where: {
+        email: session?.user?.email,
+      }
+    })
+  }
+  catch (err) {
+    return { props: { message: false } };
+  }
+
+
+  if (brand != null) {
+    return { props: { message: true } };
+  }
+
+  return { props: { message: false } };
+}

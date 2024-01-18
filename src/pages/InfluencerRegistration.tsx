@@ -21,7 +21,7 @@ import { authOptions } from './api/auth/[...nextauth]';
 import { GetServerSideProps } from 'next';
 import useSWR from 'swr';
 import Loading from './components/Loading';
-
+import prisma from "../../lib/prismaClient/db"
 
 enum formInputType {
   string,
@@ -29,10 +29,8 @@ enum formInputType {
 }
 
 
-export default function InfluencerRegistrationPage() {
+export default function InfluencerRegistrationPage({message}) {
 
-  const fetcher = (url) => fetch(url).then((res) => res.json());
-  const { data, isLoading } = useSWR("/api/meInfluencer", fetcher);
   
   // useform hook
   const method = useForm<InfluencerFormParams>({
@@ -107,13 +105,8 @@ export default function InfluencerRegistrationPage() {
 
   }
 
-  if(isLoading){
-    return (
-      <Loading></Loading>
-    )
-  }
 
-  if (data.message) {
+  if (message) {
     return (
       <>
         <div className='success-container'> 
@@ -204,3 +197,34 @@ export default function InfluencerRegistrationPage() {
 
 InfluencerRegistrationPage.auth = true;
 
+
+export async function getServerSideProps(context) {
+  const session = await getServerSession(context.req, context.res, authOptions);
+
+
+  if (!session) {
+    return {
+      props: {
+        message: false,
+      }
+    };
+  }
+  let influencer;
+  try {
+     influencer= await prisma.influencers.findUnique({
+      where: {
+        email: session?.user?.email,
+      }
+    })
+  }
+  catch (err) {
+    return { props: { message: false } };
+  }
+
+
+  if (influencer != null) {
+    return { props: { message: true } };
+  }
+
+  return { props: { message: false } };
+}

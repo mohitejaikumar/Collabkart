@@ -1,7 +1,7 @@
 import { getServerSession } from "next-auth";
 import { authOptions } from "./auth/[...nextauth]";
 import { NextApiRequest, NextApiResponse } from "next";
-import prisma from "../../../lib/primaClient/db"
+import prisma from "../../../lib/prismaClient/db"
 
 type Data = {
     message?: boolean;

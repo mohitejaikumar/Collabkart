@@ -3,7 +3,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "./auth/[...nextauth]";
 import { BrandFormSchema } from "../../../zod/form";
 import { PrismaClient } from '../../../prisma/generated/client'
-import prisma from "../../../lib/primaClient/db"
+import prisma from "../../../lib/prismaClient/db"
 
 
 type TzodError = {
