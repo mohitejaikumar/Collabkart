@@ -23,9 +23,9 @@ export default async function handler(
     switch (req.method) {
         case 'GET':
 
-            let brand;
+            let influencer;
             try {
-                brand = await prisma.influencers.findUnique({
+                influencer = await prisma.influencers.findUnique({
                     where: {
                         email: session?.user?.email,
                     }
@@ -37,6 +37,12 @@ export default async function handler(
                     message: false
                 });
                 
+            }
+
+            if (influencer != null) {
+                return res.status(200).json({
+                    message: true
+                });
             }
 
             return res.status(200).json({

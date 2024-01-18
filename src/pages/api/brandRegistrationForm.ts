@@ -43,7 +43,7 @@ export default async function handler(
                 });
             }
 
-
+          
             // connect to db
             await prisma.brands.create({
                 data: {
