@@ -2,9 +2,12 @@
 import { getServerSession } from "next-auth";
 import Typewriter from "typewriter-effect"
 import { authOptions } from "./api/auth/[...nextauth]";
+import { useRouter } from "next/router";
 
 export default function MainPage({session}) {
-    
+     
+    const router = useRouter();
+
     return (
         // <div className="landing-page">
         //     <div className="main-content">
@@ -40,7 +43,7 @@ export default function MainPage({session}) {
       </div>
       <div className="campaign-container">
         <p className="campaign-text">Get your first campaign online</p>
-        <button className="cta-button">Contact Us</button>
+        <button className="cta-button" onClick={()=>{router.push('contact')}}>Contact Us</button>
       </div>
       <div className="info-container">
         <div className="campaign-info">
