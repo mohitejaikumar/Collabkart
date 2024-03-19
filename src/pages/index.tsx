@@ -43,7 +43,7 @@ export default function MainPage({session}) {
       </div>
       <div className="campaign-container">
         <p className="campaign-text">Get your first campaign online</p>
-        <button className="cta-button" onClick={()=>{router.push('contact')}}>Contact Us</button>
+        <button className="cta-button" onClick={()=>{router.push('/contact')}}>Jontact Us</button>
       </div>
       <div className="info-container">
         <div className="campaign-info">
