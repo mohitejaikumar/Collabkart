@@ -23,6 +23,6 @@ jobs:
         mkdir -p ~/.ssh
         cp known_hosts ~/.ssh/known_hosts
         echo "copied known_hosts"
-        ssh -tt -i keyfile ubuntu@ec2-65-2-150-89.ap-south-1.compute.amazonaws.com "sudo bash deploy.sh"
+        ssh -tt -i keyfile ubuntu@ec2-52-66-91-97.ap-south-1.compute.amazonaws.com "sudo bash deploy.sh"
 
 
